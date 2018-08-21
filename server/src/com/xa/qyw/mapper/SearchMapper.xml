@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xa.qyw.dao.SearchDao">
+	<!--设置domain类和数据库中表的字段一一对应，注意数据库字段和domain类中的字段名称不致，此处一定要！ -->
+
+	<resultMap id="SearchHistory" type="com.xa.qyw.entiy.SearchItem">
+		<id column="id" property="id"/>
+		<id column="user_id" property="userId"/>
+		<id column="search_text" property="key"/>
+		<result column="create_time" property="createTime" />
+	</resultMap>
+	
+	<resultMap id="SearchHot" type="com.xa.qyw.entiy.SearchHot">
+		<id column="id" property="id"/>
+		<id column="is_hot" property="isHot"/>
+		<id column="seach_text" property="searchText"/>
+		<result column="create_time" property="createTime" />
+	</resultMap>
+	
+	<!-- 查询单条记录 -->
+
+
+	<insert id="addSearchHistory" parameterType="com.xa.qyw.entiy.SearchItem">
+		insert into yht_search_history (user_id,search_text,create_time) values (#{userId},#{key},#{createTime})
+	</insert>
+
+	<select id="getAllSearchHot" parameterType="com.xa.qyw.entiy.SearchHot"
+		resultMap="SearchHot">
+		
+		select * from yht_seach_hot where is_hot = 1
+		
+	</select>
+
+	
+</mapper>

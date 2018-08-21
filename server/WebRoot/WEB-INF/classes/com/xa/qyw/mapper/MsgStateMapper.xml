@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xa.qyw.dao.MsgStateDao">
+	<!--设置domain类和数据库中表的字段一一对应，注意数据库字段和domain类中的字段名称不致，此处一定要！ -->
+
+	<resultMap id="MsgState" type="com.xa.qyw.entiy.MsgState">
+		<id column="id" property="id" />
+		<result column="phone_number" property="phoneNumber" />
+		<result column="msg_order_id" property="orderId" />
+		<result column="msg_send_state" property="sendState" />
+		<result column="msg_report_state" property="reportState" />
+		<result column="msg_send_time" property="sendTime" />
+		<result column="random_code" property="randomCode" />
+		<result column="is_used" property="isUsed" />
+		<result column="msg_report_time" property="reportTime" />
+	</resultMap>
+
+
+	<insert id="insertMsgSendState" parameterType="com.xa.qyw.entiy.MsgState">
+		INSERT INTO
+		yht_msg_table
+		(id,phone_number,msg_order_id,msg_send_state,msg_report_state,msg_send_time,msg_report_time,random_code,is_used)
+		VALUES
+		(#{id},#{phoneNumber},#{orderId},#{sendState},#{reportState},#{sendTime},#{reportTime},#{randomCode},#{isUsed})
+	</insert>
+
+	<update id="updateMsgState" parameterType="com.xa.qyw.entiy.MsgState">
+		UPDATE yht_msg_table
+		SET msg_report_state = #{reportState}, msg_report_time = #{reportTime} 
+		WHERE phone_number = #{phoneNumber} AND msg_order_id = #{orderId}
+	</update>
+
+	<select id="getMsgState" parameterType="com.xa.qyw.entiy.MsgState" resultMap="MsgState">
+		SELECT * FROM yht_msg_table WHERE phone_number = #{phoneNumber} and is_used = 0 ORDER BY msg_send_time DESC LIMIT 1
+	</select>
+	
+	<update id="updateIsUsed" parameterType="int">
+		update yht_msg_table set is_used = 1 where id = #{id}
+ 	</update>
+
+</mapper>

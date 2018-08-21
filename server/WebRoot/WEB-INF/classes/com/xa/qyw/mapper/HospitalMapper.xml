@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xa.qyw.dao.HospitalDao">
+
+
+	<resultMap id="HospitalDetailInfo" type="com.xa.qyw.entiy.HospitalDetailInfo">
+		<id column="id" property="id"/>
+		<result column="hospital_name" property="hospital_name" />
+		<result column="hospital_grade" property="hospital_grade" />
+		<result column="hospital_province" property="hospital_province" />
+		<result column="hospital_city" property="hospital_city" />
+		<result column="hospital_address" property="hospital_address" />
+		<result column="hospital_path" property="hospital_path" />
+		<result column="hospital_phone" property="hospital_phone" />
+		<result column="hospital_intro" property="hospital_intro" />
+		<result column="hospital_logo" property="hospital_logo" />
+		<result column="hospital_lat" property="hospital_lat" />
+		<result column="hospital_lng" property="hospital_lng" />
+		<result column="hospital_type" property="hospital_type" />
+		<result column="is_pass" property="is_pass" />
+	</resultMap>
+	
+	<resultMap id="HospitalGrade" type="com.xa.qyw.entiy.HospitalGrade">
+		<id column="id" property="id"/>
+		<id column="grade_name" property="gradeName"/>
+		<id column="create_time" property="createTime"/>
+	</resultMap>
+	
+	
+	<select id="getAllHospitalGrade" resultMap="HospitalGrade">
+		select * from yht_hospital_grade where is_show = 1 ORDER BY sort DESC
+	</select>
+	
+	
+	<select id="getHospitalById" parameterType="int" resultMap="HospitalDetailInfo">
+	
+		SELECT * FROM yht_hospital_type WHERE id = #{id}
+	
+	</select>
+	
+	<select id="getAllHospital" resultMap="HospitalDetailInfo">
+		SELECT * FROM yht_hospital_type
+	</select>
+	
+	<select id="queryHospitalByName" resultMap="HospitalDetailInfo" parameterType="com.xa.qyw.entiy.HospitalDetailInfo">
+		select * from yht_hospital_type where hospital_name = #{hospital_name} and hospital_city = #{hospital_city}
+	</select>
+	
+	<select id="queryHospitalByCity" resultMap="HospitalDetailInfo" parameterType="com.xa.qyw.entiy.HospitalDetailInfo">
+		select * from yht_hospital_type where hospital_province = #{hospital_province} and 
+		hospital_city = #{hospital_city} and hospital_type = #{hospital_type} and hospital_grade like #{hospital_grade} ORDER BY hospital_create_time DESC
+	</select>
+	
+	<select id="queryLikeHospitalByName" resultMap="HospitalDetailInfo" parameterType="java.lang.String">
+		select * from yht_hospital_type where hospital_name like #{name} ORDER BY hospital_create_time DESC
+	</select>
+	
+	<insert id="insertHospital" parameterType="com.xa.qyw.entiy.HospitalDetailInfo">
+		insert into yht_hospital_type (hospital_name,hospital_grade,hospital_province,hospital_city,is_pass,hospital_type) values 
+		(#{hospital_name},#{hospital_grade},#{hospital_province},#{hospital_city},#{is_pass},#{hospital_type})
+	</insert>
+
+	<insert id="insertUpdateHospitalName" parameterType="com.xa.qyw.entiy.UpdateHospitalName">
+		insert into yht_update_hospital_grade (user_id,hospital_id,hospital_name,hospital_grade,is_pass,create_time) 
+		values 
+		(#{userId},#{hospitalId},#{hospitalName},#{hospitalGrade},#{isPass},#{createTime})
+	</insert>
+	
+
+</mapper>

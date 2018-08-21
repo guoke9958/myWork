@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xa.qyw.dao.NewDepartmentsDao">
+	<!--设置domain类和数据库中表的字段一一对应，注意数据库字段和domain类中的字段名称不致，此处一定要！ -->
+
+	<resultMap id="AddDepartments" type="com.xa.qyw.entiy.AddDepartments">
+		<id column="id" property="id" />
+		<result column="department_name" property="departmentsName" />
+	</resultMap>
+
+	<resultMap id="DepartmentInfo" type="com.xa.qyw.entiy.DepartmentInfo">
+		<id column="id" property="id" />
+		<result column="hospital_id" property="hospitalId" />
+		<result column="department_id" property="departmentId" />
+		<result column="department_intro" property="intro" />
+		<result column="department_phone" property="phone" />
+		<result column="department_name" property="departmentName" />
+		<result column="hospital_name" property="hospitalName" />
+	</resultMap>
+
+	<resultMap id="SimpleDe" type="com.xa.qyw.entiy.app.SimpleDepartment">
+		<id column="id" property="departmentId" />
+		<result column="department_name" property="departmentName" />
+	</resultMap>
+
+	<!-- 查询单条记录 -->
+
+
+	<insert id="addToDepartments" parameterType="com.xa.qyw.entiy.AddDepartments">
+		insert into
+		yht_departments (id,department_name) values (#{id},#{departmentsName})
+	</insert>
+
+	<select id="getDepartmentsByName" parameterType="com.xa.qyw.entiy.AddDepartments"
+		resultMap="AddDepartments">
+		SELECT id,department_name FROM yht_departments WHERE
+		department_name = #{departmentsName}
+	</select>
+
+	<select id="getAllDepartments" resultMap="AddDepartments">
+
+		select
+		id,department_name from yht_departments where is_department = 1
+
+	</select>
+	
+	<select id="getDepartmentsByGrade" parameterType="java.lang.String" resultMap="AddDepartments">
+
+		select
+		id,department_name from yht_departments where hospital_grade = #{grade} ORDER BY sort DESC
+
+	</select>
+	
+	<select id="getDepartmentInfoByHosptailIdAndDepartmentId"
+		parameterType="com.xa.qyw.entiy.DepartmentInfo" resultMap="DepartmentInfo">
+
+		SELECT i.*,h.hospital_name,d.department_name
+		FROM yht_department_info i,yht_departments d,yht_hospital_type h WHERE i.hospital_id = #{hospitalId}
+		AND
+		i.department_id = #{departmentId} AND i.department_id = d.id AND i.hospital_id = h.id
+
+	</select>
+
+	<insert id="addDepartmentInfo" parameterType="com.xa.qyw.entiy.DepartmentInfo">
+
+		insert into
+		yht_department_info
+		(id,hospital_id,department_id,department_intro,department_phone)
+		values (#{id},#{hospitalId},#{departmentId},#{intro},#{phone})
+
+	</insert>
+	
+	<select id="getListDepartment" parameterType="int" resultMap="SimpleDe">
+	
+		SELECT d.id,d.department_name FROM yht_department_info i,yht_departments d WHERE i.hospital_id = #{id} AND i.department_id = d.id
+	</select>
+
+
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xa.qyw.dao.UserAliAccountDao">
+	<!--设置domain类和数据库中表的字段一一对应，注意数据库字段和domain类中的字段名称不致，此处一定要！ -->
+
+	<resultMap id="UserAliAccount" type="com.xa.qyw.entiy.UserAliAccount">
+		<id column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="user_ali_name" property="aliName" />
+		<result column="user_ali_account" property="aliAccount" />
+		<result column="update_time" property="createTime" />
+	</resultMap>
+	<!-- 查询单条记录 -->
+
+
+	<insert id="addUserAliAccount" parameterType="com.xa.qyw.entiy.UserAliAccount">
+		insert into
+		yht_user_ali_account
+		(user_id,user_ali_name,user_ali_account,update_time) values
+		(#{userId},#{aliName},#{aliAccount},#{createTime})
+	</insert>
+
+	<delete id="deleteUserAliAccount" parameterType="int">
+		delete from yht_user_ali_account where id = #{id}
+	</delete>
+	
+	<select id="getUserAliAccountByUserId" parameterType="java.lang.String" resultMap="UserAliAccount">
+		select * from yht_user_ali_account where user_id = #{userId}
+	</select>
+	
+	
+	<select id="queryUserAliAccount" parameterType="com.xa.qyw.entiy.UserAliAccount" resultMap="UserAliAccount">
+		select * from yht_user_ali_account where user_id = #{userId} and user_ali_name = #{aliName} and user_ali_account = #{aliAccount}
+	</select>
+
+
+</mapper>

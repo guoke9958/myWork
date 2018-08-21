@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:text="求医网医疗咨询服务特别条款"
+            android:textColor="@color/black_100"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="10dp"
+            android:padding="20dp"
+            android:text="　　求医网www.qiuyiwang.com不能控制注册医生用户提供的医疗建议的质量、安全或合法性。求医网www.qiuyiwang.com并不作为服务提供者或服务获取者的身份参与医疗咨询服务行为本身。求医网www.qiuyiwang.com提醒用户应该通过自己的谨慎判断确定医疗建议是否适合自已。\n\n
+　　求医网www.qiuyiwang.com的服务仅限于有多年医疗工作（临床经验）的专业医生所提供的医疗信息服务，不涉及与任何建议相关的诊断及治疗，诊断与治疗不能在求医网上进行，所有信息仅为专业人员提供的医疗相关信息类服务，不代表任何诊断，治疗方案，用户不能将其理解为治疗方案，处方，也不能作为处理医疗纠纷时依据等。\n\n
+　　求医网www.qiuyiwang.com平台提供的电话咨询及网上咨询服务均只限于根据用户的主观描述，医生尽可能利用医学知识及临床经验给予一定的解惑及如何就医方面的建议，不能保证完全满足用户的期望或目的。 用户需知晓并同意诊断及治疗均需前往医院。擅自将网上医生建议做为处方使用的，后果自负，与医生及求医网www.qiuyiwang.com平台无关。\n\n
+　　用户在电话咨询过程中要语言文明，尊重医生，平等交流。如有对医生恶意中伤，语言不文明，医生有权立即中断服务，此类服务，无权要求退款。\n\n
+　　电话咨询过程中遇到医生有紧急事情处理时（医生职业具有的特殊情况），要给予理解，暂停咨询，向求医网管理员申报，以便安排重新咨询的具体时间。\n\n
+　　用户在求医网www.qiuyiwang.com上使用收费服务的过程中如遇服务纠纷，可以请求求医网www.qiuyiwang.com从中予以协调。用户如发现医生用户没按服务要求进行电话咨询服务的，可以进行反映要求医网www.qiuyiwang.com处理。如用户因收费服务与其他用户产生诉讼的，用户有权通过司法部门要求医网www.qiuyiwang.com提供相关资料。\n\n
+　　用户欲了解更多事项请参阅求医网www.qiuyiwang.com医疗咨询服务条款，或向本网站客服人员咨询。\n\n
+　　本网站所有活动及内容条款的解释权归陕西飞腾医疗管理有限责任公司,电话：029-85612945  官方网站：www.ftyiliao.com 。 \n\n"
+            android:textColor="@color/black_100"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+</ScrollView>

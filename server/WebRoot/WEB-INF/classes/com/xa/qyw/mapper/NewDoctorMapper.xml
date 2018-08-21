@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xa.qyw.dao.NewDoctorDao">
+	<!--设置domain类和数据库中表的字段一一对应，注意数据库字段和domain类中的字段名称不致，此处一定要！ -->
+
+	<resultMap id="Doctor" type="com.xa.qyw.entiy.Doctor">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="user_id" property="userId" />
+	</resultMap>
+	<!-- 查询单条记录 -->
+
+	<resultMap type="com.xa.qyw.entiy.app.DoctorDetailInfo" id="DoctorDetailInfo">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="user_id" property="userId" />
+		<result column="doctor_sex" property="sex" />
+		<result column="doctor_name" property="nickName" />
+		<result column="doctor_photo" property="photo" />
+		<result column="doctor_hospital" property="hospitalId" />
+		<result column="hospital_name" property="hospitalName" />
+		<result column="doctor_department" property="departmentId" />
+		<result column="department_name" property="departmentName" />
+		<result column="doctor_professional_title" property="professionTitle" />
+		<result column="doctor_good_at" property="goodAt" />
+		<result column="doctor_intro" property="intro" />
+	</resultMap>
+
+
+
+	<resultMap type="com.xa.qyw.entiy.app.SimpleDoctor" id="SimpleDoctor">
+		<id column="id" property="id" />
+		<id column="user_id" property="doctorId" />
+		<result column="user_professional_title" property="dcotorProfessionalTitle" />
+		<result column="user_nick_name" property="nickName" />
+		<result column="user_true_name" property="doctorName" />
+		<result column="user_photo" property="doctorPhoto" />
+		<result column="hospital_id" property="hospitalId" />
+		<result column="hospital_name" property="hospitalName" />
+	</resultMap>
+
+
+	<select id="getDoctorByDepartmentsId"
+		parameterType="com.xa.qyw.entiy.app.SearchDoctorByDepartmentAndCity"
+		resultMap="SimpleDoctor">
+
+		select
+		d.id,d.user_id,d.user_nick_name,d.user_true_name,d.user_photo,d.user_professional_title,h.id as
+		hospital_id,h.hospital_name from yht_new_user_info d,yht_hospital_type h
+		where h.id = d.user_hospital and d.is_pass = 1 and d.user_department =
+		#{departmentId} AND h.hospital_grade LIKE #{grade} AND h.is_pass = 1 and (h.hospital_city LIKE #{city} OR h.hospital_province LIKE #{city} OR h.hospital_area LIKE #{city})
+
+	</select>
+	
+	
+	<select id="getDoctorByDepartmentsIdAndHospitalId"
+		parameterType="com.xa.qyw.entiy.DepartmentInfo"
+		resultMap="SimpleDoctor">
+		
+		select
+		d.id,u.user_id,d.user_nick_name,d.user_true_name,d.user_photo,d.user_professional_title,h.id as
+		hospital_id,h.hospital_name from yht_new_user_info d,yht_hospital_type h,yht_user u 
+		where h.id = d.user_hospital and d.user_department =
+		#{departmentId} AND d.user_hospital = #{hospitalId} AND u.id = d.user_id and d.is_pass = 1 AND h.is_pass = 1
+
+	</select>
+	
+	<select id="getUserByDepartmentsId"
+		parameterType="com.xa.qyw.entiy.app.SearchDoctorByDepartmentAndCity"
+		resultMap="SimpleDoctor">
+		
+		select
+		d.id,d.user_id,d.user_nick_name,d.user_true_name,d.user_photo,d.user_professional_title from yht_new_user_info d 
+		where d.user_department =
+		#{departmentId}
+
+	</select>
+	
+
+	<insert id="inserDocotrData" parameterType="com.xa.qyw.entiy.Doctor">
+
+	</insert>
+
+	<update id="updateDoctorInfo" parameterType="com.xa.qyw.entiy.Doctor">
+
+		UPDATE
+		yht_doctor_info SET departments = #{userId} WHERE id = #{id}
+
+	</update>
+
+
+	<select id="getDocotorDetailInfo" parameterType="int"
+		resultMap="DoctorDetailInfo">
+
+		select
+		d.id,u.user_id,d.doctor_sex,d.doctor_name,d.doctor_photo,d.doctor_professional_title,d.doctor_good_at,d.doctor_intro,h.hospital_name,p.department_name
+		from
+		yht_doctor_info d,yht_hospital_type h ,yht_departments p ,yht_user
+		u where h.id =
+		d.doctor_hospital and d.doctor_department = p.id and
+		d.user_id = u.id
+		and d.user_id = (SELECT u.id FROM yht_user u WHERE u.user_id = #{userId})
+
+	</select>
+
+	<select id="getAllDoctor" resultMap="DoctorDetailInfo">
+		select news_title as doctor_name,news_desc as doctor_intro, zhiwu as doctor_good_at from
+		cool_doctor where cat_id = 100
+	</select>
+
+
+	<update id="updateDoctorIntro" parameterType="com.xa.qyw.entiy.app.DoctorDetailInfo">
+		update yht_doctor_info set doctor_duty = #{goodAt} where doctor_name = #{nickName}
+	</update>
+
+
+
+</mapper>

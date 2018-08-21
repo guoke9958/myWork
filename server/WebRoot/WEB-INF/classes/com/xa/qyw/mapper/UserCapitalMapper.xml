@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xa.qyw.dao.UserCapitalDao">
+
+
+	<resultMap id="Capital" type="com.xa.qyw.entiy.UserCapital">
+		<id column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="user_capital" property="capitalTotal" />
+		<result column="expend_total_capital" property="expandCapital" />
+		<result column="recharge_total_capital" property="rechargeCapital" />
+		<result column="income_capital" property="incomeCapital" />
+		<result column="update_time" property="updateTime" />
+	</resultMap>
+
+	<resultMap id="CapitalHistory" type="com.xa.qyw.entiy.CapitalHistory">
+		<id column="id" property="id" />
+		<result column="order_id" property="orderId" />
+		<result column="user_id" property="userId" />
+		<result column="user_name" property="userName" />
+		<result column="user_photo" property="userPhoto" />
+		<result column="user_capital_type" property="capitalType" />
+		<result column="pay_to_user_id" property="toUserId" />
+		<result column="update_time" property="updateTime" />
+		<result column="changer" property="change" />
+		<result column="pay_type" property="payType" />
+		<result column="to_user_name" property="toUserName" />
+		<result column="to_user_photo" property="toUserPhoto" />
+		<result column="to_user_type" property="toUserType" />
+	</resultMap>
+
+	<resultMap id="RechargeGift" type="com.xa.qyw.entiy.RechargeGift">
+		<id column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="coupon" property="coupon" />
+		<result column="is_get" property="isGet" />
+		<result column="update_time" property="updateTime" />
+	</resultMap>
+
+	<resultMap id="Order" type="com.xa.qyw.entiy.Order">
+		<id column="id" property="id" />
+		<result column="order_id" property="orderId" />
+		<result column="update_time" property="updateTime" />
+	</resultMap>
+
+
+	<insert id="insertUserCapital" parameterType="com.xa.qyw.entiy.UserCapital">
+		insert into
+		yht_user_capital
+		(id,user_id,user_capital,expend_total_capital,recharge_total_capital,income_capital,update_time)
+		values
+		(#{id},#{userId},#{capitalTotal},#{expandCapital},#{rechargeCapital},#{incomeCapital},#{updateTime})
+	</insert>
+
+	<insert id="insertUserCapitalHistory" parameterType="com.xa.qyw.entiy.CapitalHistory">
+		insert into
+		yht_capital_history_log
+		(id,order_id,user_id,user_capital_type,pay_to_user_id,update_time,changer,pay_type)
+		values
+		(#{id},#{orderId},#{userId},#{capitalType},#{toUserId},#{updateTime},#{change},#{payType})
+	</insert>
+
+	<select id="getUserCapital" parameterType="com.xa.qyw.entiy.UserCapital"
+		resultMap="Capital">
+		select * from yht_user_capital where user_id = #{userId}
+	</select>
+
+	<select id="getCapitalHistory" parameterType="com.xa.qyw.entiy.CapitalHistory"
+		resultMap="CapitalHistory">
+		SELECT *,(SELECT u.user_nick_name FROM yht_new_user_info u
+		WHERE u.user_id = h.user_id) AS userName,(SELECT u.user_photo FROM
+		yht_new_user_info u WHERE u.user_id = h.user_id) AS userPhoto,
+		(SELECT u.user_nick_name FROM yht_new_user_info u WHERE u.user_id =
+		h.pay_to_user_id) AS toUserName,(SELECT u.user_photo FROM
+		yht_new_user_info u WHERE u.user_id = h.pay_to_user_id) AS toUserPhoto
+		,(SELECT u.user_type FROM yht_new_user_info u WHERE u.user_id = h.pay_to_user_id) AS toUserType
+		FROM yht_capital_history_log h
+		where h.user_id =
+		#{userId} AND
+		user_capital_type = #{capitalType} AND
+		update_time &lt;= #{updateTime}
+		ORDER BY
+		update_time DESC LIMIT 0,20
+	</select>
+
+	<select id="getCapitalHistoryInCome" parameterType="com.xa.qyw.entiy.CapitalHistory"
+		resultMap="CapitalHistory">
+	SELECT *,(SELECT u.user_nick_name FROM yht_new_user_info u
+	WHERE u.user_id = h.user_id) AS userName,(SELECT u.user_photo FROM
+	yht_new_user_info u WHERE u.user_id = h.user_id) AS userPhoto,
+	(SELECT u.user_nick_name FROM yht_new_user_info u WHERE u.user_id =
+	h.pay_to_user_id) AS toUserName,(SELECT u.user_photo FROM
+	yht_new_user_info u WHERE u.user_id = h.pay_to_user_id) AS toUserPhoto
+	,(SELECT u.user_type FROM yht_new_user_info u WHERE u.user_id = h.user_id) AS toUserType
+	FROM yht_capital_history_log h
+	where h.pay_to_user_id =
+	#{userId} AND
+	user_capital_type = #{capitalType} AND
+	update_time &lt;=
+	#{updateTime}
+	ORDER BY
+	update_time DESC LIMIT 0,20
+	</select>
+
+
+	<update id="updateCapitalRecharge" parameterType="com.xa.qyw.entiy.UserCapital">
+		update
+		yht_user_capital set user_capital = (user_capital +
+		#{changeCapital}),
+		recharge_total_capital = (recharge_total_capital +
+		#{changeCapital})
+		where user_id = #{userId}
+	</update>
+
+	<update id="updateCapitalInCome" parameterType="com.xa.qyw.entiy.UserCapital">
+		update
+		yht_user_capital set income_capital = (income_capital +
+		#{changeCapital})
+		where user_id = #{userId}
+	</update>
+
+
+	<update id="updateCapitalExpand" parameterType="com.xa.qyw.entiy.UserCapital">
+		update
+		yht_user_capital set user_capital = (user_capital -
+		#{changeCapital}),expend_total_capital = (expend_total_capital +
+		#{changeCapital})
+		where user_id = #{userId}
+	</update>
+
+	<insert id="insertRechargeGift" parameterType="com.xa.qyw.entiy.RechargeGift">
+		insert into
+		yht_recharge_gift
+		(id,user_id,coupon,is_get,update_time) values
+		(#{id},#{userId},#{coupon},#{isGet},#{updateTime})
+	</insert>
+
+	<update id="updateRechargeGift" parameterType="com.xa.qyw.entiy.RechargeGift">
+		update
+		yht_recharge_gift set coupon =
+		(coupon +
+		#{change}) where user_id =
+		#{userId}
+	</update>
+
+	<update id="updateExpandGift" parameterType="com.xa.qyw.entiy.RechargeGift">
+		update
+		yht_recharge_gift set coupon =
+		(coupon -
+		#{change}) , is_get = #{isGet}
+		where user_id = #{userId}
+	</update>
+
+	<select id="getUserGift" resultMap="RechargeGift">
+		select * from
+		yht_recharge_gift where user_id = #{userId}
+	</select>
+
+	<select id="getHongBaoDetail" parameterType="java.lang.String"
+		resultMap="CapitalHistory">
+		SELECT *,(SELECT u.user_nick_name FROM yht_new_user_info u
+		WHERE u.user_id = h.user_id) AS userName,(SELECT u.user_photo FROM
+		yht_new_user_info u WHERE u.user_id = h.user_id) AS userPhoto,
+		(SELECT u.user_nick_name FROM yht_new_user_info u WHERE u.user_id =
+		h.pay_to_user_id) AS toUserName,(SELECT u.user_photo FROM
+		yht_new_user_info u WHERE u.user_id = h.pay_to_user_id) AS toUserPhoto
+		FROM yht_capital_history_log h
+		where h.order_id = #{orderId}
+	</select>
+
+	<select id="getOrderById" parameterType="java.lang.String"
+		resultMap="Order">
+		SELECT * FROM open_hongbao_orderid WHERE order_id =
+		#{orderId}
+	</select>
+
+	<insert id="insertOrder" parameterType="com.xa.qyw.entiy.Order">
+		insert into
+		open_hongbao_orderid (id,order_id,update_time) VALUES
+		(#{id},#{orderId},#{updateTime})
+	</insert>
+
+
+</mapper>

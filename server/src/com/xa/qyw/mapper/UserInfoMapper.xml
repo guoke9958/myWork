@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xa.qyw.dao.UserInfoDao">
+
+
+	<resultMap id="UserInfo" type="com.xa.qyw.entiy.UserInfo">
+		<id column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="user_type" property="type" />
+		<result column="user_sex" property="userSex" />
+		<result column="user_nick_name" property="nickName" />
+		<result column="user_true_name" property="trueName" />
+		<result column="user_photo" property="photo" />
+		<result column="user_hospital" property="hospitalName" />
+		<result column="hospita_id" property="hospitalId" />
+		<result column="user_professional_title" property="professionalTitle" />
+		<result column="user_good_at" property="goodAt" />
+		<result column="user_phone" property="phone" />
+		<result column="user_intro" property="intro" />
+		<result column="user_department" property="departmentName" />
+		<result column="department_id" property="departmentId" />
+		<result column="user_duty" property="duty" />
+		<result column="user_province" property="province" />
+		<result column="user_city" property="city" />
+		<result column="user_area" property="area" />
+		<result column="user_detail_address" property="detailAddress" />
+		<result column="user_alipay_account" property="alipayAccount" />
+		<result column="user_phone_advisory" property="phoneAdvisory" />
+		<result column="user_order_advisory" property="orderAadvisory" />
+		<result column="user_note_order_advisory" property="noteOrderAdvisory" />
+		<result column="user_normal_advisory" property="normalAdvisory" />
+		<result column="user_big_advisory" property="bigAdvisory" />
+		<result column="user_family_doctor" property="familyDoctor" />
+		<result column="user_health_manager" property="healthManager" />
+		<result column="is_pass" property="isPass" />
+		<result column="hospital_grade" property="hospitalGrade" />
+		<result column="hospital_pass" property="hospitalPass" />
+		<result column="user_birthday" property="brithday" />
+		<result column="hospital_type" property="hospitalType" />
+		<result column="create_time" property="createTime" />
+	</resultMap>
+
+	<update id="updateUserId" parameterType="com.xa.qyw.entiy.SimpUser">
+		UPDATE yht_new_user_info
+		SET user_id = #{userId} WHERE user_id = #{id}
+	</update>
+
+	<update id="updateUserPhone" parameterType="com.xa.qyw.entiy.UserInfo">
+		UPDATE yht_new_user_info
+		SET user_phone = #{phone} WHERE user_id = #{userId}
+	</update>
+	
+	<delete id="deleteUserInfo" parameterType="java.lang.String">
+		delete from yht_new_user_info where user_id = #{userId}
+	</delete>
+
+
+	<select id="getUserInfoById" parameterType="java.lang.String"
+		resultMap="UserInfo">
+		SELECT
+		u.id,u.user_id,u.user_type,u.user_sex,u.user_nick_name,u.is_pass,u.user_true_name,u.user_photo,u.user_normal_advisory,u.user_big_advisory,
+		u.user_family_doctor,u.user_health_manager,u.user_birthday,
+		(select
+		h.hospital_name from
+		yht_hospital_type h where h.id =
+		u.user_hospital)
+		as
+		user_hospital,(select
+		h.hospital_type from
+		yht_hospital_type h where h.id =
+		u.user_hospital) as hospital_type,(select
+		h.is_pass from
+		yht_hospital_type h where h.id =
+		u.user_hospital)
+		as
+		hospital_pass,(select
+		h.hospital_grade from
+		yht_hospital_type h where h.id =
+		u.user_hospital)
+		as
+		hospital_grade,
+		u.user_professional_title,
+		u.user_good_at,u.user_phone,u.user_intro,(select d.department_name
+		from yht_departments d where d.id = u.user_department) as
+		user_department,u.user_duty,u.user_province,u.user_city,u.user_area,u.user_detail_address,u.user_alipay_account,
+		u.user_phone_advisory,u.user_order_advisory,u.user_note_order_advisory,u.user_hospital
+		as hospita_id,u.user_department as department_id
+		FROM yht_new_user_info
+		u WHERE u.user_id = #{userId}
+	</select>
+
+	<update id="updateUserInfoPhoto" parameterType="com.xa.qyw.entiy.UserInfo">
+		UPDATE
+		yht_new_user_info SET user_photo = #{photo} WHERE user_id = #{userId}
+	</update>
+
+	<update id="updateUserInfoHospital" parameterType="com.xa.qyw.entiy.UserInfo">
+		UPDATE
+		yht_new_user_info SET user_hospital = #{hospitalId} WHERE user_id = #{userId}
+	</update>
+
+	<update id="updateUserInfoAll" parameterType="com.xa.qyw.entiy.UserInfo">
+		update
+		yht_new_user_info set user_sex = #{userSex},user_nick_name =
+		#{nickName},user_true_name = #{trueName},user_photo =
+		#{photo},user_hospital =
+		#{hospitalId},user_professional_title =
+		#{professionalTitle},user_good_at = #{goodAt},user_phone =
+		#{phone},user_intro = #{intro},user_department =
+		#{departmentId},user_duty =
+		#{duty},user_province =
+		#{province},user_city = #{city},user_area =
+		#{area},user_detail_address = #{detailAddress},
+		user_alipay_account =
+		#{alipayAccount},user_phone_advisory =
+		#{phoneAdvisory},user_order_advisory =
+		#{orderAadvisory},user_note_order_advisory = #{noteOrderAdvisory},
+		user_normal_advisory = #{normalAdvisory},
+		user_big_advisory =
+		#{bigAdvisory},
+		user_family_doctor = #{familyDoctor},
+		user_health_manager=#{healthManager},
+		user_birthday=#{brithday}
+		where user_id = #{userId}
+	</update>
+
+	<select id="getAllUserInfo" resultMap="UserInfo">
+		select * from
+		yht_new_user_info
+	</select>
+
+	<update id="updateUserName" parameterType="com.xa.qyw.entiy.UserInfo">
+		UPDATE
+		yht_new_user_info SET user_nick_name = #{nickName} WHERE user_id =
+		#{userId}
+	</update>
+
+	<insert id="insertUserInfo" parameterType="com.xa.qyw.entiy.UserInfo">
+		insert into
+		yht_new_user_info
+		(user_id,user_type,user_sex,user_nick_name,user_true_name,user_photo,user_hospital,user_professional_title,user_good_at
+		,user_phone,user_intro,user_department,user_duty,user_province,user_city,user_area,user_detail_address,user_alipay_account,user_phone_advisory,user_order_advisory
+		,user_note_order_advisory,user_normal_advisory,user_big_advisory,user_family_doctor,user_health_manager,is_pass,user_birthday) values
+		(#{userId},#{type},#{userSex},#{nickName},#{trueName},#{photo},#{hospitalId},#{professionalTitle},#{goodAt}
+		,#{phone},#{intro},#{departmentId},#{duty},#{province},#{city},#{area},#{detailAddress},#{alipayAccount},#{phoneAdvisory},#{orderAadvisory},#{noteOrderAdvisory}
+		,#{normalAdvisory},#{bigAdvisory},#{familyDoctor},#{healthManager},#{isPass},#{brithday})
+	</insert>
+	
+	<select id="queryUserInfoByName" parameterType="java.lang.String" resultMap="UserInfo" >
+		select *,user_hospital
+		as hospita_id,user_department as department_id from yht_new_user_info where user_true_name = #{name}
+	</select>
+	
+	<select id="searchDoctor" parameterType="com.xa.qyw.entiy.SearchItem" resultMap="UserInfo">
+			SELECT
+		u.id,u.user_id,u.user_type,u.user_sex,u.user_nick_name,u.is_pass,u.user_true_name,u.user_photo,u.user_normal_advisory,u.user_big_advisory,
+		u.user_family_doctor,u.user_health_manager,
+		(select
+		h.hospital_name from
+		yht_hospital_type h where h.id =
+		u.user_hospital)
+		as
+		user_hospital,(select
+		h.is_pass from
+		yht_hospital_type h where h.id =
+		u.user_hospital)
+		as
+		hospital_pass,(select
+		h.hospital_grade from
+		yht_hospital_type h where h.id =
+		u.user_hospital)
+		as
+		hospital_grade,
+		u.user_professional_title,
+		u.user_good_at,u.user_phone,u.user_intro,(select d.department_name
+		from yht_departments d where d.id = u.user_department) as
+		user_department,u.user_duty,u.user_province,u.user_city,u.user_area,u.user_detail_address,u.user_alipay_account,
+		u.user_phone_advisory,u.user_order_advisory,u.user_note_order_advisory,u.user_hospital
+		as hospita_id,u.user_department as department_id,u.create_time
+		FROM yht_new_user_info
+		u ,yht_user yht WHERE  (select
+		h.is_pass from
+		yht_hospital_type h where h.id =
+		u.user_hospital) = 1 AND u.is_pass = 1 AND u.user_id = yht.user_id AND u.user_type = 1 and ((select
+		h.hospital_name from
+		yht_hospital_type h where h.id =
+		u.user_hospital) LIKE #{key} or (select d.department_name
+		from yht_departments d where d.id = u.user_department) LIKE #{key} OR (u.user_true_name LIKE #{key})) AND u.create_time &lt; #{createTime} ORDER BY u.create_time DESC LIMIT 0,20
+		
+	</select>
+	
+
+</mapper>

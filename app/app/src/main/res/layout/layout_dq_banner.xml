@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/banner_pic"
+        android:layout_width="fill_parent"
+        android:layout_height="120dp"
+        android:visibility="gone"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY" />
+
+    <LinearLayout
+        android:id="@+id/lin_prizes"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/banner_pic"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/event_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/normal_pacing"
+            android:layout_marginTop="@dimen/half_normal_pacing"
+            android:textColor="@color/normal_grey"
+            android:text="累计充值礼包"
+            android:textSize="@dimen/head_line_text_size" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="40.0dip">
+
+            <ImageView
+                android:id="@+id/prize"
+                android:layout_width="30.0dip"
+                android:layout_height="30.0dip"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/normal_pacing"
+                android:scaleType="fitXY"
+                android:clickable="false"
+                android:src="@mipmap/pay_prize_icon_normal" />
+
+            <ProgressBar
+                android:id="@+id/pro"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="10.0dip"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginLeft="@dimen/normal_pacing"
+                android:layout_marginRight="@dimen/normal_pacing"
+                android:layout_toLeftOf="@+id/prize"
+                android:max="500"
+                android:progressDrawable="@drawable/user_task_proccess_bar" />
+
+            <TextView
+                android:id="@+id/pro_count"
+                android:layout_width="30.0dip"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/pro"
+                android:layout_marginBottom="2.0dip"
+                android:layout_marginLeft="85dp"
+                android:background="@drawable/pay_pro_count_bg"
+                android:gravity="center"
+                android:visibility="gone"
+                android:text="80"
+                android:textColor="@color/white"
+                android:textSize="11.0sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/prize_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/half_normal_pacing"
+            android:layout_marginLeft="@dimen/normal_pacing"
+            android:layout_marginTop="3.0dip"
+            android:singleLine="true"
+            android:textColor="@color/light_grey"
+            android:text="在购买500点券，可额外获得20点券"
+            android:textSize="@dimen/normal_text_size" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="12.0dip"
+            android:background="#fff6f6f6" />
+    </LinearLayout>
+</RelativeLayout>

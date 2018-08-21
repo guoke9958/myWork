@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xa.qyw.dao.VideoDao">
+	<!--设置domain类和数据库中表的字段一一对应，注意数据库字段和domain类中的字段名称不致，此处一定要！ -->
+
+	<resultMap id="VideoType" type="com.xa.qyw.entiy.VideoType">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="icon_url" property="iconUrl" />
+		<result column="app_version_code" property="versionCode" />
+		<result column="type_name" property="typeName" />
+		<result column="app_create_time" property="createTime" />
+	</resultMap>
+	
+	<resultMap id="VideoDetail" type="com.xa.qyw.entiy.VideoDetail">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="type_id" property="typeId" />
+		<result column="video_img" property="videoImage" />
+		<result column="play_url" property="playUrl" />
+		<result column="detail" property="detail" />
+		<result column="is_web" property="isWeb" />
+		<result column="video_name" property="videoName" />
+		<result column="create_time" property="createTime" />
+	</resultMap>
+	
+	
+	<!-- 查询单条记录 -->
+	
+	<insert id="insertVideDetail" parameterType="com.xa.qyw.entiy.App">
+
+		insert into yht_video_detail (id,type_id,video_img,play_url,detail,video_name,is_web,source,create_time) values (#{id},
+		#{typeId}, #{videoImage}, #{playUrl}, #{detail},
+		#{videoName},#{isWeb},#{source},#{createTime})
+
+	</insert>
+	
+
+	<select id="getAllVideoType" parameterType="java.lang.Integer"
+		resultMap="VideoType">
+		
+		SELECT * FROM yht_video_type ORDER BY sort 
+		
+	</select>
+
+	<select id="getVideoByType" resultType="java.lang.Integer" resultMap="VideoDetail">
+		
+		select * from yht_video_detail where type_id = #{typeId}
+		
+	</select>
+
+	<select id="getVideoDetail" parameterType="java.lang.Integer" resultMap="VideoDetail">
+	
+		select * from yht_video_detail where id = #{id}
+	
+	</select>
+
+</mapper>

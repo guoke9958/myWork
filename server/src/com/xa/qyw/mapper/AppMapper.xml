@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xa.qyw.dao.AppDao">
+	<!--设置domain类和数据库中表的字段一一对应，注意数据库字段和domain类中的字段名称不致，此处一定要！ -->
+
+	<resultMap id="DoctorApp" type="com.xa.qyw.entiy.App">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="app_version_name" property="versionName" />
+		<result column="app_version_code" property="versionCode" />
+		<result column="app_download_url" property="downdloadUrl" />
+		<result column="app_is_flag" property="isFlag" />
+		<result column="app_type" property="type" />
+		<result column="app_update_context" property="updateContext" />
+		<result column="app_create_time" property="createTime" />
+	</resultMap>
+	<!-- 查询单条记录 -->
+
+
+	<insert id="addApp" parameterType="com.xa.qyw.entiy.App">
+
+		insert into yht_app_version (id,app_version_name,app_version_code,app_download_url,app_is_flag,app_type,app_update_context,app_create_time) values (#{id},
+		#{versionName}, #{versionCode}, #{downdloadUrl}, #{isFlag},
+		#{type},
+		#{updateContext},#{createTime})
+
+
+		<selectKey resultType="int">
+			select max(app_version_code) from
+			yht_app_version
+		</selectKey>
+	</insert>
+
+	<select id="getMaxApp" parameterType="java.lang.Integer"
+		resultMap="DoctorApp">
+		
+		select * from yht_app_version order by app_version_code DESC limit 1;
+		
+	</select>
+
+	<select id="getMaxAppVersionCode" resultType="java.lang.Integer">
+		select
+		max(app_version_code) from yht_app_version
+	</select>
+
+	<select id="getAllApp" resultMap="DoctorApp">
+	</select>
+
+	<delete id="deleteApp" parameterType="int">
+	</delete>
+</mapper>

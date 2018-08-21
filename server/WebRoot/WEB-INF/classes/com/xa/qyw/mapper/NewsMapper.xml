@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xa.qyw.dao.NewsDao">
+
+
+	<resultMap id="News" type="com.xa.qyw.entiy.News">
+		<id column="id" property="id" />
+		<result column="news_first" property="newsFirst" />
+		<result column="news_second" property="newsSecond" />
+		<result column="news_three" property="newsThree" />
+		<result column="is_complete" property="isComplete" />
+		<result column="update_time" property="createTime" />
+	</resultMap>
+
+
+	<resultMap id="NewsDetail" type="com.xa.qyw.entiy.NewsDetail">
+		<id column="newsId" property="newsId" />
+		<result column="news_title" property="title" />
+		<result column="news_author" property="author" />
+		<result column="news_source" property="source" />
+		<result column="news_content" property="content" />
+		<result column="news_browse_count" property="browseCount" />
+		<result column="is_reprint" property="isReprint" />
+		<result column="news_type" property="newsType" />
+		<result column="news_photo" property="newsPhoto" />
+		<result column="update_time" property="createTime" />
+	</resultMap>
+
+
+
+	<insert id="addNewsDetail" useGeneratedKeys="true" keyProperty="newsId" parameterType="com.xa.qyw.entiy.NewsDetail">
+		insert into yht_news_detail
+		(news_title,news_author,news_source,news_content,news_browse_count,is_reprint,news_type,news_photo,update_time)
+		values
+		(#{title},#{author},#{source},#{content},#{browseCount},#{isReprint},#{newsType},#{newsPhoto},#{createTime})
+
+	</insert>
+
+
+	<insert id="addNews" parameterType="com.xa.qyw.entiy.News">
+		insert into yht_news_general
+		(id,news_first,news_second,news_three,is_complete,update_time) values
+		(#{id},#{newsFirst},#{newsSecond},#{newsThree},#{isComplete},#{createTime})
+	</insert>
+
+
+	<update id="updateNews" parameterType="com.xa.qyw.entiy.News">
+
+		update yht_news_general
+		set news_first = #{newsFirst},news_second =
+		#{newsSecond},news_three =
+		#{newsThree},is_complete = #{isComplete} where id = #{id}
+
+	</update>
+	
+	<update id="addNewsDetailBrowseCount" parameterType="com.xa.qyw.entiy.NewsDetail">
+		update yht_news_detail set news_browse_count = #{browseCount} where newsId = #{newsId}
+	</update>
+
+	<select id="queryNews" parameterType="java.lang.String"
+		resultMap="News">
+		select * from yht_news_general where id = #{id}
+	</select>
+
+
+	<select id="getNewsByPage" parameterType="com.xa.qyw.entiy.News"
+		resultMap="News" >
+		
+		select * from yht_news_general where update_time &lt; #{createTime} ORDER BY update_time DESC LIMIT 20
+
+	</select>
+
+	<select id="queryNewsDetail" parameterType="java.lang.String" resultMap="NewsDetail">
+		select * from yht_news_detail where newsId = #{id} 
+	</select>
+
+	
+	<select id="getNewsDetailByPage" parameterType="com.xa.qyw.entiy.NewsDetail"
+		resultMap="NewsDetail" >
+		
+		select newsId,news_title,news_author,news_source,news_browse_count,news_photo,news_type,update_time from yht_news_detail ORDER BY update_time DESC LIMIT 10
+
+	</select>
+		
+		
+	<select id="getMaxNews" resultMap="News">
+		SELECT * FROM yht_news_general WHERE id = (select max(id) from yht_news_general)
+	</select>
+
+
+</mapper>

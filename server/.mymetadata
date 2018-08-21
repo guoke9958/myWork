@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="YHT"
+  id="myeclipse.1463795807761"
+  context-root="/Doctor"
+  j2ee-spec="6.0"
+  archive="YHT.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

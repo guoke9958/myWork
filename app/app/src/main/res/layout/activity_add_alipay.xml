@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_view"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/name_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="40.0dip"
+        android:layout_marginLeft="10.0dip"
+        android:gravity="center_vertical"
+        android:text="@string/real_name"
+        android:textColor="@color/color_font_sub_gray"
+        android:textSize="@dimen/text_verysmall" />
+
+    <com.cn.xa.qyw.view.LimitEditText
+        android:id="@+id/name_edittext"
+        android:layout_width="fill_parent"
+        android:layout_height="40.0dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_toRightOf="@+id/name_textview"
+        android:background="@null"
+        android:gravity="center|right"
+        android:singleLine="true"
+        android:textColor="@color/color_font_main"
+        android:textColorHint="@color/color_font_hint_gray"
+        android:textSize="@dimen/text_verysmall" />
+
+    <View
+        android:id="@+id/name_line"
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dip"
+        android:layout_below="@+id/name_textview"
+        android:layout_marginLeft="10.0dip"
+        android:background="@color/light_gray" />
+
+    <TextView
+        android:id="@+id/alipay_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="40.0dip"
+        android:layout_below="@+id/name_line"
+        android:layout_marginLeft="10.0dip"
+        android:gravity="center_vertical"
+        android:text="@string/alipay_account"
+        android:textColor="@color/color_font_sub_gray"
+        android:textSize="@dimen/text_verysmall" />
+
+    <EditText
+        android:id="@+id/alipay_edittext"
+        android:layout_width="fill_parent"
+        android:layout_height="40.0dip"
+        android:layout_below="@+id/name_line"
+        android:layout_marginRight="10.0dip"
+        android:layout_toRightOf="@+id/alipay_textview"
+        android:background="@null"
+        android:cursorVisible="true"
+        android:gravity="center|right"
+        android:hint="@string/alipay_input_hint"
+        android:singleLine="true"
+        android:textColor="@color/color_font_main"
+        android:textColorHint="@color/color_font_hint_gray"
+        android:textSize="@dimen/text_verysmall" />
+
+    <View
+        android:id="@+id/alipay_line"
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dip"
+        android:layout_below="@+id/alipay_textview"
+        android:layout_marginLeft="10.0dip"
+        android:background="@color/light_gray" />
+
+    <Button
+        android:id="@+id/next"
+        android:layout_width="fill_parent"
+        android:layout_height="40.0dip"
+        android:layout_below="@+id/alipay_line"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginTop="30.0dip"
+        android:background="@drawable/btn_corners_rose"
+        android:enabled="false"
+        android:text="@string/jiebang_sure"
+        android:textColor="@drawable/btn_font_color_click"
+        android:textSize="@dimen/text_verysmall" />
+</RelativeLayout>

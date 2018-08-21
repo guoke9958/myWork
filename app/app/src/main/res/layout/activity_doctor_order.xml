@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:background="#FDFAF3"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:minHeight="120dp"
+        android:paddingRight="18dp"
+        android:paddingLeft="18dp"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginTop="20dp"
+            android:text="留言"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/order_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="top"
+            android:hint="留下一句情况描述（100字之内）"
+            android:maxLength="100"
+            android:textSize="14sp"
+            android:textColor="#000000" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grey"
+        android:layout_marginTop="2dp"
+        android:textSize="14sp"
+        android:text="您可以在此填写预约请求，系统将把您的预约内容实时发送给该用户，您将会收到用户的短信回复，谢谢!"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="48dp"
+        android:paddingRight="18dp"
+        android:paddingLeft="18dp"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="姓名"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:hint="请输入真实姓名"
+            android:textSize="14sp"
+            android:textColor="#000000" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/age_parent"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="48dp"
+        android:paddingRight="18dp"
+        android:paddingLeft="18dp"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="出生日期"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/user_age"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="10dp"
+            android:focusable="false"
+            android:gravity="center_vertical"
+            android:hint="请输入出生日期"
+            android:textSize="14sp"
+            android:textColor="#000000" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/address_parent"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="48dp"
+        android:paddingRight="18dp"
+        android:paddingLeft="18dp"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="所在地区"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/user_address"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:maxLength="16"
+            android:hint="例如：陕西省、西安市、雁塔区"
+            android:textSize="14sp"
+            android:textColor="#000000" />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="48dp"
+        android:paddingRight="18dp"
+        android:paddingLeft="18dp"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="联系电话"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+
+        <EditText
+            android:id="@+id/user_phone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:inputType="phone"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="10dp"
+            android:hint="留下您的联系方式，医生会尽快联系你"
+            android:maxLength="20"
+            android:maxLines="2"
+            android:textSize="14sp"
+            android:textColor="#000000" />
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/order_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/login_register_btn_height"
+        android:layout_marginTop="40.0dip"
+        android:background="@drawable/btn_corners_rose"
+        android:enabled="false"
+        android:text="提交预约信息"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_verysmall" />
+
+
+</LinearLayout>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xa.qyw.dao.UserPayPwdDao">
+	<!--设置domain类和数据库中表的字段一一对应，注意数据库字段和domain类中的字段名称不致，此处一定要！ -->
+
+	<resultMap id="UserPayPwd" type="com.xa.qyw.entiy.UserPayPwd">
+		<id column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="pay_password" property="payPwd" />
+		<result column="try_count" property="tryCount" />
+		<result column="update_time" property="updateTime" />
+	</resultMap>
+	<!-- 查询单条记录 -->
+
+
+	<insert id="addPayPwd" parameterType="com.xa.qyw.entiy.UserPayPwd"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into
+		yht_user_pay_password
+		(user_id,pay_password,update_time) values
+		(#{userId},#{payPwd},#{updateTime})
+	</insert>
+
+	<select id="getUserPayPwdByUserId" parameterType="java.lang.String"
+		resultMap="UserPayPwd">
+
+		select * from yht_user_pay_password where user_id =
+		#{userId}
+
+	</select>
+
+	<select id="checkUserPayPwd" parameterType="com.xa.qyw.entiy.UserPayPwd"
+		resultMap="UserPayPwd">
+		select * from yht_user_pay_password where user_id =
+		#{userId} and pay_password = #{payPwd}
+	</select>
+
+	<update id="updatePayPwd" parameterType="com.xa.qyw.entiy.UserPayPwd">
+
+		update yht_user_pay_password set
+		pay_password = #{payPwd},try_count = #{tryCount} where user_id =
+		#{userId}
+		
+	</update>
+	
+	<update id="updatePayErrorCount" parameterType="com.xa.qyw.entiy.UserPayPwd">
+
+		update yht_user_pay_password set
+		try_count = #{tryCount} where user_id =
+		#{userId}
+		
+	</update>
+
+
+</mapper>

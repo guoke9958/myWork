@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MVCHelper_Library/MVCHelper_Library.iml" filepath="$PROJECT_DIR$/MVCHelper_Library/MVCHelper_Library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RongYunLibs/RongYunLibs.iml" filepath="$PROJECT_DIR$/RongYunLibs/RongYunLibs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app-app.iml" filepath="$PROJECT_DIR$/app/app-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pinwheel/pinwheel.iml" filepath="$PROJECT_DIR$/pinwheel/pinwheel.iml" />
+    </modules>
+  </component>
+</project>

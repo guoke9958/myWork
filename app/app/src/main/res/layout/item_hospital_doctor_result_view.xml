@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/color_bg_green"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/hospital_name"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="16dp"/>
+
+        <ImageView
+            android:id="@+id/department_detail"
+            android:layout_width="wrap_content"
+            android:layout_toLeftOf="@+id/hospital_detail"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:src="@mipmap/sideslip_icon_feedback"/>
+
+        <ImageView
+            android:id="@+id/hospital_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/sideslip_icon_feedback"/>
+
+
+
+    </RelativeLayout>
+
+
+
+
+    <com.cn.xa.qyw.view.DoctorGridView
+        android:id="@+id/doctor_grid_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:numColumns="4"
+        android:horizontalSpacing="2dp"
+        android:verticalSpacing="2dp"/>
+
+
+    <TextView
+        android:id="@+id/click_see_more"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:visibility="gone"
+        android:gravity="center"
+        android:text="点击查看更多"
+        />
+
+
+
+</LinearLayout>

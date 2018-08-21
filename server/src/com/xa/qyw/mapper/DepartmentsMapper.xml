@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xa.qyw.dao.DepartmentsDao">
+	<!--设置domain类和数据库中表的字段一一对应，注意数据库字段和domain类中的字段名称不致，此处一定要！ -->
+
+	<resultMap id="DepartmentsInfo" type="com.xa.qyw.entiy.app.DepartmentsInfo">
+		<id column="id" property="departmentsId"/>
+		<result column="hospital_name" property="hospitalName" />
+		<result column="department_name" property="departmentsName" />
+		<result column="hospital_logo" property="hospitalLogo" />
+		<result column="hospital_id" property="hospitalId" />
+	</resultMap>
+	
+	
+	<!-- 查询单条记录 -->
+	
+<!-- 
+	<insert id="addDepartments" parameterType="com.xa.qyw.entiy.Departments">
+		insert into yht_departments_type (id,hospital_id,department_name,department_intro,department_phone) values (#{id},#{hospitalId},#{departmentsName},#{departmentsIntro}，#{departmentPhone})
+	</insert>
+	
+	<select id="getAllDepartmentsByArea" parameterType="com.xa.qyw.entiy.app.Area" resultMap="DepartmentsInfo">
+		SELECT d.id,d.hospital_id,h.hospital_name,d.department_name,h.hospital_logo FROM yht_departments_type d,yht_hospital_type h WHERE d.hospital_id = h.id AND h.hospital_province LIKE #{province} AND h.hospital_city LIKE #{city}
+	</select>
+	
+		
+	<select id="getSingleDepartments" parameterType="int" resultMap="DepartmentsDetailInfo">
+		SELECT d.id,h.hospital_name,d.department_name,d.department_intro,d.department_phone,h.hospital_logo FROM yht_departments_type d,yht_hospital_type h WHERE d.hospital_id = h.id AND d.id = #{depearmentsId}
+	</select> -->
+
+
+</mapper>

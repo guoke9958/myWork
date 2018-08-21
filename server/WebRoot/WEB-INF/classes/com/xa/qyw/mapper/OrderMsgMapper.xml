@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xa.qyw.dao.OrderMsgDao">
+	<!--设置domain类和数据库中表的字段一一对应，注意数据库字段和domain类中的字段名称不致，此处一定要！ -->
+
+	<resultMap id="OrderMsg" type="com.xa.qyw.entiy.OrderMsg">
+		<id column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="user_age" property="userAge" />
+		<result column="user_address" property="userAddress" />
+		<result column="order_info" property="orderInfo" />
+		<result column="phone_number" property="phoneNumber" />
+		<result column="doctor_id" property="doctorId" />
+		<result column="doctor_phone" property="doctorPhone" />
+		<result column="create_time" property="createTime" />
+	</resultMap>
+	<!-- 查询单条记录 -->
+
+
+	<insert id="addOrderMsg" parameterType="com.xa.qyw.entiy.OrderMsg">
+		insert into
+		yht_order_info
+		(user_id,order_info,phone_number,doctor_id,doctor_phone,user_age,user_address,create_time) values
+		(#{userId},#{orderInfo},#{phoneNumber},#{doctorId},#{doctorPhone},#{userAge},#{userAddress},#{createTime})
+	</insert>
+
+
+</mapper>

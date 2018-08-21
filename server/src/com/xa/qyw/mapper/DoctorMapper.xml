@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xa.qyw.dao.DoctorDao">
+	<!--设置domain类和数据库中表的字段一一对应，注意数据库字段和domain类中的字段名称不致，此处一定要！ -->
+
+	<resultMap id="Doctor" type="com.xa.qyw.entiy.Doctor">
+	 <id column="id" property="id"/>
+	 <result column="doctor_department" property="departmentId" />
+	  <result column="department_name" property="departmentsName" />
+	</resultMap>
+	<!-- 查询单条记录 -->
+
+
+	<select id="getAllDoctorByProvince" parameterType="java.util.HashMap"
+		resultMap="Doctor">
+
+	</select>
+
+
+	<select id="getAllDoctor" resultMap="Doctor">
+		select i.id,i.doctor_department,t.department_name from yht_doctor_info i, yht_departments_type t WHERE i.doctor_department = t.id
+	</select>
+	
+	<update id="updateDoctorDepart" parameterType="com.xa.qyw.entiy.Doctor">
+	update yht_doctor_info SET doctor_department = #{departmentId} WHERE id = #{id}
+	</update>
+
+
+</mapper>

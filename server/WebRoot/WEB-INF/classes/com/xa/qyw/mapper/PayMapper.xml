@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xa.qyw.dao.PayDao">
+
+
+	<resultMap id="TradeNo" type="com.xa.qyw.entiy.TradeNo">
+		<id column="id" property="id" />
+		<result column="trade_no" property="tradeNo" />
+		<result column="body" property="body" />
+		<result column="total_amount" property="totalAmount" />
+		<result column="subject" property="subject" />
+		<result column="trade_status" property="tradeStatus" />
+		<result column="create_time" property="createTime" />
+		<result column="notify_time" property="notifyTime" />
+		<result column="type" property="type" />
+		<result column="user_id" property="userId" />
+		<result column="pay_type" property="payType" />
+	</resultMap>
+
+	<insert id="saveTradeNo" parameterType="com.xa.qyw.entiy.TradeNo">
+		INSERT INTO yht_trade_no
+		(id,trade_no,body,total_amount,subject,trade_status,create_time,notify_time,type,user_id,pay_type)
+		values
+		(#{id},#{tradeNo},#{body},#{totalAmount},#{subject},#{tradeStatus},#{createTime},#{notifyTime},#{type},#{userId},#{payType})
+	</insert>
+
+	<update id="updateTradeNoStatus" parameterType="com.xa.qyw.entiy.TradeNo">
+		update
+		yht_trade_no set trade_status =
+		#{tradeStatus},notify_time =
+		#{notifyTime} where trade_no = #{tradeNo}
+	</update>
+
+	<select id="getTradeByNo" parameterType="com.xa.qyw.entiy.TradeNo"
+		resultMap="TradeNo">
+		select * from yht_trade_no where trade_no = #{tradeNo}
+	</select>
+
+
+</mapper>

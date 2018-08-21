@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>用fullPage.js制作搜狐快站页面效果演示_dowebok</title>
+<link rel="stylesheet" href="http://www.dowebok.com/demo/2014/77/css/jquery.fullPage.css">
+<style>
+#side { position: fixed; left: 0; top: 0; z-index: 10; width: 300px; height: 100%; background-image: url(http://s0.zhan.sohu.com/images/df-side.png);}
+.inner { position: absolute; left: 50%; top: 50%; width: 226px; margin: -112px 0 0 -113px;}
+.hgroup { width: 226px; height: 81px; margin: 0 auto; text-indent: -9999px; background-image: url(http://s0.zhan.sohu.com/images/df-logo.png);}
+.start { display: block; width: 186px; height: 56px; margin: 66px auto 0; text-indent: -9999px; overflow: hidden; background-image: url(http://s0.zhan.sohu.com/images/df-start.png);}
+#menu { position: absolute; right: -20px; top: 50%; width: 40px; margin-top: -170px; padding: 0; list-style-type: none;}
+#menu li { float: left;}
+#menu a { display: block; width: 28px; height: 28px; margin: 20px 6px; border-radius: 14px; text-indent: -9999px; overflow: hidden; background-color: #a0afb9; background-position: 50%; background-repeat: no-repeat;}
+#menu .a1 { background-image: url(http://s0.zhan.sohu.com/images/df-01.png);}
+#menu .a2 { background-image: url(http://s0.zhan.sohu.com/images/df-02.png);}
+#menu .a3 { background-image: url(http://s0.zhan.sohu.com/images/df-03.png);}
+#menu .a4 { background-image: url(http://s0.zhan.sohu.com/images/df-04.png);}
+#menu .a5 { background-image: url(http://s0.zhan.sohu.com/images/df-05.png);}
+#menu a:hover, #menu .active a { margin: 14px 0; border: 6px solid #fff; box-shadow: 1px 1px 3px 1px #b4d7ed; border-radius: 20px; background-color: #239ae6;}
+.section { margin-left: 300px; text-align: center; font: 50px "Microsoft Yahei"; color: #fff;}
+.section .imgbox { margin-left: 300px;}
+.section img { position: relative; left: -300px; display: block; margin: 0 auto;}
+</style>
+<script src="http://cdn.staticfile.org/jquery/1.8.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script src="http://www.dowebok.com/demo/2014/77/js/jquery.fullPage.min.js"></script>
+<script>
+$(document).ready(function() {
+	$.fn.fullpage({
+		slidesColor: ['#fff', '#fff', '#fff', '#fff', '#fff'],
+		anchors: ['page1', 'page2', 'page3', 'page4', 'page5'],
+	});
+});
+</script>
+</head>
+
+<body>
+
+
+
+
+
+<div class="section">
+	<div class="imgbox">
+		<img src="http://idowebok.u.qiniudn.com/80/1.jpg" alt="快速创建移动站点">
+	</div>
+</div>
+<div class="section">
+	<div class="imgbox">
+		<img src="http://idowebok.u.qiniudn.com/80/2.jpg" alt="丰富的模板">
+	</div>
+</div>
+<div class="section">
+	<div class="imgbox">
+		<img src="http://idowebok.u.qiniudn.com/80/3.jpg" alt="强大的功能组件">
+	</div>
+</div>
+<div class="section">
+	<div class="imgbox">
+		<img src="http://idowebok.u.qiniudn.com/80/4.jpg" alt="多种屏幕预览">
+	</div>
+</div>
+<div class="section">
+	<div class="imgbox">
+		<img src="http://idowebok.u.qiniudn.com/80/5.jpg" alt="全网高速访问">
+	</div>
+</div>
+
+
+</body>
+</html>

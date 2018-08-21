@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xa.qyw.dao.UserVoucherDao">
+	<!--设置domain类和数据库中表的字段一一对应，注意数据库字段和domain类中的字段名称不致，此处一定要！ -->
+
+	<resultMap id="UserVoucher" type="com.xa.qyw.entiy.Voucher">
+		<id column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="user_voucher" property="userVoucher" />
+		<result column="create_time" property="createTime" />
+	</resultMap>
+	<!-- 查询单条记录 -->
+
+
+	<insert id="insertVoucher" parameterType="com.xa.qyw.entiy.Voucher">
+		insert into
+		yht_user_voucher
+		(user_id,user_voucher,create_time) values
+		(#{userId},#{userVoucher},#{createTime})
+	</insert>
+	
+	<select id="getVoucherCount" parameterType="java.lang.String" resultMap="UserVoucher">
+		
+		select * from yht_user_voucher where user_id = #{userId}
+	
+	</select>
+	
+	
+	<update id="updateVoucher" parameterType="com.xa.qyw.entiy.Voucher">
+	
+		update yht_user_voucher set user_voucher = #{userVoucher} where user_id = #{userId}
+	
+	</update>
+	
+	<select id="getVoucherUserTotal" parameterType="java.lang.String" resultType="int">
+	
+		select sum(user_voucher) from yht_user_voucher where user_id = #{userId}
+	
+	</select>
+
+
+</mapper>

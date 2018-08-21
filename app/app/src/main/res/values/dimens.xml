@@ -1,0 +1,44 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="logo_width">140.0dip</dimen>
+    <dimen name="logo_height">56.0dip</dimen>
+    <dimen name="login_border_width">37.0dip</dimen>
+    <dimen name="login_password_input_border_heigh">49.0dip</dimen>
+    <dimen name="login_register_btn_height">44.0dip</dimen>
+    <dimen name="login_register_btn_font_size">20.0dip</dimen>
+    <dimen name="verify_code_font_size">12.0dip</dimen>
+    <dimen name="default_fond_size">14.0dip</dimen>
+    <dimen name="text_verytiny">10.0sp</dimen>
+    <dimen name="text_tiny">12.0sp</dimen>
+    <dimen name="text_verysmall">14.0sp</dimen>
+    <dimen name="text_smaller">15.0sp</dimen>
+    <dimen name="text_small">16.0sp</dimen>
+    <dimen name="text_medium">18.0sp</dimen>
+    <dimen name="text_big">20.0sp</dimen>
+    <dimen name="text_verybig">22.0sp</dimen>
+    <dimen name="nav_header_vertical_spacing">24dp</dimen>
+    <dimen name="nav_header_height">180dp</dimen>
+    <dimen name="bottom_menu_height">64dp</dimen>
+    <dimen name="menu_img_width">24dp</dimen>
+    <dimen name="menu_img_height">24dp</dimen>
+    <dimen name="menu_textview_size">14sp</dimen>
+    <dimen name="half_normal_pacing">8.5dip</dimen>
+    <dimen name="head_line_text_size">16.0sp</dimen>
+    <dimen name="normal_pacing">17.0dip</dimen>
+    <dimen name="normal_text_size">14.0sp</dimen>
+    <dimen name="smallest_text_size">12.0sp</dimen>
+    <dimen name="size_avatar">40.0dip</dimen>
+    <dimen name="actionbar_icon_size">23.0dip</dimen>
+    <dimen name="new_actionbar_height">50.0dip</dimen>
+    <dimen name="md_simpleitem_height">62dp</dimen>
+    <dimen name="md_simplelist_icon">40dp</dimen>
+    <dimen name="md_simplelist_icon_margin">16dp</dimen>
+    <dimen name="md_simplelist_textsize">18sp</dimen>
+
+
+</resources>

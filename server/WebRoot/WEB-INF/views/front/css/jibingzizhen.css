@@ -1,0 +1,34 @@
+.container{
+	width: 1000px !important;
+}
+#header{
+	width:100%;
+	height:auto;
+	padding:20px 0;
+	text-align:center;
+}
+#bodypanel{
+	float:left;
+	width:260px;
+}
+#panelright{
+	float:left;
+	width:690px;
+	margin-left:20px;
+}
+.row{
+	margin:0 0;
+}
+.row div{
+	padding:5px 0;
+	text-align:center;
+}
+#yaopinbox button{
+	margin-top:55px;
+}
+#yaopinbox select{
+	height:160px;
+}
+.nonedisplay{
+	display:none;
+}
