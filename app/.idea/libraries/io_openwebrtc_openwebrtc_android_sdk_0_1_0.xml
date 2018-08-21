@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="io.openwebrtc:openwebrtc-android-sdk-0.1.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/c641f93258e0f2ff5aa63653f6151efc0bee7134/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/c641f93258e0f2ff5aa63653f6151efc0bee7134/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.openwebrtc/openwebrtc-android-sdk/0.1.0/cb3370f625ec4e628b490d9ee146ff75ad594737/openwebrtc-android-sdk-0.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
