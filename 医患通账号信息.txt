@@ -1,0 +1,34 @@
+求医网微信支付签名：ed6c5679a8733f86540a4435651b1766
+
+求医网短信账号：clykwcqyw  账号  rgqfwesq 密码
+
+
+13:29:19支付宝账户：
+杨志尚 2016/8/22 13:29:19
+公司会员;ftyiliao@163.com,登录密码;wertyuiop@163.com
+
+杨志尚 2016/8/22 13:29:45
+支付密码;zxcvbnm@163.com
+
+
+
+服务器账号115.230.124.88 破密 root 密码xt.123  （原服务器）
+
+服务器账号115.230.124.94 破密 root 密码xt.654321 （现在服务器） 
+
+2018年07月03 115.230.124.94  账户 
+
+数据库 username=rkuser
+password=C1v46AFSj6QX8WWG
+
+
+签名文件密码  123456
+
+tomact路径 /opt/tomact/
+微信平台  519645739@qq.com   zxcvbnm123     zxcvbnm123@@
+
+
+后台 ： www.qiuyiwang.com/admin/.login.php
+           admin    123456
+
+信鸽账号 2533082717 密码：qiuyiwang.com
