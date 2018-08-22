@@ -54,8 +54,10 @@ import com.cn.xa.qyw.view.NetworkImageHolderView;
 import com.shizhefei.mvc.IDataAdapter;
 import com.shizhefei.mvc.MVCNormalHelper;
 
+import java.security.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import io.rong.imkit.MainActivity;
@@ -388,6 +390,11 @@ public class HomeFragment extends BaseFragment implements OnItemClickListener {
             @Override
             public void onSuccess(String data) {
                 List<HospitalGrade> list = JSONObject.parseArray(data,HospitalGrade.class);
+                int size = list.size();
+                HospitalGrade hospitalGrade= new HospitalGrade();
+                hospitalGrade.setId(13);
+                hospitalGrade.setGradeName("通惠商城");
+                list.add(size-1,hospitalGrade);
                 mGradeAdapter.setData(list);
                 getNewsData();
             }
