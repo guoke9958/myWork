@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: __local_jars__:E.\GitWork\myWork\app\RongYunLibs\libs\agora-rtc-sdk.jar:unspecified@jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/RongYunLibs/libs/agora-rtc-sdk.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
