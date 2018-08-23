@@ -5,10 +5,19 @@ public class SearchDoctorByDepartmentAndCity {
 	private int departmentId;
 	private int hospitalId;
 	private String grade;
+	private String mGradeId;
 	private String city;
 	
 	public SearchDoctorByDepartmentAndCity() {
 		super();
+	}
+
+	public String getmGradeId() {
+		return mGradeId;
+	}
+
+	public void setmGradeId(String mGradeId) {
+		this.mGradeId = mGradeId;
 	}
 
 	public int getDepartmentId() {
