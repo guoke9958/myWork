@@ -23,13 +23,15 @@ import java.util.List;
 public class DepartmentAsyncDataSource implements IAsyncDataSource<List<SimpleDoctor>> {
 
     private String grade;
+    private String gradeId;
     private int departId;
     private String city;
 
-    public DepartmentAsyncDataSource(int departId, String city, String grade) {
+    public DepartmentAsyncDataSource(int departId, String city, String grade,String gradeId) {
         this.departId = departId;
         this.city = city;
         this.grade = grade;
+        this.gradeId = gradeId;
     }
 
     @Override
@@ -50,6 +52,8 @@ public class DepartmentAsyncDataSource implements IAsyncDataSource<List<SimpleDo
             grade = "";
         }
         search.setGrade("%" + grade + "%");
+
+        search.setId(Integer.valueOf(gradeId));
 
         return new AsyncRequestHandle(HttpUtils.postDataFromServer(HttpAddress.DEPARTMENT_DETAIL_INFO,
                 JSONObject.toJSONString(search), new NetworkResponseHandler() {

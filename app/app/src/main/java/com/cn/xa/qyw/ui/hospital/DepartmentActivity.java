@@ -46,19 +46,27 @@ public class DepartmentActivity extends DoctorBaseActivity {
     private TextView mTvNoResult;
     private HospitalDoctorAdapter mSerchResultAdapter;
     private String mGrade;
+    private String mGradeId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String departmentName = getIntent().getStringExtra("department_name");
         mGrade = getIntent().getStringExtra("grade");
+        mGradeId = getIntent().getStringExtra("grade_id");
         mDepartmentId = getIntent().getIntExtra("department_id", 0);
-        mToolbarTitle.setText(departmentName);
+
+        if ("13".equals(mGradeId)){
+            mToolbarTitle.setText("通慧商品");
+        }else{
+            mToolbarTitle.setText(departmentName);
+        }
+
         initView();
         initData();
         initListener();
 
-        if("生活服务".equals(mGrade)||"学校".equals(mGrade)||"APP客服".equals(mGrade)){
+        if("生活服务".equals(mGrade)||"学校".equals(mGrade)||"APP客服".equals(mGrade) || "通慧商城".equals(mGrade)){
             searchImage.setVisibility(View.GONE);
         }else{
             searchImage.setVisibility(View.VISIBLE);
@@ -114,11 +122,16 @@ public class DepartmentActivity extends DoctorBaseActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = getNewIntent(DoctorDetailActivity.class);
-                SimpleDoctor item = mAdapter.getItem(position);
-                intent.putExtra("doctor", item);
-                intent.putExtra("grade", mGrade);
-                startActivity(intent);
+                if (!"13".equals(mGradeId) || !"通慧商城".equals("mGrade")){
+                    Intent intent = getNewIntent(DoctorDetailActivity.class);
+                    SimpleDoctor item = mAdapter.getItem(position);
+                    intent.putExtra("doctor", item);
+                    intent.putExtra("grade", mGrade);
+                    startActivity(intent);
+                }else{
+                    showToast("此功能暂未开放");
+                }
+
             }
         });
 
@@ -160,7 +173,7 @@ public class DepartmentActivity extends DoctorBaseActivity {
 
     private void initData() {
         mvcHelper = new MVCNormalHelper<List<SimpleDoctor>>(mScrollView);
-        mvcHelper.setDataSource(new DepartmentAsyncDataSource(mDepartmentId, "西安", mGrade));
+        mvcHelper.setDataSource(new DepartmentAsyncDataSource(mDepartmentId, "西安", mGrade,mGradeId));
         mvcHelper.setAdapter(new DepartAdapter());
         mvcHelper.refresh();
     }

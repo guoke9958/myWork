@@ -277,8 +277,9 @@ public class HomeFragment extends BaseFragment implements OnItemClickListener {
             public void run() {
                 pop.dismiss();
                 container.removeAllViews();
+                gifView.setVisibility(View.GONE);
             }
-        }, 5000);
+        }, 4000);
     }
 
     private void showCofiDialog() {
@@ -378,6 +379,9 @@ public class HomeFragment extends BaseFragment implements OnItemClickListener {
         }
     }
 
+    /**
+     * 获取首页栏目
+     */
     private void getHospitalGrade() {
         HttpUtils.postDataFromServer(HttpAddress.GET_HOSPITAL_GRADE, new NetworkResponseHandler() {
             @Override

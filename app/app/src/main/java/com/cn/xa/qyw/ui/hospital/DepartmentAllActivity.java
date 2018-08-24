@@ -61,6 +61,7 @@ public class DepartmentAllActivity extends DoctorBaseActivity {
                 intent.putExtra("department_id",department.getId());
                 intent.putExtra("department_name",department.getDepartmentsName());
                 intent.putExtra("grade",mGrade);
+                intent.putExtra("grade_id",mGradeId);
                 startActivity(intent);
             }
         });
