@@ -10,13 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23cb50fc-8a23-405a-a161-065f4b1dc1d3" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/datasource/DepartmentAsyncDataSource.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/datasource/DepartmentAsyncDataSource.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/entiy/SearchDoctorByDepartmentAndCity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/entiy/SearchDoctorByDepartmentAndCity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/doctor/DoctorDetailActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/doctor/DoctorDetailActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/hospital/DepartmentActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/hospital/DepartmentActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/hospital/DepartmentAllActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/hospital/DepartmentAllActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/main/fragment/HomeFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/main/fragment/HomeFragment.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/discover/DiscoverLotteryDrawActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/discover/DiscoverLotteryDrawActivity.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -42,105 +38,41 @@
       <file leaf-file-name="HomeFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/main/fragment/HomeFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="137" column="0" lean-forward="false" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
+            <state relative-caret-position="3458">
+              <caret line="245" column="32" lean-forward="false" selection-start-line="221" selection-start-column="16" selection-end-line="245" selection-end-column="32" />
               <folding>
-                <element signature="e#3827#4830#0" expanded="true" />
-                <element signature="e#4829#4830#0" expanded="true" />
-                <element signature="e#4880#5379#0" expanded="true" />
-                <element signature="e#5378#5379#0" expanded="true" />
-                <element signature="e#5945#6154#0" expanded="true" />
-                <element signature="e#6153#6154#0" expanded="true" />
-                <element signature="e#7728#8522#0" expanded="true" />
-                <element signature="e#8109#8464#0" expanded="true" />
-                <element signature="e#8463#8464#0" expanded="true" />
-                <element signature="e#8521#8522#0" expanded="true" />
-                <element signature="e#8656#10173#0" expanded="true" />
-                <element signature="e#8978#9717#0" expanded="true" />
-                <element signature="e#9716#9717#0" expanded="true" />
-                <element signature="e#9801#10115#0" expanded="true" />
-                <element signature="e#10114#10115#0" expanded="true" />
-                <element signature="e#10172#10173#0" expanded="true" />
                 <element signature="method#setGifView#0;class#HomeFragment#0" expanded="false" />
-                <element signature="e#11261#11430#0" expanded="true" />
-                <element signature="e#11429#11430#0" expanded="true" />
                 <element signature="method#showCofiDialog#0;class#HomeFragment#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DepartmentAllActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/hospital/DepartmentAllActivity.java">
+      <file leaf-file-name="DiscoverFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/main/fragment/DiscoverFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="62" column="46" lean-forward="false" selection-start-line="62" selection-start-column="40" selection-end-line="62" selection-end-column="46" />
+            <state relative-caret-position="817">
+              <caret line="62" column="66" lean-forward="false" selection-start-line="62" selection-start-column="66" selection-end-line="62" selection-end-column="66" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DepartmentActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/hospital/DepartmentActivity.java">
+      <file leaf-file-name="DiscoverLotteryActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/discover/DiscoverLotteryActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="168" column="54" lean-forward="false" selection-start-line="168" selection-start-column="54" selection-end-line="168" selection-end-column="54" />
+            <state relative-caret-position="494">
+              <caret line="32" column="76" lean-forward="false" selection-start-line="32" selection-start-column="76" selection-end-line="32" selection-end-column="76" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HttpAddress.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/http/HttpAddress.java">
+      <file leaf-file-name="DiscoverLotteryDrawActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/discover/DiscoverLotteryDrawActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="33" column="43" lean-forward="false" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DepartmentAsyncDataSource.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/datasource/DepartmentAsyncDataSource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="53">
-              <caret line="50" column="39" lean-forward="true" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HttpUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/http/HttpUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="46" column="46" lean-forward="false" selection-start-line="46" selection-start-column="46" selection-end-line="46" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SearchDoctorByDepartmentAndCity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/entiy/SearchDoctorByDepartmentAndCity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="14" column="33" lean-forward="false" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-              <folding>
-                <element signature="e#314#315#0" expanded="true" />
-                <element signature="e#359#360#0" expanded="true" />
-                <element signature="e#390#391#0" expanded="true" />
-                <element signature="e#867#868#0" expanded="true" />
-                <element signature="e#892#893#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DoctorDetailActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/doctor/DoctorDetailActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="893">
-              <caret line="99" column="85" lean-forward="false" selection-start-line="99" selection-start-column="64" selection-end-line="99" selection-end-column="85" />
+            <state relative-caret-position="242">
+              <caret line="164" column="57" lean-forward="true" selection-start-line="164" selection-start-column="57" selection-end-line="164" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -4705,10 +4637,11 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/entiy/SearchDoctorByDepartmentAndCity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/hospital/DepartmentActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/datasource/DepartmentAsyncDataSource.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/discover/DiscoverLotteryDrawActivity.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1386" />
@@ -4730,7 +4663,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -4743,12 +4678,86 @@
               <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
+            <path>
+              <item name="app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="qyw" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="qyw" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="qyw" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="qyw" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="fragment" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -4926,14 +4935,21 @@
       <option name="project" value="LOCAL" />
       <updated>1534953262906</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="添加通惠商城访问接口逻辑">
+      <created>1535041202789</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1535041202789</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -4947,18 +4963,18 @@
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24011713" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29648608" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17460318" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17460318" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -4970,7 +4986,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="手动添加通惠商城" />
-    <option name="LAST_COMMIT_MESSAGE" value="手动添加通惠商城" />
+    <MESSAGE value="添加通惠商城访问接口逻辑" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加通惠商城访问接口逻辑" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -5034,28 +5051,45 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/main/fragment/HomeFragment.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3458">
+          <caret line="245" column="32" lean-forward="false" selection-start-line="221" selection-start-column="16" selection-end-line="245" selection-end-column="32" />
+          <folding>
+            <element signature="method#setGifView#0;class#HomeFragment#0" expanded="false" />
+            <element signature="method#showCofiDialog#0;class#HomeFragment#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/main/fragment/DiscoverFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1178">
+          <caret line="62" column="66" lean-forward="false" selection-start-line="62" selection-start-column="66" selection-end-line="62" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/discover/DiscoverLotteryActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="32" column="76" lean-forward="false" selection-start-line="32" selection-start-column="76" selection-end-line="32" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/discover/DiscoverLotteryDrawActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2679">
+          <caret line="164" column="51" lean-forward="false" selection-start-line="164" selection-start-column="51" selection-end-line="164" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/main/fragment/HomeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1444">
           <caret line="137" column="69" lean-forward="false" selection-start-line="137" selection-start-column="69" selection-end-line="137" selection-end-column="69" />
           <folding>
-            <element signature="e#3827#4830#0" expanded="true" />
-            <element signature="e#4829#4830#0" expanded="true" />
-            <element signature="e#4880#5379#0" expanded="true" />
-            <element signature="e#5378#5379#0" expanded="true" />
-            <element signature="e#5945#6154#0" expanded="true" />
-            <element signature="e#6153#6154#0" expanded="true" />
-            <element signature="e#7728#8522#0" expanded="true" />
-            <element signature="e#8109#8464#0" expanded="true" />
-            <element signature="e#8463#8464#0" expanded="true" />
-            <element signature="e#8521#8522#0" expanded="true" />
-            <element signature="e#8656#10173#0" expanded="true" />
-            <element signature="e#8978#9717#0" expanded="true" />
-            <element signature="e#9716#9717#0" expanded="true" />
-            <element signature="e#9801#10115#0" expanded="true" />
-            <element signature="e#10114#10115#0" expanded="true" />
-            <element signature="e#10172#10173#0" expanded="true" />
             <element signature="method#setGifView#0;class#HomeFragment#0" expanded="false" />
-            <element signature="e#11261#11430#0" expanded="true" />
-            <element signature="e#11429#11430#0" expanded="true" />
             <element signature="method#showCofiDialog#0;class#HomeFragment#0" expanded="false" />
           </folding>
         </state>
@@ -5065,7 +5099,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="836">
           <caret line="62" column="21" lean-forward="false" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -5073,10 +5106,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="34" column="39" lean-forward="false" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="39" />
-          <folding>
-            <element signature="e#540#541#0" expanded="false" />
-            <element signature="e#575#576#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -5100,7 +5129,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -5108,7 +5136,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1368">
           <caret line="97" column="56" lean-forward="false" selection-start-line="97" selection-start-column="56" selection-end-line="97" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -5116,7 +5143,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="32" column="48" lean-forward="false" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -5133,25 +5159,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#3827#4830#0" expanded="true" />
-            <element signature="e#4829#4830#0" expanded="true" />
-            <element signature="e#4880#5379#0" expanded="true" />
-            <element signature="e#5378#5379#0" expanded="true" />
-            <element signature="e#5945#6154#0" expanded="true" />
-            <element signature="e#6153#6154#0" expanded="true" />
-            <element signature="e#7728#8522#0" expanded="true" />
-            <element signature="e#8109#8464#0" expanded="true" />
-            <element signature="e#8463#8464#0" expanded="true" />
-            <element signature="e#8521#8522#0" expanded="true" />
-            <element signature="e#8656#10173#0" expanded="true" />
-            <element signature="e#8978#9717#0" expanded="true" />
-            <element signature="e#9716#9717#0" expanded="true" />
-            <element signature="e#9801#10115#0" expanded="true" />
-            <element signature="e#10114#10115#0" expanded="true" />
-            <element signature="e#10172#10173#0" expanded="true" />
             <element signature="method#setGifView#0;class#HomeFragment#0" expanded="false" />
-            <element signature="e#11261#11430#0" expanded="true" />
-            <element signature="e#11429#11430#0" expanded="true" />
             <element signature="method#showCofiDialog#0;class#HomeFragment#0" expanded="false" />
           </folding>
         </state>
@@ -5161,10 +5169,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
           <caret line="34" column="39" lean-forward="false" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="39" />
-          <folding>
-            <element signature="e#540#541#0" expanded="false" />
-            <element signature="e#575#576#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -5188,7 +5192,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="32" column="48" lean-forward="false" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -5213,7 +5216,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-665">
           <caret line="49" column="56" lean-forward="false" selection-start-line="49" selection-start-column="33" selection-end-line="49" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -5263,7 +5265,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="582">
           <caret line="68" column="38" lean-forward="true" selection-start-line="68" selection-start-column="38" selection-end-line="68" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -5292,10 +5293,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="34" column="39" lean-forward="false" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="39" />
-          <folding>
-            <element signature="e#540#541#0" expanded="false" />
-            <element signature="e#575#576#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -5303,7 +5300,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -5311,7 +5307,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -5319,7 +5314,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="32" column="48" lean-forward="false" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -5327,7 +5321,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="893">
           <caret line="99" column="85" lean-forward="false" selection-start-line="99" selection-start-column="64" selection-end-line="99" selection-end-column="85" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -5335,10 +5328,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
           <caret line="25" column="11" lean-forward="false" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
-          <folding>
-            <element signature="e#1037#1038#0" expanded="false" />
-            <element signature="e#1088#1089#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -5346,36 +5335,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
           <caret line="46" column="46" lean-forward="false" selection-start-line="46" selection-start-column="46" selection-end-line="46" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/main/fragment/HomeFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="137" column="0" lean-forward="false" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
-          <folding>
-            <element signature="e#3827#4830#0" expanded="true" />
-            <element signature="e#4829#4830#0" expanded="true" />
-            <element signature="e#4880#5379#0" expanded="true" />
-            <element signature="e#5378#5379#0" expanded="true" />
-            <element signature="e#5945#6154#0" expanded="true" />
-            <element signature="e#6153#6154#0" expanded="true" />
-            <element signature="e#7728#8522#0" expanded="true" />
-            <element signature="e#8109#8464#0" expanded="true" />
-            <element signature="e#8463#8464#0" expanded="true" />
-            <element signature="e#8521#8522#0" expanded="true" />
-            <element signature="e#8656#10173#0" expanded="true" />
-            <element signature="e#8978#9717#0" expanded="true" />
-            <element signature="e#9716#9717#0" expanded="true" />
-            <element signature="e#9801#10115#0" expanded="true" />
-            <element signature="e#10114#10115#0" expanded="true" />
-            <element signature="e#10172#10173#0" expanded="true" />
-            <element signature="method#setGifView#0;class#HomeFragment#0" expanded="false" />
-            <element signature="e#11261#11430#0" expanded="true" />
-            <element signature="e#11429#11430#0" expanded="true" />
-            <element signature="method#showCofiDialog#0;class#HomeFragment#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -5399,13 +5358,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="14" column="33" lean-forward="false" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-          <folding>
-            <element signature="e#314#315#0" expanded="true" />
-            <element signature="e#359#360#0" expanded="true" />
-            <element signature="e#390#391#0" expanded="true" />
-            <element signature="e#867#868#0" expanded="true" />
-            <element signature="e#892#893#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -5429,6 +5381,41 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="53">
           <caret line="50" column="39" lean-forward="true" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/discover/DiscoverLotteryActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="32" column="76" lean-forward="false" selection-start-line="32" selection-start-column="76" selection-end-line="32" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/main/fragment/DiscoverFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="817">
+          <caret line="62" column="66" lean-forward="false" selection-start-line="62" selection-start-column="66" selection-end-line="62" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/main/fragment/HomeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3458">
+          <caret line="245" column="32" lean-forward="false" selection-start-line="221" selection-start-column="16" selection-end-line="245" selection-end-column="32" />
+          <folding>
+            <element signature="method#setGifView#0;class#HomeFragment#0" expanded="false" />
+            <element signature="method#showCofiDialog#0;class#HomeFragment#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/cn/xa/qyw/ui/discover/DiscoverLotteryDrawActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="164" column="57" lean-forward="true" selection-start-line="164" selection-start-column="57" selection-end-line="164" selection-end-column="57" />
           <folding />
         </state>
       </provider>
