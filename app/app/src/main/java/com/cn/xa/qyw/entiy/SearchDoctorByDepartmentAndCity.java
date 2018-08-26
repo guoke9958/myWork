@@ -5,32 +5,19 @@ public class SearchDoctorByDepartmentAndCity {
 	private int departmentId;
 	private int hospitalId;
 	private String grade;
-<<<<<<< HEAD
-	private String mGradeId;
-=======
 	private int id;
->>>>>>> amoldzhang
 	private String city;
 	
 	public SearchDoctorByDepartmentAndCity() {
 		super();
 	}
 
-<<<<<<< HEAD
-	public String getmGradeId() {
-		return mGradeId;
-	}
-
-	public void setmGradeId(String mGradeId) {
-		this.mGradeId = mGradeId;
-=======
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
->>>>>>> amoldzhang
 	}
 
 	public int getDepartmentId() {
