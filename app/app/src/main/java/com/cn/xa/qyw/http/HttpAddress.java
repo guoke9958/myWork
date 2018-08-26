@@ -15,7 +15,7 @@ public class HttpAddress {
 //    public static final String HOST_3 = "http://www.qiuyiwang.com:8081/download/";
     public static final String HOST_3 =  HOST_2 + "download/";
 
-    public static final String LOCALHOST = HOST_1 + "Doctor/api/";
+//    public static final String NET_HOST = HOST_2 + "Doctor/api/";
 
     public static final String NET_HOST = HOST_2 + "YHT/api/";
 
