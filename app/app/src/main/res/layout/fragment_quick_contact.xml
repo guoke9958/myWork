@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
-        android:layout_height="170dip"
+        android:layout_height="160dip"
         android:scaleType="centerCrop"
         android:src="@drawable/contact" />
 
@@ -24,7 +24,7 @@
         android:textColor="#FFFFFFFF"
         android:textSize="18sp" />
 
-    <com.astuetz.PagerSlidingTabStrip
+    <com.cn.xa.qyw.view.PagerSlidingTabStrip
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="62dip"
@@ -38,7 +38,7 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="96dip"
+        android:layout_height="match_parent"
         android:layout_below="@+id/tabs" />
 
 </RelativeLayout>

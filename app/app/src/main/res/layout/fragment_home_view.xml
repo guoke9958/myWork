@@ -122,6 +122,7 @@
     </ScrollView>
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/snatch_a_pie"
         android:gravity="center"
         android:textSize="12sp"

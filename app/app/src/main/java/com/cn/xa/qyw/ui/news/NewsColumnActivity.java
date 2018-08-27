@@ -17,6 +17,7 @@ import android.view.View;
 
 import com.cn.xa.qyw.R;
 import com.cn.xa.qyw.base.DoctorBaseActivity;
+import com.cn.xa.qyw.ui.news.fragment.QuickContactFragment;
 import com.cn.xa.qyw.ui.news.fragment.SuperAwesomeCardFragment;
 import com.cn.xa.qyw.view.PagerSlidingTabStrip;
 
@@ -25,15 +26,10 @@ import com.cn.xa.qyw.view.PagerSlidingTabStrip;
  */
 public class NewsColumnActivity extends DoctorBaseActivity {
 
-    private final Handler handler = new Handler();
 
     private PagerSlidingTabStrip tabs;
     private ViewPager pager;
     private MyPagerAdapter adapter;
-
-    private Drawable oldBackground = null;
-    private int currentColor = 0xFF666666;
-
 
     private String mGrade;
     private int mGradeId;
@@ -45,12 +41,6 @@ public class NewsColumnActivity extends DoctorBaseActivity {
         mGradeId = getIntent().getIntExtra("grade_id",0);
 
         mToolbarTitle.setText(mGrade);
-        if (14 == mGradeId){
-
-        }else{
-
-        }
-
         initView();
     }
 
@@ -67,99 +57,12 @@ public class NewsColumnActivity extends DoctorBaseActivity {
 
         tabs.setViewPager(pager);
 
-        changeColor(currentColor);
-
     }
-
-    private void changeColor(int newColor) {
-
-        tabs.setIndicatorColor(newColor);
-
-        // change ActionBar color just if an ActionBar is available
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-
-            Drawable colorDrawable = new ColorDrawable(newColor);
-            Drawable bottomDrawable = getResources().getDrawable(R.drawable.actionbar_bottom);
-            LayerDrawable ld = new LayerDrawable(new Drawable[] { colorDrawable, bottomDrawable });
-
-            if (oldBackground == null) {
-
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                    ld.setCallback(drawableCallback);
-                } else {
-                    getActionBar().setBackgroundDrawable(ld);
-                }
-
-            } else {
-
-                TransitionDrawable td = new TransitionDrawable(new Drawable[] { oldBackground, ld });
-
-                // workaround for broken ActionBarContainer drawable handling on
-                // pre-API 17 builds
-                // https://github.com/android/platform_frameworks_base/commit/a7cc06d82e45918c37429a59b14545c6a57db4e4
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                    td.setCallback(drawableCallback);
-                } else {
-                    getActionBar().setBackgroundDrawable(td);
-                }
-
-                td.startTransition(200);
-
-            }
-
-            oldBackground = ld;
-
-            // http://stackoverflow.com/questions/11002691/actionbar-setbackgrounddrawable-nulling-background-from-thread-handler
-            getActionBar().setDisplayShowTitleEnabled(false);
-            getActionBar().setDisplayShowTitleEnabled(true);
-
-        }
-
-        currentColor = newColor;
-
-    }
-
-    public void onColorClicked(View v) {
-
-        int color = Color.parseColor(v.getTag().toString());
-        changeColor(color);
-
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt("currentColor", currentColor);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        currentColor = savedInstanceState.getInt("currentColor");
-        changeColor(currentColor);
-    }
-
-    private Drawable.Callback drawableCallback = new Drawable.Callback() {
-        @Override
-        public void invalidateDrawable(Drawable who) {
-            getActionBar().setBackgroundDrawable(who);
-        }
-
-        @Override
-        public void scheduleDrawable(Drawable who, Runnable what, long when) {
-            handler.postAtTime(what, when);
-        }
-
-        @Override
-        public void unscheduleDrawable(Drawable who, Runnable what) {
-            handler.removeCallbacks(what);
-        }
-    };
 
     public class MyPagerAdapter extends FragmentPagerAdapter {
 
-        private final String[] TITLES = { "Categories", "Home", "Top Paid", "Top Free", "Top Grossing", "Top New Paid",
-                "Top New Free", "Trending" };
+        private final String[] TITLES = { "简介", "视频", "文章", "案例", "自定义栏目一", "自定义栏目二",
+                "自定义栏目三", "自定义栏目四" };
 
         public MyPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -177,7 +80,11 @@ public class NewsColumnActivity extends DoctorBaseActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return SuperAwesomeCardFragment.newInstance(position);
+            if(position == 0){
+                return QuickContactFragment.newInstance();
+            }else{
+                return SuperAwesomeCardFragment.newInstance(position);
+            }
         }
 
     }
