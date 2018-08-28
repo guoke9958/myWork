@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="E:\GitWork\myWork\app\RongYunLibs\build\intermediates\bundles\default\libs\wup-1.0.0.E-SNAPSHOT.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e435c9a0f4a55d45cff005d3a72e27d6882a353c">
+        <dex dex="E:\GitWork\myWork\app\app\build\intermediates\transforms\dex\debug\folders\1000\8\wup-1.0.0.E-SNAPSHOT_67f1e84de05bf06be47d222677e93f5e12493b6a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\GitWork\myWork\app\app\libs\fastjson-1.2.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b3cd06ff3f21c8cf487c241ed145154fbae6b4e2">
+        <dex dex="E:\GitWork\myWork\app\app\build\intermediates\transforms\dex\debug\folders\1000\2\fastjson-1.2.2_3a7b7bc208ecdcb46378f82c459492c0036c7d02\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\GitWork\myWork\app\RongYunLibs\build\intermediates\bundles\default\libs\Rong_IMKit_v2_7_2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c9da56226a80eb2b46cc8cce35d8f0c44f5121d5">
+        <dex dex="E:\GitWork\myWork\app\app\build\intermediates\transforms\dex\debug\folders\1000\8\Rong_IMKit_v2_7_2_bc629ad7ea826769677b4020f220d069bc94c69b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\GitWork\myWork\app\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="E:\GitWork\myWork\app\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_5acde39acca84f09eb80abd1c869f59d86ef6010\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\GitWork\myWork\app\app\libs\org.apache.http.legacy.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5320fd78dd7f154e586970d4f02befc9b58432aa">
+        <dex dex="E:\GitWork\myWork\app\app\build\intermediates\transforms\dex\debug\folders\1000\2\org.apache.http.legacy_b7627faf019e8633c1bdbc92cfbd3b93b701283e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\GitWork\myWork\app\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3c7fb96ee21581d8aab04ec85fade7e4cd946b42">
+        <dex dex="E:\GitWork\myWork\app\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_17260b57363c715456484295021f9aca6d2c5617\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\GitWork\myWork\app\RongYunLibs\build\intermediates\bundles\default\libs\Xg_sdk_v3.0_20170301_1733.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0d8a33a0f096bf88d87a6ad72a5d5eb68c2b303b">
+        <dex dex="E:\GitWork\myWork\app\app\build\intermediates\transforms\dex\debug\folders\1000\8\Xg_sdk_v3.0_20170301_1733_ec6adce3b41b7d9d45c0ef97484c0401d2122ff8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\GitWork\myWork\app\RongYunLibs\build\intermediates\bundles\default\libs\agora-rtc-sdk.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0434ae537a85f20635f7156b532dd30bf2976c2a">
+        <dex dex="E:\GitWork\myWork\app\app\build\intermediates\transforms\dex\debug\folders\1000\8\agora-rtc-sdk_747a38e35253076972e96a49612e5a9cb550ec22\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\GitWork\myWork\app\app\libs\bdplayer.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="25527432ba4c7c4df1de8e9fb3ac8153266260b6">
+        <dex dex="E:\GitWork\myWork\app\app\build\intermediates\transforms\dex\debug\folders\1000\2\bdplayer_730cc85ac31e3a614bcf334ab4df527a2c2c5fa8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\GitWork\myWork\app\app\libs\alipaySDK-20150818.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6dde19fc34adb03c637b17fdaa754e0c02cf75a0">
+        <dex dex="E:\GitWork\myWork\app\app\build\intermediates\transforms\dex\debug\folders\1000\2\alipaySDK-20150818_e6ae625ebcb4d304a928c716491a4848b600b99f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\GitWork\myWork\app\RongYunLibs\build\intermediates\bundles\default\libs\mid-core-sdk-3.7.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2331bebf97db7ee12c3d670e9c5eb03b5cc28bd0">
+        <dex dex="E:\GitWork\myWork\app\app\build\intermediates\transforms\dex\debug\folders\1000\8\mid-core-sdk-3.7.2_8429d60a3c6394d5cb9f2d36f55367cfb7173243\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\GitWork\myWork\app\RongYunLibs\build\intermediates\bundles\default\libs\jg_filter_sdk_1.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d29e539522e76a4fe6953ab2df787751223f0571">
+        <dex dex="E:\GitWork\myWork\app\app\build\intermediates\transforms\dex\debug\folders\1000\8\jg_filter_sdk_1.1_e7e18a02fc05e50267f2c2dde5216a00feaf307d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\GitWork\myWork\app\app\libs\libammsdk.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="47f4993168154fa73377d7470b9f6887d48a8023">
+        <dex dex="E:\GitWork\myWork\app\app\build\intermediates\transforms\dex\debug\folders\1000\2\libammsdk_9d095cff6c900e0dffb39ef410d044601e2e3a10\classes.dex" />
+    </item>
+
+</items>

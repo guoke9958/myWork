@@ -14,6 +14,7 @@ import android.webkit.WebViewClient;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.afollestad.materialdialogs.Theme;
 import com.cn.xa.qyw.DoctorApplication;
 import com.cn.xa.qyw.R;
 import com.cn.xa.qyw.dialog.DoctorBaseDialog;
@@ -146,32 +147,32 @@ public class DiscoverLotteryDrawActivity extends DiscoverBaseActivity {
     // 继承自Object类
     public class AndroidtoJs extends Object {
 
-        // 定义JS需要调用的方法
-        // 被JS调用的方法必须加入@JavascriptInterface注解
-        @JavascriptInterface
-        public void eventTobuyCoal(String goodsId) {
-
-        }
-
         /**
          * 积分不足
          * @param userId
          *
          */
         @JavascriptInterface
-        public void integralRecharge(String userId) {
+        public void integralRecharge(final String userId) {
             //需要在 html 中写的代码
-            showToast("积分不足，请充值");
+            new MaterialDialog.Builder(mActivity)
+                    .title("温馨提示")
+                    .content("积分不足，是否去充值?")
+                    .positiveText("立即去充值")
+                    .onPositive(new MaterialDialog.SingleButtonCallback() {
+                        @Override
+                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                            showToast("积分不足，请充值"+userId);
+                        }
+                    })
+                    .negativeText("稍后再来")
+                    .onNegative(new MaterialDialog.SingleButtonCallback() {
+                        @Override
+                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        }
+                    })
+                    .show();
         }
-
-        /**
-         * 未登录回调
-         */
-        @JavascriptInterface
-        public void open_login_page() {
-
-        }
-
 
     }
 

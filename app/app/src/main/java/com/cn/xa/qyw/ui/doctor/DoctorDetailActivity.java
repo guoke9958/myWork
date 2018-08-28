@@ -48,6 +48,7 @@ public class DoctorDetailActivity extends DoctorBaseActivity {
     private TextView mUserPhone;
     private View mYuYue;
     private String mGrade;
+    private String mGradeId;
     private View mHospitalParent;
     private String mDoctorId;
     private View mBtnNorZixun;
@@ -58,6 +59,7 @@ public class DoctorDetailActivity extends DoctorBaseActivity {
         mDoctor = (SimpleDoctor) getIntent().getSerializableExtra("doctor");
         mDoctorId = mDoctor.getDoctorId();
         mGrade = getIntent().getStringExtra("grade");
+        mGradeId = getIntent().getStringExtra("grade_id");
         mToolbarTitle.setText(mDoctor.getNickName() + "主页");
         initView();
         initListener();
