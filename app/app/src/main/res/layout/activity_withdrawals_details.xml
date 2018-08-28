@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_view"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <RelativeLayout
+        android:id="@+id/style_item_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="56.0dip"
+        android:layout_margin="10.0dip"
+        android:background="@drawable/card_item_bg_white_bottom">
+
+        <ImageView
+            android:id="@+id/item_icom_image"
+            android:layout_width="40.0dip"
+            android:layout_height="40.0dip"
+            android:layout_marginBottom="12.0dip"
+            android:layout_marginLeft="8.0dip"
+            android:layout_marginRight="12.0dip"
+            android:layout_marginTop="12.0dip"
+            android:src="@mipmap/alipay" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/item_icom_image"
+            android:layout_toRightOf="@+id/item_icom_image"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/color_font_main"
+            android:textSize="@dimen/text_tiny" />
+
+        <TextView
+            android:id="@+id/number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/item_icom_image"
+            android:layout_toRightOf="@+id/item_icom_image"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/color_font_main"
+            android:textSize="@dimen/text_tiny" />
+
+        <ImageView
+            android:id="@+id/ok_image"
+            android:layout_width="23.0dip"
+            android:layout_height="23.0dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30.0dip"
+            android:src="@mipmap/cardright" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/input_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/style_item_layout"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/current_text"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size_avatar"
+            android:layout_marginLeft="10.0dip"
+            android:gravity="center_vertical"
+            android:text="@string/withdrawals_current_number"
+            android:textColor="@color/color_font_sub_gray"
+            android:textSize="@dimen/text_verysmall" />
+
+        <TextView
+            android:id="@+id/current_number"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size_avatar"
+            android:layout_toLeftOf="@+id/current_yuan_text"
+            android:layout_toRightOf="@+id/current_text"
+            android:gravity="center|right"
+            android:text="10000"
+            android:textColor="@color/color_font_sub_gray"
+            android:textSize="@dimen/text_verysmall" />
+
+        <TextView
+            android:id="@+id/current_yuan_text"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size_avatar"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10.0dip"
+            android:gravity="center_vertical"
+            android:text="@string/yuan"
+            android:textColor="@color/color_font_sub_gray"
+            android:textSize="@dimen/text_verysmall" />
+
+        <View
+            android:id="@+id/current_yuan_line"
+            android:layout_width="wrap_content"
+            android:layout_height="0.5dip"
+            android:layout_below="@+id/current_yuan_text"
+            android:background="@color/light_gray" />
+
+        <TextView
+            android:id="@+id/withdrawals_number_text"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size_avatar"
+            android:layout_below="@+id/current_yuan_line"
+            android:layout_marginLeft="10.0dip"
+            android:gravity="center_vertical"
+            android:text="@string/withdrawals_money"
+            android:textColor="@color/color_font_sub_gray"
+            android:textSize="@dimen/text_verysmall" />
+
+        <EditText
+            android:id="@+id/withdrawals_number_edittext"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size_avatar"
+            android:layout_below="@+id/current_yuan_line"
+            android:layout_toLeftOf="@+id/withdrawals_yuan_edittext"
+            android:layout_toRightOf="@+id/withdrawals_number_text"
+            android:background="@null"
+            android:gravity="center|right"
+            android:hint="@string/please_input_int"
+            android:inputType="number"
+            android:maxLength="5"
+            android:textColor="@color/color_font_main"
+            android:textColorHint="@color/color_font_hint_gray"
+            android:textSize="@dimen/text_verysmall" />
+
+        <TextView
+            android:id="@+id/withdrawals_yuan_edittext"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size_avatar"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/current_yuan_line"
+            android:layout_marginRight="10.0dip"
+            android:gravity="center_vertical"
+            android:text="@string/yuan"
+            android:textColor="@color/color_font_main"
+            android:textSize="@dimen/text_verysmall" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/withdrawals_waring"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/input_layout"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginTop="10.0dip"
+        android:text="@string/withdrawals_to_bank_card_finish_warning"
+        android:textSize="@dimen/text_verytiny" />
+
+    <Button
+        android:id="@+id/next"
+        android:layout_width="fill_parent"
+        android:layout_height="40.0dip"
+        android:layout_below="@+id/withdrawals_waring"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginTop="30.0dip"
+        android:background="@drawable/btn_corners_rose"
+        android:enabled="false"
+        android:text="@string/jiebang_sure"
+        android:textColor="@drawable/btn_font_color_click"
+        android:textSize="@dimen/text_verysmall" />
+</RelativeLayout>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:padding="12dp"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/send_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black_100"
+        android:text="您还可再发送0次消息（一次2元）"/>
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_100"
+            android:text="发送消息前，请先阅读"/>
+
+        <TextView
+            android:id="@+id/server_guize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/lsq_color_red"
+            android:text="《消息推送服务条款》"/>
+
+        <CheckBox
+            android:id="@+id/sure_push"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:gravity="center_vertical"/>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black_100"
+        android:text="您的文字内容将会通过App发送给"/>
+
+    <View
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/grey"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/push_province"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:textSize="12sp"
+            android:textColor="@color/black_100"
+            android:text="全国"/>
+
+        <Button
+            android:id="@+id/push_city"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:textSize="12sp"
+            android:textColor="@color/black_100"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="所有市区"/>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/lsq_color_red"
+            android:text="的所有"/>
+
+
+        <Button
+            android:id="@+id/push_to_user_type"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:textSize="12sp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/black_100"
+            android:text="所有会员"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            xmlns:fresco="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/add_push_img"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            fresco:placeholderImage="@mipmap/image_loading"
+            fresco:placeholderImageScaleType="fitCenter"
+            android:layout_marginRight="18dip"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:text="点击左边图标添加图片"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+
+    
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="推送内容："/>
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:padding="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:background="@color/normal_green">
+
+        <EditText
+            android:id="@+id/push_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="left|top"
+            android:textColor="@color/black_100"
+            android:background="@color/white"
+            android:textSize="18sp"
+            android:maxLength="200"
+            android:hint="请输入推送内容，不少于20字,不的超过200字"/>
+    </RelativeLayout>
+
+
+</LinearLayout>
