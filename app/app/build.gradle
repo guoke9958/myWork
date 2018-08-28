@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion '25.0.0'
+
+    defaultConfig {
+        applicationId "com.cn.xa.qyw"
+        minSdkVersion 16
+        targetSdkVersion 22
+        versionCode 50
+        versionName "1.5.0"
+        multiDexEnabled true
+
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support.constraint:constraint-layout:1.1.2'
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:design:23.3.0'
+    compile 'net.simonvt.menudrawer:menudrawer:3.0.6'
+    compile 'com.loopj.android:android-async-http:1.4.9'
+    compile 'com.afollestad.material-dialogs:core:0.8.5.9'
+    compile 'com.facebook.fresco:fresco:0.11.0'
+    compile 'com.github.kingideayou:tagcloudview:1.0.2'
+    compile 'com.github.flavienlaurent.datetimepicker:library:0.0.2'
+    compile 'com.bigkoo:convenientbanner:2.0.5'
+    compile project(':MVCHelper_Library')
+    compile project(':RongYunLibs')
+    compile project(':pinwheel')
+    compile 'io.openwebrtc:openwebrtc-android-sdk:0.1.0'
+}

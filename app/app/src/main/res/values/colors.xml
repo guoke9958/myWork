@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="color_bg_green">#4CAF50</color>
+    <color name="color_bg_green_press">#4CAF50</color>
+    <color name="color_font_green">#4CAF50</color>
+    <color name="color_btn_rose_press">#ffcc2929</color>
+    <color name="lsq_color_red">#ffcc2929</color>
+    <color name="color_font_title">#ff3f0d02</color>
+    <color name="colorPrimary">#4CAF50</color>
+    <color name="colorPrimaryDark">#4CAF50</color>
+    <color name="colorAccent">#81C784</color>
+    <color name="light_gray">#ffe5e2d4</color>
+    <color name="white">#ffffffff</color>
+    <color name="black">#ff333333</color>
+    <color name="color_font_hint_gray">#ffc8c8c8</color>
+    <color name="color_font_main">#ff323232</color>
+    <color name="color_font_sub_gray">#ff646464</color>
+    <color name="disable_background">#ffc8c8c8</color>
+    <color name="main_toolbar_normal">#81C784</color>
+    <color name="main_toolbar_press">#2E7D32</color>
+    <drawable name="menu_normal">#FFFFFF</drawable>
+    <drawable name="menu_press">#eeeeee</drawable>
+    <color name="home_menu_text_normal_color">#7C7C7C</color>
+    <color name="release_item_divier">#EAEAEA</color>
+    <color name="transparent">#00000000</color>
+    <color name="text_scenario_name">#666666</color>
+    <color name="text_feedback_name">#99CCFF</color>
+    <color name="view_bg">#CFCFCF</color>
+    <color name="text_content_hint">#CFCFCF</color>
+    <color name="text_content">#666666</color>
+    <color name="text_num_hint">#CFCFCF</color>
+    <color name="text_num">#666666</color>
+    <color name="text_contact_hint">#CFCFCF</color>
+    <color name="text_contact">#666666</color>
+    <color name="feedback_type">#666666</color>
+    <color name="toolbar_bg">#EBEBEB</color>
+    <color name="normal_grey">#ff666666</color>
+    <color name="light_grey">#ff999999</color>
+    <color name="dark_grey">#ff333333</color>
+    <color name="new_orange">#ffff9a69</color>
+    <color name="new_orange_press">#fff5824a</color>
+    <color name="coffee">#622f1b</color>
+    <color name="nomalGray">#838B83</color>
+    <color name="wangyibg">#f0f0f0</color>
+    <color name="prizes_dialog_yellow">#ffffef98</color>
+    <color name="user_task_line2">#ffdedede</color>
+    <color name="new_divider">#fff0eef3</color>
+    <color name="normal_red_press">#ffcb4a39</color>
+    <color name="normal_green">#ff86c350</color>
+    <color name="normal_green_press">#ff78ad49</color>
+    <color name="normal_green_1">#4CAF50</color>
+    <color name="new_orange_tixian">#FF5400</color>
+    <color name="black_100">#000000</color>
+    <color name="grey">#cccccc</color>
+    <color name="full_line">#c8c8c8</color>
+
+    <color name="background_tab_pressed">#6633B5E5</color>
+    <color name="background_window">#FFE5E5E5</color>
+
+
+</resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.facebook.drawee.view.SimpleDraweeView xmlns:fresco="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        fresco:placeholderImage="@mipmap/single_red_pic"
+        fresco:placeholderImageScaleType="fitCenter"
+        fresco:roundAsCircle="true" />
+
+    <Button
+        android:id="@+id/next_btn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password_editText_line"
+        android:layout_marginTop="45.0dip"
+        android:background="@drawable/btn_corners_rose"
+        android:gravity="center"
+        android:paddingBottom="10.0dip"
+        android:paddingTop="10.0dip"
+        android:text="设置图像"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_verysmall" />
+
+
+</LinearLayout>

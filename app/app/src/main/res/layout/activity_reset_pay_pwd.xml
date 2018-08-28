@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="20dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tip_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_100"
+            android:gravity="center"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:id="@+id/phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="13629272950"
+            android:textColor="@color/black_100"
+            android:gravity="center"
+            android:textSize="20sp"
+            />
+
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="@dimen/login_border_width"
+        android:layout_marginRight="@dimen/login_border_width"
+        >
+
+        <ImageView
+            android:id="@+id/verify_code_desc"
+            android:layout_width="16.0dip"
+            android:layout_height="18.0dip"
+            android:layout_below="@+id/phone_number_input_line"
+            android:layout_marginTop="10.0dip"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/veryfy_code_image" />
+
+        <EditText
+            android:id="@+id/verify_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/verify_code_desc"
+            android:layout_alignTop="@+id/verify_code_desc"
+            android:layout_below="@+id/phone_number_input_line"
+            android:layout_marginLeft="10.0dip"
+            android:layout_toLeftOf="@+id/get_number_code"
+            android:layout_toRightOf="@+id/verify_code_desc"
+            android:background="@null"
+            android:gravity="center|left"
+            android:hint="@string/verify_code"
+            android:inputType="number"
+            android:maxLength="6"
+            android:textColorHint="@color/color_font_hint_gray"
+            android:textSize="@dimen/text_verysmall" />
+
+        <Button
+            android:id="@+id/get_number_code"
+            android:layout_width="80.0dip"
+            android:layout_height="60.0dip"
+            android:layout_above="@+id/verify_code_line"
+            android:layout_alignParentRight="true"
+            android:background="@mipmap/click_get_verify_code"
+            android:gravity="center|left"
+            android:paddingLeft="8.0dip"
+            android:textColor="@color/color_bg_green"
+            android:textSize="@dimen/verify_code_font_size" />
+
+        <TextView
+            android:id="@+id/verify_code_line"
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dip"
+            android:layout_alignLeft="@+id/verify_code"
+            android:layout_alignRight="@+id/get_number_code"
+            android:layout_below="@+id/verify_code"
+            android:background="@color/light_gray" />
+
+
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/next_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/login_border_width"
+        android:layout_marginRight="@dimen/login_border_width"
+        android:layout_below="@+id/password_editText_line"
+        android:layout_marginTop="60.0dip"
+        android:background="@drawable/btn_corners_rose"
+        android:gravity="center"
+        android:paddingBottom="10.0dip"
+        android:paddingTop="10.0dip"
+        android:text="下一步"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_verysmall" />
+
+
+
+
+
+</LinearLayout>

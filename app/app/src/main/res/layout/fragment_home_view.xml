@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content_frame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/home_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/home_gridview_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#E1E1E1"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#88E388">
+
+                <com.bigkoo.convenientbanner.ConvenientBanner
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/convenientBanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    app:canLoop="true"
+                />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/all_search"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="#F6F5F5"
+                android:scaleType="center"
+                android:src="@mipmap/icon_btn_search_home" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E1E1E1" />
+
+            <com.cn.xa.qyw.view.DoctorGridView
+                android:id="@+id/hospital_grade_gridview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:horizontalSpacing="1dp"
+                android:numColumns="3"
+                android:scrollbars="none"
+                android:verticalSpacing="1dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E1E1E1" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#F6F5F5" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E1E1E1" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:paddingLeft="10dp"
+                android:textSize="16sp"
+                android:background="@color/white"
+                android:text="医院科室"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E1E1E1" />
+
+            <com.cn.xa.qyw.view.DoctorGridView
+                android:id="@+id/department_gridview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:horizontalSpacing="1dp"
+                android:numColumns="4"
+                android:scrollbars="none"
+                android:verticalSpacing="1dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E1E1E1" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#F6F5F5" />
+
+
+            <com.cn.xa.qyw.view.DoctorListView
+                android:id="@+id/zixun_listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:divider="@null"
+                android:dividerHeight="0dp"
+                android:listSelector="@drawable/list_selector" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/snatch_a_pie"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:textColor="@color/white"
+        android:background="@drawable/guide_tiaoguo"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_gravity="bottom|right"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="抢馅饼" />
+
+    <RelativeLayout
+        android:id="@+id/gif_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.cn.xa.qyw.ui.mypie.GifView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:enabled="false"
+            android:hardwareAccelerated="false" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"/>
+
+</FrameLayout>

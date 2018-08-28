@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg_my_cont"
+    android:clickable="false"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="129dp"
+        android:layout_marginRight="32dp"
+        android:gravity="right"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/chongzhi"
+            android:layout_width="95dp"
+            android:layout_height="37dp"
+            android:background="@drawable/ellipse_btn_green_chongzhi"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/white"
+            android:text="资金充值" />
+
+        <Button
+            android:id="@+id/tixian"
+            android:layout_width="95dp"
+            android:layout_height="37dp"
+            android:background="@drawable/ellipse_btn_orange_tixian"
+            android:textColor="@color/white"
+            android:text="收入提现" />
+
+
+    </LinearLayout>
+
+
+
+        <ListView
+            android:id="@+id/my_account_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="30dp"
+            android:scrollbars="none"
+            android:layout_marginLeft="30dp"
+            android:divider="@null"
+            android:dividerHeight="20dp"
+            android:layout_marginTop="10dp"/>
+
+
+
+</LinearLayout>

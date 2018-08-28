@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="pay_type">
+        <item>微信支付</item>
+        <item>支付宝支付</item>
+    </string-array>
+
+    <string-array name="items_sex">
+        <item>男</item>
+        <item>女</item>
+    </string-array>
+
+    <string-array name="item_question">
+        <item>功能问题</item>
+        <item>设计问题</item>
+        <item>支付问题</item>
+        <item>医疗纠纷</item>
+        <item>用户体验</item>
+        <item>其它</item>
+    </string-array>
+
+    <string-array name="items_city">
+        <item>定位到省份</item>
+        <item>定位到市区</item>
+        <item>定位到县城</item>
+    </string-array>
+
+    <string-array name="user_type">
+        <item>医生会员</item>
+        <item>患者或普通会员</item>
+        <item>医院会员</item>
+        <item>器械药品厂家</item>
+        <item>保健品厂家</item>
+        <item>其它非医疗机构</item>
+    </string-array>
+
+    <string-array name="push_user_type">
+        <item>所有会员</item>
+        <item>医生会员</item>
+        <item>患者或普通会员</item>
+        <item>医院会员</item>
+        <item>器械药品厂家</item>
+        <item>保健品厂家</item>
+        <item>其它非医疗机构</item>
+        <item>教育机构</item>
+    </string-array>
+
+    <string-array name="phoneAdv">
+        <item>5-50</item>
+        <item>50-100</item>
+        <item>100-200</item>
+        <item>200-500</item>
+    </string-array>
+
+    <string-array name="normalAdc">
+        <item>5-50</item>
+        <item>50-100</item>
+        <item>100-200</item>
+        <item>200-500</item>
+    </string-array>
+
+    <string-array name="bigAdc">
+        <item>100-1000</item>
+        <item>1000-3000</item>
+        <item>3000-5000</item>
+        <item>5000-10000</item>
+    </string-array>
+
+    <string-array name="familyAdc">
+        <item>500-1000</item>
+        <item>1000-3000</item>
+        <item>3000-5000</item>
+        <item>5000-10000</item>
+    </string-array>
+
+    <string-array name="healthAdc">
+        <item>100-1000</item>
+        <item>1000-3000</item>
+        <item>3000-5000</item>
+        <item>5000-10000</item>
+    </string-array>
+
+    <string-array name="professional">
+        <item>教授 主任医师</item>
+        <item>副教授 副主任医师</item>
+        <item>主治医师</item>
+        <item>医士、医师、住院医师</item>
+        <item>护士</item>
+        <item>护师</item>
+        <item>主管护师</item>
+        <item>副主任护师</item>
+        <item>主任护师</item>
+        <item>药剂师</item>
+        <item>中药师</item>
+    </string-array>
+
+    <string-array name="hospital_grade">
+        <item>三级医院</item>
+        <item>二级医院</item>
+        <item>私立医院</item>
+        <item>卫生院</item>
+        <item>医疗服务</item>
+        <item>中医</item>
+    </string-array>
+
+    <string-array name="hospital_type">
+        <item>三级医院</item>
+        <item>二级医院</item>
+        <item>私立医院</item>
+        <item>卫生院</item>
+        <item>医疗服务</item>
+        <item>中医</item>
+    </string-array>
+
+    <string-array name="category_type">
+        <item>学校</item>
+        <item>生活服务</item>
+    </string-array>
+
+
+</resources>

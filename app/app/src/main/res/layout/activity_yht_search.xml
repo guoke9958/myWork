@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/search_tip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="48dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:background="@color/white"
+            android:text="热门搜索"
+            android:textSize="16sp"
+            android:textColor="@color/black_100"/>
+
+        <me.next.tagview.TagCloudView
+            android:id="@+id/tag_cloud_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:tcvItemBorderHorizontal="8dp"
+            app:tcvItemBorderVertical="12dp"
+            app:tcvBorder="8dp"
+            app:tcvBackground="@drawable/background_tag_selector"
+            app:tcvTextColor="#42A5F5"
+            app:tcvSingleLine="false"
+            app:tcvCanTagClick="false"
+            />
+
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/rotate_header_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:choiceMode="singleChoice"
+        android:background="@color/white"
+        android:divider="@null"
+        android:fadingEdge="none"
+        android:listSelector="@android:color/transparent"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:scrollbarStyle="outsideOverlay" />
+
+</LinearLayout>

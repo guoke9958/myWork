@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_view"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="360dp"
+        android:layout_marginTop="22.0dip"
+        android:layout_weight="1.0">
+
+        <ImageView
+            android:id="@+id/bang_logo_image"
+            android:layout_width="@dimen/logo_width"
+            android:layout_height="@dimen/logo_height"
+            android:layout_centerInParent="true"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_logo" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/input_name_passwrod_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="@dimen/login_border_width"
+        android:layout_marginRight="@dimen/login_border_width"
+        android:layout_weight="0.9"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/btn_layot"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/username_image"
+                android:layout_width="16.0dip"
+                android:layout_height="18.0dip"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/telphone_toast_image" />
+
+            <EditText
+                android:id="@+id/sEtUserName"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/login_register_btn_height"
+                android:layout_alignBottom="@+id/username_image"
+                android:layout_marginLeft="10.0dip"
+                android:layout_toRightOf="@+id/username_image"
+                android:background="@null"
+                android:focusable="true"
+                android:gravity="center|left"
+                android:hint="@string/set_am_phone_number"
+                android:maxLength="11"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/color_font_hint_gray"
+                android:textSize="@dimen/default_fond_size" />
+
+            <TextView
+                android:id="@+id/sEtUserName_line"
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dip"
+                android:layout_alignLeft="@+id/sEtUserName"
+                android:layout_alignRight="@+id/sEtUserName"
+                android:layout_below="@+id/sEtUserName"
+                android:background="@color/light_gray" />
+
+            <ImageView
+                android:id="@+id/password_image"
+                android:layout_width="16.0dip"
+                android:layout_height="18.0dip"
+                android:layout_alignBottom="@id/password_image"
+                android:layout_below="@+id/sEtUserName_line"
+                android:layout_marginTop="25.0dip"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/password_toast_image" />
+
+            <EditText
+                android:id="@+id/sEtPassword"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/login_password_input_border_heigh"
+                android:layout_alignBottom="@+id/password_image"
+                android:layout_below="@+id/sEtUserName"
+                android:layout_marginLeft="10.0dip"
+                android:layout_toRightOf="@+id/password_image"
+                android:background="@null"
+                android:digits="0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ"
+                android:gravity="bottom|center|left"
+                android:hint="@string/login_hint_password"
+                android:inputType="textPassword"
+                android:maxLength="16"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/color_font_hint_gray"
+                android:textSize="@dimen/default_fond_size" />
+
+            <TextView
+                android:id="@+id/sEtPassword_line"
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dip"
+                android:layout_alignLeft="@+id/sEtPassword"
+                android:layout_alignRight="@+id/sEtPassword"
+                android:layout_below="@+id/sEtPassword"
+                android:background="@color/light_gray" />
+
+            <TextView
+                android:id="@+id/sForgetPassword"
+                style="@style/w_w"
+                android:layout_alignBottom="@+id/sEtPassword"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:paddingBottom="0.0dip"
+                android:paddingLeft="10.0dip"
+                android:paddingTop="10.0dip"
+                android:text="@string/find_password"
+                android:textColor="@color/font_forget_pwd_press"
+                android:textSize="@dimen/default_fond_size" />
+
+            <Button
+                android:id="@+id/login_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/login_register_btn_height"
+                android:layout_below="@+id/sForgetPassword"
+                android:layout_marginTop="40.0dip"
+                android:background="@drawable/btn_corners_rose"
+                android:enabled="false"
+                android:text="@string/login"
+                android:textColor="@drawable/btn_font_color_click"
+                android:textSize="@dimen/text_verysmall" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/regist_text"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/login_register_btn_height"
+            android:layout_below="@+id/login_btn"
+            android:layout_marginTop="20.0dip"
+            android:background="@drawable/btn_login_register"
+            android:text="@string/regist"
+            android:textColor="@color/color_font_green"
+            android:textSize="@dimen/text_verysmall" />
+    </LinearLayout>
+</LinearLayout>

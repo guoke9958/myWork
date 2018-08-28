@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@id/rc_layout"
+    android:layout_width="244dp"
+    android:layout_height="wrap_content"
+    android:minHeight="128dp"
+    android:background="@android:color/white">
+
+    <TextView
+        android:id="@+id/rc_title"
+        style="@style/RCTheme.Message.TextView"
+        android:layout_width="244dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="9dp"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:lines="2" />
+
+
+    <io.rong.imkit.widget.AsyncImageView
+        android:id="@+id/rc_img"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_below="@+id/rc_title"
+        android:layout_marginLeft="5dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="3dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:src="@drawable/rc_ic_def_rich_content"
+        app:RCDefDrawable="@drawable/rc_ic_def_rich_content" />
+
+    <TextView
+        android:id="@+id/rc_content"
+        style="@style/RCTheme.Message.RichContent.TextView"
+        android:layout_width="244dp"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_below="@+id/rc_img"
+        android:background="@android:color/transparent"
+        android:ellipsize="end"
+        android:gravity="left"
+        android:paddingBottom="12dp" />
+
+
+</RelativeLayout>

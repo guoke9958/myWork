@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="抽奖规则 ："
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="3dp"
+            android:paddingTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="一、所有玩家均需用自己的真实手机号码和真实姓名注册，否则，因信息不实无法领取或无法邮寄奖品等损失，由玩家自己承担。"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="二、所有抽奖奖品均由合作商家提供，售后服务也由该合作商家提供。"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="三、玩家在商场或合作商家的抽奖机上抽奖获得的商品，由合作商家当场兑现。价值误差不超过10元。"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="四、本平台所有商品均不涉及违法违规，凡提供违法违规商品或服务者，所有责任均由该提供者承担，本平台不承担任何责任。"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="五、一个积分对应1元钱。一次最低可买1个积分参与抽奖，显示奖品的价值为积分的1倍，3倍，5倍。由程序自动计算。"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="六、积分可由充值兑换获得,也可经由推荐会员注册获得,即每推荐一名注册会员,收入3个积分.任何人均可兼职为本平台提供相关的服务,获得提成或积分.
+七、每局30秒，从点击指针到结束，为30秒倒计时。"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="八、玩家在抽奖活动中如有任何疑问，均可拨打客服电话：400-000-0000 。"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="九、本规则解释权归属于本公司。"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+   <LinearLayout
+       android:background="@color/color_bg_green"
+       android:layout_alignParentBottom="true"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+       <TextView
+           android:id="@+id/cancel"
+           android:background="@color/white"
+           android:layout_margin="5dp"
+           android:padding="10dp"
+           android:gravity="center"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="取消" />
+
+       <View
+           android:background="@color/color_bg_green"
+           android:layout_width="1dp"
+           android:layout_height="match_parent"/>
+
+       <TextView
+           android:background="@color/white"
+           android:layout_margin="5dp"
+           android:padding="10dp"
+           android:gravity="center"
+           android:id="@+id/agree"
+           android:textColor="@color/color_bg_green"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="同意" />
+   </LinearLayout>
+</RelativeLayout>

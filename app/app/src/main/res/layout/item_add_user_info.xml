@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="36dp"
+        android:orientation="vertical"
+        android:layout_marginTop="4dp"
+        >
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:gravity="center"
+            android:text="昵称:"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:background="@color/grey"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:textColor="@color/black_100"
+                    android:paddingLeft="24dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:paddingRight="4dp"
+                    android:minHeight="36dp"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical"
+                    android:layout_centerInParent="true"
+                    android:background="#e6e6e6"
+                    android:layout_toLeftOf="@+id/edit"
+                    android:lineSpacingExtra="4dp"
+                    />
+
+
+                <TextView
+                    android:id="@+id/edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:text="**"
+                    android:textColor="@color/normal_red_press"
+                    />
+
+
+            </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

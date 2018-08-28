@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDFAF3">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:background="#ffffff"
+            android:paddingLeft="18dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:paddingRight="18dp">
+
+            <TextView
+                android:id="@+id/single_hongbao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="单个赏金"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+
+            <EditText
+                android:id="@+id/hongbao_count"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="3dp"
+                android:layout_toLeftOf="@+id/right_dianquan"
+                android:layout_toRightOf="@+id/single_hongbao"
+                android:background="@null"
+                android:digits="0123456789"
+                android:gravity="center_vertical|right"
+                android:inputType="number"
+                android:maxLength="10"
+                android:singleLine="true"
+                android:textColor="#000000" />
+
+
+            <TextView
+                android:id="@+id/right_dianquan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="元"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:background="#ffffff"
+            android:orientation="horizontal"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp">
+
+            <TextView
+                android:id="@+id/liuyan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="留言"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/liuyan1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/right_dianquan"
+                android:layout_toRightOf="@+id/single_hongbao"
+                android:background="@null"
+                android:gravity="center_vertical|right"
+                android:hint="谢谢医生！"
+                android:maxLength="25"
+                android:maxLines="2"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/dianquan_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:text="0 元"
+            android:textColor="#000000"
+            android:textSize="30sp" />
+
+
+        <Button
+            android:id="@+id/send_hongbao"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/btn_register_onclick_selector"
+            android:enabled="false"
+            android:text="立即打赏"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:lineSpacingExtra="4dp"
+            android:text="@string/tip"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</ScrollView>
