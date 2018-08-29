@@ -1,20 +1,11 @@
 package com.cn.xa.qyw.ui.news;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.TransitionDrawable;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.TypedValue;
-import android.view.View;
-
 import com.cn.xa.qyw.R;
 import com.cn.xa.qyw.base.DoctorBaseActivity;
 import com.cn.xa.qyw.ui.news.fragment.QuickContactFragment;
