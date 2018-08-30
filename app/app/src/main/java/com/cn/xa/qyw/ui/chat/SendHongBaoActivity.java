@@ -38,6 +38,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
+ * 打赏发送红包
  * Created by Administrator on 2016/9/1.
  */
 public class SendHongBaoActivity extends DoctorBaseActivity {
@@ -155,6 +156,11 @@ public class SendHongBaoActivity extends DoctorBaseActivity {
         }).getView();
     }
 
+    /**
+     * 添加支付密码
+     * @param pwd
+     * @param count
+     */
     private void addPayPwd(String pwd, final int count) {
         showDialog();
 
@@ -313,10 +319,7 @@ public class SendHongBaoActivity extends DoctorBaseActivity {
                                     .positiveText("找回密码")
                                     .negativeText("重新输入")
                                     .show();
-
-
                         }
-
                     } else {
                         showToast("连接异常");
                     }

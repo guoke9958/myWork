@@ -18,6 +18,7 @@ import com.cn.xa.qyw.utils.DateUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 /**
+ * 赏金详情
  * Created by Administrator on 2016/9/19.
  */
 public class HongBaoDetailActivity extends DoctorBaseActivity {

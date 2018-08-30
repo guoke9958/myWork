@@ -4,9 +4,13 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MVCHelper_Library/MVCHelper_Library.iml" filepath="$PROJECT_DIR$/MVCHelper_Library/MVCHelper_Library.iml" />
       <module fileurl="file://$PROJECT_DIR$/RongYunLibs/RongYunLibs.iml" filepath="$PROJECT_DIR$/RongYunLibs/RongYunLibs.iml" />
+      <module fileurl="file://E:\Git\myWork\app\RongYunLibs\RongYunLibs.iml" filepath="E:\Git\myWork\app\RongYunLibs\RongYunLibs.iml" />
       <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
+      <module fileurl="file://E:\Git\myWork\app\app.iml" filepath="E:\Git\myWork\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app-app.iml" filepath="$PROJECT_DIR$/app/app-app.iml" />
+      <module fileurl="file://E:\Git\myWork\app\app\app-app.iml" filepath="E:\Git\myWork\app\app\app-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/pinwheel/pinwheel.iml" filepath="$PROJECT_DIR$/pinwheel/pinwheel.iml" />
+      <module fileurl="file://E:\Git\myWork\app\pinwheel\pinwheel.iml" filepath="E:\Git\myWork\app\pinwheel\pinwheel.iml" />
     </modules>
   </component>
 </project>

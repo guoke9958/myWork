@@ -55,7 +55,6 @@ public class DepartmentAsyncDataSource implements IAsyncDataSource<List<SimpleDo
 
         search.setId(Integer.valueOf(gradeId));
 
-
         return new AsyncRequestHandle(HttpUtils.postDataFromServer(HttpAddress.DEPARTMENT_DETAIL_INFO,
                 JSONObject.toJSONString(search), new NetworkResponseHandler() {
                     @Override

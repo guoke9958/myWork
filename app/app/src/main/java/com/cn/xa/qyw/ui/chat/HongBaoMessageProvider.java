@@ -27,6 +27,7 @@ import io.rong.imlib.model.Message;
 import io.rong.message.TextMessage;
 
 /**
+ * 红包消息处理器
  * Created by Administrator on 2016/9/18.
  */
 @ProviderTag(messageContent = HongBaoMessage.class)

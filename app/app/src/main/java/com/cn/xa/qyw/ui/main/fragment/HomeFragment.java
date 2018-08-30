@@ -251,7 +251,6 @@ public class HomeFragment extends BaseFragment implements OnItemClickListener {
 //            }
 //        });
     }
-
 //    private int time = 5000;
 //    private GifView imageView;
 //    private LinearLayout container;

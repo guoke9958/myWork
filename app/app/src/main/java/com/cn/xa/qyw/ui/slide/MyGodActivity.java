@@ -30,6 +30,7 @@ import com.cn.xa.qyw.utils.SHA1;
 import com.cn.xa.qyw.utils.ToastUtils;
 
 /**
+ * 添加支付密码
  * Created by Administrator on 2016/7/26.
  */
 public class MyGodActivity extends SlideBaseActivity {
