@@ -1,0 +1,59 @@
+
+	
+接口整体返回格式：
+	
+	注释：bizCode ：接口名称编码
+	      data    ：请求返回数据jsonString
+		  result  ：接口请求状态
+	{
+	"bizCode": 1009, 
+	"data": "",
+	"result": 0  
+    }
+	
+	
+	
+	1.接口描述：获取首页栏目下的子栏目名称
+	  联网方式：post
+	  接口传入：不传参
+	  接口名称 /luckdraw/api/categorylist
+	  
+数据返回："data":"[{"gradeName":"栏目名称","id":栏目id},{"gradeName":"
+栏目名称","id":栏目id},...]"
+	2.接口描述：获取栏目详情
+	  联网方式：get
+	  接口传入：data="%"+id+"%"  //这里的id是id的值
+	           private Integer pageSize=1;   //当前第几页
+               private Integer pageCount=10; //每页几条 
+	  接口名称 /api/articleist
+	  
+数据返回："data":"[{"资讯id","浏览量","更新时间","详情中是否包含视频",
+"资讯简讯"},{},{}]"
+	3.接口描述：获取栏目简介
+      联网方式：post
+      接口传入：data="%"+id+"%"	 //这里的id是id的值
+	  数据返回："data":"{"对应栏目内容介绍",“图片链接集合”,"简介栏目集合",}"
+	4.接口描述：获取简介栏目数据
+      联网方式：post
+      接口传入：data="%"+id+"%"	 //这里的id是id的值
+	  数据返回："data":"{“图片链接集合”,"简介栏目集合"}"
+	  
+	  
+	 1 http://172.16.99.248:8080/luckdraw/api/categorylist
+	  
+	 2  /api/articleist  get
+	  private Integer id=2;
+      private Integer pageSize=1;   //当前第几页
+      private Integer pageCount=10; //每页几条
+
+map.put("articleId",list.get(i)[0]);   id
+map.put("title",list.get(i)[1]);  标题
+map.put("summary",list.get(i)[2]);  摘要
+map.put("source",list.get(i)[3]);  文章来源
+map.put("author",list.get(i)[4]);  作者
+map.put("tumb","http://172.16.99.248:8080/luckdraw/"+list.get(i)[5]); 
+图片路径
+map.put("videoState",list.get(i)[6]==null||list.get(i)[6].toString().equals(
+"")?0:1);  是否有视频  1有  0 无
+clickNum 点击量
+	  
