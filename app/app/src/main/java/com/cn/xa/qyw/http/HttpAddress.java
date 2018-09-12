@@ -19,6 +19,8 @@ public class HttpAddress {
 
     public static final String NET_HOST = HOST_2 + "YHT/api/";
 
+    public static final String NET_HOST_LUCKDRAW = HOST_2 + "luckdraw/api/";
+
     public static final String PHOTO_URL = HOST_3;
 
     public static final String MAIN_ADDRESS = NET_HOST;
@@ -134,5 +136,10 @@ public class HttpAddress {
     public static String GET_ALL_VIDEO_BY_TYPE = MAIN_ADDRESS + "video/videosByType";
 
     public static String GET_VIDEO_DETAIL = MAIN_ADDRESS + "video/videoDetail";
+
+    /**
+     * 获取栏目列表
+     */
+    public static String GET_NEW_COLUMN = NET_HOST_LUCKDRAW + "categorylist";
 
 }
