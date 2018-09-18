@@ -3,6 +3,10 @@ package com.cn.xa.qyw.ui.news.wrapRecyclerview;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
+
+import com.cn.xa.qyw.ui.news.adapter.recyclerview.base.ItemViewDelegate;
+import com.cn.xa.qyw.ui.news.adapter.recyclerview.base.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,6 +36,10 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
     public BaseRecyclerAdapter(Context mContext, LinkedList<T> mItemLists) {
         this.mContext = mContext;
         this.mItemLists = mItemLists;
+    }
+
+    public void addItemViewDelegate(ItemViewDelegate<T> itemViewDelegate) {
+
     }
 
     @Override
