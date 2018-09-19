@@ -35,16 +35,16 @@ public class NewsColumnActivity extends DoctorBaseActivity {
     private MyPagerAdapter adapter;
 
     private String mGrade;
-    private int mGradeId;
+    private long mGradeId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mGrade = getIntent().getStringExtra("grade");
-        mGradeId = getIntent().getIntExtra("grade_id",0);
+        mGradeId = getIntent().getLongExtra("grade_id",0);
 
         mToolbarTitle.setText(mGrade);
-        initView();
+
         getNewsData();
     }
 
@@ -67,11 +67,12 @@ public class NewsColumnActivity extends DoctorBaseActivity {
             HttpUtils.getDataFromServer(HttpAddress.GET_NEW_COLUMN, new NetworkResponseHandler() {
                 @Override
                 public void onFail(String messsage) {
-                    Log.e("首页联网 messsage = ", messsage);
+                    Log.e(mGrade + " messsage = ", messsage);
                 }
 
                 @Override
                 public void onSuccess(String data) {
+                    initView();
                     List<HospitalGrade> list = JSONObject.parseArray(data, HospitalGrade.class);
                     adapter.setListColumn(list);
                 }
@@ -83,8 +84,6 @@ public class NewsColumnActivity extends DoctorBaseActivity {
 
     public class MyPagerAdapter extends FragmentPagerAdapter {
 
-        private final String[] TITLES = { "简介", "视频", "文章", "案例", "自定义栏目一", "自定义栏目二",
-                "自定义栏目三", "自定义栏目四" };
 
         private List<HospitalGrade> listColumn = new ArrayList<>();
 
@@ -99,12 +98,12 @@ public class NewsColumnActivity extends DoctorBaseActivity {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return TITLES[position];
+            return listColumn.get(position).getGradeName();
         }
 
         @Override
         public int getCount() {
-            return TITLES.length;
+            return listColumn.size();
         }
 
         @Override

@@ -14,16 +14,31 @@ import cz.msebera.android.httpclient.Header;
 public abstract class NetworkResponseHandler extends AsyncHttpResponseHandler {
     @Override
     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-        String result = new String(responseBody).replace("\"\"","").replace("\\\\","\\");
-        Lg.e(result);
-        SimpleBean bean = JSONObject.parseObject(result, SimpleBean.class);
+        try {
+            String result = new String(responseBody);
+            Lg.e(result);
+            SimpleBean bean = JSONObject.parseObject(result, SimpleBean.class);
 
-        if(bean.getResult()==0){
-            onSuccess(bean.getData());
-        }else {
-            onFail(bean.getDescription());
+            if(bean.getResult()==0){
+                onSuccess(bean.getData());
+            }else {
+                onFail(bean.getDescription());
+            }
+        } catch (Exception e) {
+            try {
+                String result = new String(responseBody).replace("\\","").replace("\\","\"");
+                Lg.e(result);
+                SimpleBean bean = JSONObject.parseObject(new String(result), SimpleBean.class);
+
+                if(bean.getResult()==0){
+                    onSuccess(bean.getData());
+                }else {
+                    onFail(bean.getDescription());
+                }
+            } catch (Exception e1) {
+                onFail("解析错误");
+            }
         }
-
     }
 
     @Override

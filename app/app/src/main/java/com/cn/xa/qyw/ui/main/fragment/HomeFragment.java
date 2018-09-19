@@ -131,17 +131,17 @@ public class HomeFragment extends BaseFragment implements OnItemClickListener {
         mGradeGirdView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (14 == mGradeAdapter.getItemId(position)){
-                    Intent intent = new Intent(getActivity(), NewsColumnActivity.class);
-                    String item = mGradeAdapter.getItem(position);
-                    intent.putExtra("grade",item);
-                    intent.putExtra("grade_id",mGradeAdapter.getItemId(position));
-                    startActivity(intent);
-                }else{
+                if (mGradeAdapter.getItemId(position) < 14 ){
                     Intent intent = new Intent(getActivity(), DepartmentAllActivity.class);
                     String item = mGradeAdapter.getItem(position);
                     intent.putExtra("grade",item);
                     intent.putExtra("grade_id",mGradeAdapter.getItemId(position)+"");
+                    startActivity(intent);
+                }else {
+                    Intent intent = new Intent(getActivity(), NewsColumnActivity.class);
+                    String item = mGradeAdapter.getItem(position);
+                    intent.putExtra("grade",item);
+                    intent.putExtra("grade_id",mGradeAdapter.getItemId(position));
                     startActivity(intent);
                 }
             }
