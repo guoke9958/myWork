@@ -26,6 +26,14 @@
     <string name="third_menu">消息</string>
     <string name="four_menu">推荐</string>
 
+    <string name="jingdong_pull_label">下拉可以刷新</string>
+    <string name="jingdong_refreshing_label">正在加载中</string>
+    <string name="jingdong_release_label">松开后刷新</string>
+
+    <string name="tmall_pull_label">下拉刷新</string>
+    <string name="tmall_refreshing_label">正在刷新...</string>
+    <string name="tmall_release_label">松开立即刷新</string>
+
     <string name="forget_pwd_input_phone">请输入您的手机号码</string>
     <string name="forget_pwd_input_pwd">6-16位数字或字母</string>
     <string name="register_login">注册并登录</string>

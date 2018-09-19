@@ -64,7 +64,7 @@ public class NewsColumnActivity extends DoctorBaseActivity {
 
     private void getNewsData() {
         try {
-            HttpUtils.postDataFromServer(HttpAddress.GET_NEW_COLUMN, new NetworkResponseHandler() {
+            HttpUtils.getDataFromServer(HttpAddress.GET_NEW_COLUMN, new NetworkResponseHandler() {
                 @Override
                 public void onFail(String messsage) {
                     Log.e("首页联网 messsage = ", messsage);

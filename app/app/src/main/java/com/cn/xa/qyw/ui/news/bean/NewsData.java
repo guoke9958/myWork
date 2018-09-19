@@ -9,6 +9,18 @@ public class NewsData {
     private String url;
     private String title;
     private String message;
+    private String clickNum;
+
+    public NewsData() {
+    }
+
+    public String getClickNum() {
+        return clickNum;
+    }
+
+    public void setClickNum(String clickNum) {
+        this.clickNum = clickNum;
+    }
 
     public String getUrl() {
         return url;

@@ -397,14 +397,6 @@ public class HomeFragment extends BaseFragment implements OnItemClickListener {
             @Override
             public void onSuccess(String data) {
                 List<HospitalGrade> list = JSONObject.parseArray(data,HospitalGrade.class);
-
-                int size = list.size();
-
-                HospitalGrade hospitalGrade = new HospitalGrade();
-                hospitalGrade.setGradeName("富迪肽");
-                hospitalGrade.setId(14);
-                list.add(size-1,hospitalGrade);
-
                 mGradeAdapter.setData(list);
                 getNewsData();
             }

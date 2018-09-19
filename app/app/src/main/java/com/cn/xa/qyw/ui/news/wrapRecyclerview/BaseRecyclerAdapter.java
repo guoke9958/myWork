@@ -38,10 +38,6 @@ public abstract class BaseRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
         this.mItemLists = mItemLists;
     }
 
-    public void addItemViewDelegate(ItemViewDelegate<T> itemViewDelegate) {
-
-    }
-
     @Override
     public int getItemCount() {
         return mItemLists.size();

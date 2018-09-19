@@ -5,9 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.cn.xa.qyw.ui.news.adapter.recyclerview.base.ItemViewDelegate;
-import com.cn.xa.qyw.ui.news.adapter.recyclerview.base.ViewHolder;
-
 import java.util.LinkedList;
 
 /**
@@ -29,18 +26,16 @@ public abstract class CommonAdapter<T> extends BaseRecyclerAdapter<T, ViewHolder
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(mLayoutId,parent, false);
+        View view = mInflater.inflate(mLayoutId,parent ,false);
         ViewHolder holder = new ViewHolder(mContext,view);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
+        convert(holder, mDatas.get(position),position);
     }
 
-
     protected abstract void convert(ViewHolder holder, T t, int position);
-
 
 }

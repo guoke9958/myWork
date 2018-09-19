@@ -34,6 +34,9 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bigkoo.convenientbanner.ConvenientBanner;
+import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
+import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.cn.xa.qyw.R;
 import com.cn.xa.qyw.ui.news.adapter.recyclerview.CommonAdapter;
 import com.cn.xa.qyw.ui.news.adapter.recyclerview.base.ViewHolder;
@@ -41,11 +44,16 @@ import com.cn.xa.qyw.ui.news.adapter.recyclerview.wrapper.EmptyWrapper;
 import com.cn.xa.qyw.ui.news.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 import com.cn.xa.qyw.ui.news.adapter.recyclerview.wrapper.LoadmoreWrapper;
 import com.cn.xa.qyw.ui.news.bean.NewsData;
+import com.cn.xa.qyw.ui.news.wrapRecyclerview.TmallHeaderLayout;
+import com.cn.xa.qyw.utils.DensityUtils;
+import com.cn.xa.qyw.view.NetworkImageHolderView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.extras.recyclerview.PullToRefreshRecyclerView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
@@ -67,6 +75,15 @@ public class SuperAwesomeCardFragment extends Fragment {
 	private EmptyWrapper mEmptyWrapper;  //无数据空布局
 	private HeaderAndFooterWrapper headerAndFooterWrapper;  //添加头部和尾部布局
 	private LoadmoreWrapper mLoadMoreWrapper;
+
+    private String[] images = {
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537297302711&di=8dfb98ebb43d3d04b99e0493bad11dc1&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205171759_jvyaZ.jpeg",
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537299482366&di=f5d2a9e367b98fe7d1fb6d4bcf931b32&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F55e736d12f2eb938913620d4df628535e5dd6fb8.jpg",
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537299482366&di=3149a051c2fb817d6ed8ede5cef34d39&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimage%2Fc0%253Dshijue1%252C0%252C0%252C294%252C40%2Fsign%3D1e22316787b1cb132a643450b53d3c3b%2F48540923dd54564eb8d2beb1b9de9c82d0584f86.jpg",
+            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537299482365&di=62e72b9ebd480c0f34db4396694ce42a&imgtype=0&src=http%3A%2F%2Fp.store.itangyuan.com%2Fp%2Fbook%2Fcover%2FEg2Veg2wEt6%2FEg6tE_fWEt2uEtMuEBAWeTuP51DHhcDgjS.jpg",
+            "http://www.qiuyiwang.com:8081/download/img/yd.jpg",
+            "http://www.qiuyiwang.com:8081/download/img/timg.jpg"
+    };
 
 	public static SuperAwesomeCardFragment newInstance(int position) {
 		SuperAwesomeCardFragment f = new SuperAwesomeCardFragment();
@@ -95,6 +112,8 @@ public class SuperAwesomeCardFragment extends Fragment {
 		pullToRefreshView = (PullToRefreshRecyclerView)view.findViewById(R.id.pull_to_refresh_recycler_view);
 		myRecyclerView = pullToRefreshView.getRefreshableView();
 
+		pullToRefreshView.setHeaderLayout(new TmallHeaderLayout(myActivity));
+
 		RecyclerView.LayoutManager manager = new GridLayoutManager(myActivity, 1);
 		myRecyclerView.setLayoutManager(manager);
 
@@ -104,7 +123,8 @@ public class SuperAwesomeCardFragment extends Fragment {
 				SimpleDraweeView simpleDraweeView = (SimpleDraweeView)holder.getView(R.id.image_layout);
 				simpleDraweeView.setImageURI(data.getUrl());
 				holder.setText(R.id.layout_title,data.getTitle());
-				holder.setText(R.id.layout_message,data.getTitle());
+				holder.setText(R.id.layout_message,data.getMessage());
+				holder.setText(R.id.layout_checked,data.getClickNum());
 			}
 		};
 
@@ -146,9 +166,27 @@ public class SuperAwesomeCardFragment extends Fragment {
 	}
 
 	private void initRecyclerViewHead() {
-//		SimpleDraweeView simpleDraweeView = new SimpleDraweeView(myActivity);
-//		simpleDraweeView.set
-//		headerAndFooterWrapper.addHeaderView(simpleDraweeView);
+        ConvenientBanner convenientBanner = new ConvenientBanner(myActivity);
+        convenientBanner.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DensityUtils.dip2px(myActivity,160f)));
+        List<String> networkImages = Arrays.asList(images);
+        convenientBanner.setPages(new CBViewHolderCreator<NetworkImageHolderView>() {
+            @Override
+            public NetworkImageHolderView createHolder() {
+                return new NetworkImageHolderView();
+            }
+        },networkImages)
+        .setPageIndicator(new int[]{R.mipmap.ic_page_indicator, R.mipmap.ic_page_indicator_focused})
+                .setOnItemClickListener(new OnItemClickListener() {
+                    @Override
+                    public void onItemClick(int position) {
+
+                    }
+                })
+        //设置指示器的方向
+        .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.ALIGN_PARENT_RIGHT);
+        convenientBanner.startTurning(2000);
+		convenientBanner.setCanLoop(true);
+        headerAndFooterWrapper.addHeaderView(convenientBanner);
 	}
 
 	private void initEmptyView(){
@@ -165,10 +203,13 @@ public class SuperAwesomeCardFragment extends Fragment {
 		myListData = new ArrayList<>();
 		for(int i=0;i<10;i++){
 			NewsData mewsData = new NewsData();
-			mewsData.setUrl("");
+			mewsData.setUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537297302711&di=8dfb98ebb43d3d04b99e0493bad11dc1&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201312%2F05%2F20131205171759_jvyaZ.jpeg");
 			mewsData.setTitle(i + "setTitle " + "123");
 			mewsData.setMessage(i + "setMessage " + "123");
+			mewsData.setClickNum(i+"");
 			myListData.add(mewsData);
 		}
+
+
 	}
 }
