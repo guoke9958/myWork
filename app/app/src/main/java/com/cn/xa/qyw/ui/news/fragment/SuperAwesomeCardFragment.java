@@ -18,6 +18,7 @@ package com.cn.xa.qyw.ui.news.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -38,8 +39,10 @@ import com.cn.xa.qyw.ui.news.adapter.recyclerview.CommonAdapter;
 import com.cn.xa.qyw.ui.news.adapter.recyclerview.base.ViewHolder;
 import com.cn.xa.qyw.ui.news.adapter.recyclerview.wrapper.EmptyWrapper;
 import com.cn.xa.qyw.ui.news.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
+import com.cn.xa.qyw.ui.news.adapter.recyclerview.wrapper.LoadmoreWrapper;
 import com.cn.xa.qyw.ui.news.bean.NewsData;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.extras.recyclerview.PullToRefreshRecyclerView;
 
 import java.util.ArrayList;
@@ -63,6 +66,7 @@ public class SuperAwesomeCardFragment extends Fragment {
 	private ArrayList<NewsData> myListData;
 	private EmptyWrapper mEmptyWrapper;  //无数据空布局
 	private HeaderAndFooterWrapper headerAndFooterWrapper;  //添加头部和尾部布局
+	private LoadmoreWrapper mLoadMoreWrapper;
 
 	public static SuperAwesomeCardFragment newInstance(int position) {
 		SuperAwesomeCardFragment f = new SuperAwesomeCardFragment();
@@ -110,8 +114,35 @@ public class SuperAwesomeCardFragment extends Fragment {
 		headerAndFooterWrapper = new HeaderAndFooterWrapper(mAdapter);
          //初始化RecyclerView的头部 ,可以添加一个或多个头部
 		initRecyclerViewHead();
+		pullToRefreshView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<RecyclerView>() {
+			@Override
+			public void onRefresh(PullToRefreshBase<RecyclerView> refreshView) {
+				new Handler().postDelayed(new Runnable(){
+					@Override
+					public void run(){
+						// Call onRefreshComplete when the list has been refreshed.
+						pullToRefreshView.onRefreshComplete();
+					}
+				}, 1500);
+			}
+		});
 
-		myRecyclerView.setAdapter(headerAndFooterWrapper);
+		mLoadMoreWrapper = new LoadmoreWrapper(headerAndFooterWrapper);
+		mLoadMoreWrapper.setLoadMoreView(R.layout.default_loading);
+		mLoadMoreWrapper.setOnLoadMoreListener(new LoadmoreWrapper.OnLoadMoreListener(){
+			@Override
+			public void onLoadMoreRequested(){
+				new Handler().postDelayed(new Runnable(){
+					@Override
+					public void run(){
+						mLoadMoreWrapper.notifyDataSetChanged();
+						// Call onRefreshComplete when the list has been refreshed.
+						pullToRefreshView.onRefreshComplete();
+					}
+				}, 1500);
+			}
+		});
+		myRecyclerView.setAdapter(mLoadMoreWrapper);
 	}
 
 	private void initRecyclerViewHead() {

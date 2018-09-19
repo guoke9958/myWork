@@ -29,8 +29,8 @@ public abstract class CommonAdapter<T> extends BaseRecyclerAdapter<T, ViewHolder
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(mLayoutId, false);
-        ViewHolder holder = new ViewHolder(view);
+        View view = mInflater.inflate(mLayoutId,parent, false);
+        ViewHolder holder = new ViewHolder(mContext,view);
         return holder;
     }
 
