@@ -36,6 +36,7 @@ public class NewsColumnActivity extends DoctorBaseActivity {
 
     private String mGrade;
     private long mGradeId;
+    private List<HospitalGrade> listColumn = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,15 +45,34 @@ public class NewsColumnActivity extends DoctorBaseActivity {
         mGradeId = getIntent().getLongExtra("grade_id",0);
 
         mToolbarTitle.setText(mGrade);
-
         getNewsData();
+    }
+
+    private void getNewsData() {
+        try {
+            String URL =HttpAddress.GET_NEW_COLUMN;
+//            String URL = "http://172.16.99.248:8080/luckdraw/api/categorylist";
+            HttpUtils.getDataFromServer(URL, new NetworkResponseHandler() {
+                @Override
+                public void onFail(String messsage) {
+                    Log.e(mGrade + " messsage = ", messsage);
+                }
+
+                @Override
+                public void onSuccess(String data) {
+                    listColumn = JSONObject.parseArray(data, HospitalGrade.class);
+                    initView();
+                }
+            });
+        }catch (Exception e){
+            Log.e("",e.toString());
+        }
     }
 
     private void initView() {
         tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         pager = (ViewPager) findViewById(R.id.pager);
         adapter = new MyPagerAdapter(getSupportFragmentManager());
-
         pager.setAdapter(adapter);
 
         final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources()
@@ -62,38 +82,10 @@ public class NewsColumnActivity extends DoctorBaseActivity {
         tabs.setViewPager(pager);
     }
 
-    private void getNewsData() {
-        try {
-            HttpUtils.getDataFromServer(HttpAddress.GET_NEW_COLUMN, new NetworkResponseHandler() {
-                @Override
-                public void onFail(String messsage) {
-                    Log.e(mGrade + " messsage = ", messsage);
-                }
-
-                @Override
-                public void onSuccess(String data) {
-                    initView();
-                    List<HospitalGrade> list = JSONObject.parseArray(data, HospitalGrade.class);
-                    adapter.setListColumn(list);
-                }
-            });
-        }catch (Exception e){
-            Log.e("",e.toString());
-        }
-    }
-
     public class MyPagerAdapter extends FragmentPagerAdapter {
-
-
-        private List<HospitalGrade> listColumn = new ArrayList<>();
 
         public MyPagerAdapter(FragmentManager fm) {
             super(fm);
-        }
-
-        public void setListColumn(List<HospitalGrade> list){
-            listColumn.addAll(list);
-            notifyDataSetChanged();
         }
 
         @Override
@@ -111,7 +103,7 @@ public class NewsColumnActivity extends DoctorBaseActivity {
             if(position == 0){
                 return QuickContactFragment.newInstance();
             }else{
-                return SuperAwesomeCardFragment.newInstance(position);
+                return SuperAwesomeCardFragment.newInstance(listColumn.get(position));
             }
         }
 

@@ -141,5 +141,9 @@ public class HttpAddress {
      * 获取栏目列表
      */
     public static String GET_NEW_COLUMN = NET_HOST_LUCKDRAW + "categorylist";
+    /**
+     * 获取资讯信息列表
+     */
+    public static String GET_NEW_COLUMN_ARTICLEIST = NET_HOST_LUCKDRAW + "articleist";
 
 }

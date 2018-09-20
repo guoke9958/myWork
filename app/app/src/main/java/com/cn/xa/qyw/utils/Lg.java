@@ -23,6 +23,15 @@ public class Lg {
 
     }
 
+    public static void e(String name,String str) {
+
+        if (isDebug) {
+            Log.e(NAME +" "+ name, str);
+        }
+
+    }
+
+
     public static void e(Exception e){
         Writer writer = new StringWriter();
         PrintWriter printWriter = new PrintWriter(writer);

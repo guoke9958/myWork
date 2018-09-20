@@ -1,8 +1,9 @@
 package com.cn.xa.qyw.entiy;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class HospitalGrade {
+public class HospitalGrade implements Serializable {
 
 	private int id;
 	private String gradeName;
