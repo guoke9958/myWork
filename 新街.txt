@@ -1,0 +1,36 @@
+{
+	"createTime": 1532871816000,
+	"deleteFlag": 0,
+	"productDisc": "", //描述
+	"productId": 3,  //id
+	"productName": "3333",// 商品名称
+	"productNum": 111, 数量
+	"productPic": "upload/1532871811932.jpg",//图片
+	"productPrice": 50, //价格
+	"productType": 1, // 商品分类名称，这里只要最顶层分类就行了
+	"seller": { //商户信息
+		"area": {//商圈信息
+			"areaDisc": "1111",//商圈描述
+			"areaId": 1,
+			"areaName": "11",//商圈名称
+		},
+		"contacts": "1111", //联系人   
+		 
+		"sellerAddress": "111",//详细地址
+		"sellerId": 3,
+		"sellerName": "1111",//商户名称
+		"sellerRegion": "111",//地区
+		"tradId": 1,
+		
+		"user": {
+			"userId": 3,
+			"userName": "111",
+		}
+	},
+	
+	"updateTime": 1533452124000
+}
+
+不要的  deleteFlag  publishState  areaState 
+productType  将分类id改为 分类名称，这里的分类只要总分类
+商户的联系人电话

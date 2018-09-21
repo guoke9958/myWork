@@ -6,8 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.cn.xa.qyw.ui.news.adapter.recyclerview.base.ViewHolder;
 import com.cn.xa.qyw.ui.news.adapter.recyclerview.utils.WrapperUtils;
+import com.cn.xa.qyw.ui.news.wrapRecyclerview.base.ViewHolder;
 
 
 /**

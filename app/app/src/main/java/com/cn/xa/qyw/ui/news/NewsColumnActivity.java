@@ -50,11 +50,13 @@ public class NewsColumnActivity extends DoctorBaseActivity {
 
     private void getNewsData() {
         try {
+            showDialog();
             String URL =HttpAddress.GET_NEW_COLUMN;
 //            String URL = "http://172.16.99.248:8080/luckdraw/api/categorylist";
             HttpUtils.getDataFromServer(URL, new NetworkResponseHandler() {
                 @Override
                 public void onFail(String messsage) {
+                    dismissDialog();
                     Log.e(mGrade + " messsage = ", messsage);
                 }
 

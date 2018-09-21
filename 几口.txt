@@ -56,4 +56,12 @@ map.put("tumb","http://172.16.99.248:8080/luckdraw/"+list.get(i)[5]);
 map.put("videoState",list.get(i)[6]==null||list.get(i)[6].toString().equals(
 "")?0:1);  是否有视频  1有  0 无
 clickNum 点击量
+
+资讯详情 web/article/{articleId}.htm
+
+
+获取商品详情接口 返回商品相关信息，包含商品的基本信息，所在商圈（商圈名称，商圈地址），所在商户信息（商户名称，商户地址，商户联系人）
+
+ 
+
 	  

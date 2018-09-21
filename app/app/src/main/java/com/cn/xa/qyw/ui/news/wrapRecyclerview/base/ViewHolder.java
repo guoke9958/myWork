@@ -1,4 +1,4 @@
-package com.cn.xa.qyw.ui.news.wrapRecyclerview;
+package com.cn.xa.qyw.ui.news.wrapRecyclerview.base;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

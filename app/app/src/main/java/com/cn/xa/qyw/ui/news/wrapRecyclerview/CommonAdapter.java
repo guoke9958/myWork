@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cn.xa.qyw.ui.news.wrapRecyclerview.base.ViewHolder;
+
 import java.util.LinkedList;
 
 /**

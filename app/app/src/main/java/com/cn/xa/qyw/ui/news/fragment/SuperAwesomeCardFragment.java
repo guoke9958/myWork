@@ -32,32 +32,26 @@ import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.cn.xa.qyw.R;
-import com.cn.xa.qyw.datasource.HospitalAsyncDataSource;
-import com.cn.xa.qyw.entiy.AddDepartments;
 import com.cn.xa.qyw.entiy.HospitalGrade;
 import com.cn.xa.qyw.http.HttpAddress;
 import com.cn.xa.qyw.http.HttpUtils;
 import com.cn.xa.qyw.http.NetworkResponseHandler;
-import com.cn.xa.qyw.ui.main.fragment.HomeFragment;
-import com.cn.xa.qyw.ui.news.adapter.recyclerview.CommonAdapter;
-import com.cn.xa.qyw.ui.news.adapter.recyclerview.base.ViewHolder;
 import com.cn.xa.qyw.ui.news.adapter.recyclerview.wrapper.EmptyWrapper;
 import com.cn.xa.qyw.ui.news.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
-import com.cn.xa.qyw.ui.news.adapter.recyclerview.wrapper.LoadmoreWrapper;
 import com.cn.xa.qyw.ui.news.bean.NewsData;
+import com.cn.xa.qyw.ui.news.wrapRecyclerview.CommonAdapter;
+import com.cn.xa.qyw.ui.news.wrapRecyclerview.TmallFooterLayout;
 import com.cn.xa.qyw.ui.news.wrapRecyclerview.TmallHeaderLayout;
+import com.cn.xa.qyw.ui.news.wrapRecyclerview.base.ViewHolder;
 import com.cn.xa.qyw.utils.DensityUtils;
 import com.cn.xa.qyw.view.NetworkImageHolderView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.extras.recyclerview.PullToRefreshRecyclerView;
 import com.loopj.android.http.RequestParams;
-import com.shizhefei.mvc.IAsyncDataSource;
-import com.shizhefei.mvc.IDataAdapter;
-import com.shizhefei.mvc.MVCNormalHelper;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class SuperAwesomeCardFragment extends Fragment {
@@ -71,10 +65,9 @@ public class SuperAwesomeCardFragment extends Fragment {
 	private Activity myActivity;
 	private HospitalGrade hospitalGrade;  //栏目实体
 	private CommonAdapter<NewsData> mAdapter;
-	private ArrayList<NewsData> myListData = new ArrayList<>();
+	private LinkedList<NewsData> myListData = new LinkedList<>();
 	private EmptyWrapper mEmptyWrapper;  //无数据空布局
 	private HeaderAndFooterWrapper headerAndFooterWrapper;  //添加头部和尾部布局
-	private LoadmoreWrapper mLoadMoreWrapper;
 
 	private int pageSize = 1;
 
@@ -116,18 +109,20 @@ public class SuperAwesomeCardFragment extends Fragment {
 		myRecyclerView = pullToRefreshView.getRefreshableView();
 
 		pullToRefreshView.setHeaderLayout(new TmallHeaderLayout(myActivity));
+//		pullToRefreshView.setFooterLayout(new TmallFooterLayout(myActivity));
 
 		RecyclerView.LayoutManager manager = new GridLayoutManager(myActivity, 1);
 		myRecyclerView.setLayoutManager(manager);
 
 		mAdapter = new CommonAdapter<NewsData>(myActivity, R.layout.fragment_super_awesome_card_item, myListData){
 			@Override
-			protected void convert(ViewHolder holder, NewsData data, final int position){
+			protected void convert(ViewHolder holder, NewsData data, int position) {
 				SimpleDraweeView simpleDraweeView = (SimpleDraweeView)holder.getView(R.id.image_layout);
-				simpleDraweeView.setImageURI(data.getUrl());
+				simpleDraweeView.setImageURI(data.getTumb());
 				holder.setText(R.id.layout_title,data.getTitle());
-				holder.setText(R.id.layout_message,data.getMessage());
-				holder.setText(R.id.layout_checked,data.getClickNum());
+				holder.setText(R.id.layout_message,data.getSummary());
+				holder.setText(R.id.layout_checked,"浏览量：" + data.getClickNum());
+				holder.setText(R.id.layout_time, data.getUpdateTime() + "");
 			}
 		};
 
@@ -137,9 +132,9 @@ public class SuperAwesomeCardFragment extends Fragment {
 		headerAndFooterWrapper = new HeaderAndFooterWrapper(mAdapter);
 		//初始化RecyclerView的头部 ,可以添加一个或多个头部
 		initRecyclerViewHead();
-		pullToRefreshView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<RecyclerView>() {
+		pullToRefreshView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<RecyclerView>() {
 			@Override
-			public void onRefresh(PullToRefreshBase<RecyclerView> refreshView) {
+			public void onPullDownToRefresh(PullToRefreshBase<RecyclerView> refreshView) {
 				new Handler().postDelayed(new Runnable(){
 					@Override
 					public void run(){
@@ -149,13 +144,9 @@ public class SuperAwesomeCardFragment extends Fragment {
 					}
 				}, 1500);
 			}
-		});
 
-		mLoadMoreWrapper = new LoadmoreWrapper(headerAndFooterWrapper);
-		mLoadMoreWrapper.setLoadMoreView(R.layout.default_loading);
-		mLoadMoreWrapper.setOnLoadMoreListener(new LoadmoreWrapper.OnLoadMoreListener(){
 			@Override
-			public void onLoadMoreRequested(){
+			public void onPullUpToRefresh(PullToRefreshBase<RecyclerView> refreshView) {
 				new Handler().postDelayed(new Runnable(){
 					@Override
 					public void run(){
@@ -165,8 +156,10 @@ public class SuperAwesomeCardFragment extends Fragment {
 					}
 				}, 1500);
 			}
+
 		});
-		myRecyclerView.setAdapter(mLoadMoreWrapper);
+
+		myRecyclerView.setAdapter(headerAndFooterWrapper);
 	}
 
 	/**
@@ -212,11 +205,12 @@ public class SuperAwesomeCardFragment extends Fragment {
         params.put("id",hospitalGrade.getId());
         params.put("pageSize",pageSize);
         params.put("pageCount",10);
+
 		HttpUtils.getDataFromServer(HttpAddress.GET_NEW_COLUMN_ARTICLEIST, params, new NetworkResponseHandler() {
 			@Override
 			public void onFail(String messsage) {
 				pullToRefreshView.onRefreshComplete();
-				mLoadMoreWrapper.notifyDataSetChanged();
+				headerAndFooterWrapper.notifyDataSetChanged();
 				Log.e(hospitalGrade.getGradeName() + " messsage = ", messsage);
 			}
 
@@ -229,12 +223,12 @@ public class SuperAwesomeCardFragment extends Fragment {
                 }
                 if (pageSize == 1){
                     myListData.clear();
-                    mLoadMoreWrapper.notifyDataSetChanged();
+					headerAndFooterWrapper.notifyDataSetChanged();
                     myListData.addAll(list);
                 }else{
                     myListData.addAll(list);
                 }
-                mLoadMoreWrapper.notifyDataSetChanged();
+				headerAndFooterWrapper.notifyDataSetChanged();
 			}
 		});
 	}
