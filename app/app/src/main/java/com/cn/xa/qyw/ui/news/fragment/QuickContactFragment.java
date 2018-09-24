@@ -3,6 +3,7 @@ package com.cn.xa.qyw.ui.news.fragment;
 import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -16,7 +17,11 @@ import android.view.Window;
 import android.widget.TextView;
 
 import com.cn.xa.qyw.R;
+import com.cn.xa.qyw.entiy.HospitalGrade;
 import com.cn.xa.qyw.view.PagerSlidingTabStrip;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class  QuickContactFragment extends DialogFragment {
 
@@ -27,6 +32,11 @@ public class  QuickContactFragment extends DialogFragment {
 	public static QuickContactFragment newInstance() {
 		QuickContactFragment f = new QuickContactFragment();
 		return f;
+	}
+
+	@Override
+	public void onCreate(@Nullable Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 	}
 
 	@Override
@@ -80,7 +90,7 @@ public class  QuickContactFragment extends DialogFragment {
 		}
 	}
 
-	public class ContactPagerAdapter extends PagerAdapter implements PagerSlidingTabStrip.IconTabProvider {
+	public class ContactPagerAdapter extends PagerAdapter implements PagerSlidingTabStrip.IconTabProvider{
 
 		private final int[] ICONS = { R.drawable.ic_launcher_gplus, R.drawable.ic_launcher_gmail,
 				R.drawable.ic_launcher_gmaps, R.drawable.ic_launcher_chrome ,

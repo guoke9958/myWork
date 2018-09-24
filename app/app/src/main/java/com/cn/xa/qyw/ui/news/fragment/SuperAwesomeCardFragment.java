@@ -19,6 +19,7 @@ package com.cn.xa.qyw.ui.news.fragment;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -32,6 +33,7 @@ import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.cn.xa.qyw.R;
+import com.cn.xa.qyw.base.DoctorBaseActivity;
 import com.cn.xa.qyw.entiy.HospitalGrade;
 import com.cn.xa.qyw.http.HttpAddress;
 import com.cn.xa.qyw.http.HttpUtils;
@@ -40,7 +42,6 @@ import com.cn.xa.qyw.ui.news.adapter.recyclerview.wrapper.EmptyWrapper;
 import com.cn.xa.qyw.ui.news.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 import com.cn.xa.qyw.ui.news.bean.NewsData;
 import com.cn.xa.qyw.ui.news.wrapRecyclerview.CommonAdapter;
-import com.cn.xa.qyw.ui.news.wrapRecyclerview.TmallFooterLayout;
 import com.cn.xa.qyw.ui.news.wrapRecyclerview.TmallHeaderLayout;
 import com.cn.xa.qyw.ui.news.wrapRecyclerview.base.ViewHolder;
 import com.cn.xa.qyw.utils.DensityUtils;
@@ -54,7 +55,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-public class SuperAwesomeCardFragment extends Fragment {
+public class SuperAwesomeCardFragment extends DialogFragment {
 
 
 	private static final String ARG_POSITION = "position";
@@ -62,7 +63,6 @@ public class SuperAwesomeCardFragment extends Fragment {
 	private View view;
 	private PullToRefreshRecyclerView pullToRefreshView;
 	private RecyclerView myRecyclerView;
-	private Activity myActivity;
 	private HospitalGrade hospitalGrade;  //栏目实体
 	private CommonAdapter<NewsData> mAdapter;
 	private LinkedList<NewsData> myListData = new LinkedList<>();
@@ -79,6 +79,8 @@ public class SuperAwesomeCardFragment extends Fragment {
 			"http://www.qiuyiwang.com:8081/download/img/yd.jpg",
 			"http://www.qiuyiwang.com:8081/download/img/timg.jpg"
 	};
+	private ConvenientBanner convenientBanner;
+	private Activity myActivity;
 
 
 	public static SuperAwesomeCardFragment newInstance(HospitalGrade hospitalGrade) {
@@ -98,10 +100,34 @@ public class SuperAwesomeCardFragment extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		view  = LayoutInflater.from(getActivity()).inflate(R.layout.layout_super_awesome_card_fragment,container,false);
-		initView();
-		getNewsData();
+
+		try {
+			showDialog();
+			view  = LayoutInflater.from(getActivity()).inflate(R.layout.layout_super_awesome_card_fragment,container,false);
+			initView();
+			getNewsData();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return view;
+	}
+
+	@Override
+	public void onHiddenChanged(boolean hidden) {
+		super.onHiddenChanged(hidden);
+		try {
+			if (!hidden){
+				if (convenientBanner != null){
+					convenientBanner.startTurning(2000);
+				}
+			}else{
+				if (convenientBanner != null){
+					convenientBanner.stopTurning();
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void initView() {
@@ -109,7 +135,6 @@ public class SuperAwesomeCardFragment extends Fragment {
 		myRecyclerView = pullToRefreshView.getRefreshableView();
 
 		pullToRefreshView.setHeaderLayout(new TmallHeaderLayout(myActivity));
-//		pullToRefreshView.setFooterLayout(new TmallFooterLayout(myActivity));
 
 		RecyclerView.LayoutManager manager = new GridLayoutManager(myActivity, 1);
 		myRecyclerView.setLayoutManager(manager);
@@ -166,7 +191,7 @@ public class SuperAwesomeCardFragment extends Fragment {
 	 * 轮播图布局
 	 */
 	private void initRecyclerViewHead() {
-		ConvenientBanner convenientBanner = new ConvenientBanner(myActivity);
+		convenientBanner = new ConvenientBanner(myActivity);
 		convenientBanner.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DensityUtils.dip2px(myActivity,160f)));
 		List<String> networkImages = Arrays.asList(images);
 		convenientBanner.setPages(new CBViewHolderCreator<NetworkImageHolderView>() {
@@ -201,14 +226,14 @@ public class SuperAwesomeCardFragment extends Fragment {
 	 * 数据初始化
 	 */
 	public void getNewsData() {
-        RequestParams params = new RequestParams();
-        params.put("id",hospitalGrade.getId());
-        params.put("pageSize",pageSize);
-        params.put("pageCount",10);
-
+		RequestParams params = new RequestParams();
+		params.put("id",hospitalGrade.getId());
+		params.put("pageSize",pageSize);
+		params.put("pageCount",10);
 		HttpUtils.getDataFromServer(HttpAddress.GET_NEW_COLUMN_ARTICLEIST, params, new NetworkResponseHandler() {
 			@Override
 			public void onFail(String messsage) {
+				dismissDialog();
 				pullToRefreshView.onRefreshComplete();
 				headerAndFooterWrapper.notifyDataSetChanged();
 				Log.e(hospitalGrade.getGradeName() + " messsage = ", messsage);
@@ -216,20 +241,37 @@ public class SuperAwesomeCardFragment extends Fragment {
 
 			@Override
 			public void onSuccess(String data) {
-                pullToRefreshView.onRefreshComplete();
-                List<NewsData> list = JSONObject.parseArray(data, NewsData.class);
-                if (list.size() == 0){
-                    return;
-                }
-                if (pageSize == 1){
-                    myListData.clear();
+				dismissDialog();
+				pullToRefreshView.onRefreshComplete();
+				List<NewsData> list = JSONObject.parseArray(data, NewsData.class);
+				if (list.size() == 0){
+					return;
+				}
+				if (pageSize == 1){
+					myListData.clear();
 					headerAndFooterWrapper.notifyDataSetChanged();
-                    myListData.addAll(list);
-                }else{
-                    myListData.addAll(list);
-                }
+					myListData.addAll(list);
+				}else{
+					myListData.addAll(list);
+				}
 				headerAndFooterWrapper.notifyDataSetChanged();
 			}
 		});
+	}
+
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		if (convenientBanner != null){
+			convenientBanner.stopTurning();
+		}
+	}
+
+	public void showDialog(){
+		((DoctorBaseActivity)myActivity).showDialog();
+	}
+
+	public void dismissDialog(){
+		((DoctorBaseActivity)myActivity).dismissDialog();
 	}
 }

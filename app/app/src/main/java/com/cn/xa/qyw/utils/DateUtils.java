@@ -18,6 +18,15 @@ public class DateUtils {
         return df.format(date);
     }
 
+    /**
+     * long类型时间格式化
+     */
+    public static String convertToTime(long time,String typeTime) {
+        SimpleDateFormat df = new SimpleDateFormat(typeTime);
+        Date date = new Date(time);
+        return df.format(date);
+    }
+
     public static long getCurrentTimeInLong() {
         return System.currentTimeMillis();
     }
@@ -47,5 +56,7 @@ public class DateUtils {
         Date date = new Date(time);
         return df.format(date);
     }
+
+
 
 }

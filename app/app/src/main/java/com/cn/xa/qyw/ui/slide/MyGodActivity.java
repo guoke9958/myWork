@@ -30,13 +30,14 @@ import com.cn.xa.qyw.utils.SHA1;
 import com.cn.xa.qyw.utils.ToastUtils;
 
 /**
- * 添加支付密码
+ * 我的账户
  * Created by Administrator on 2016/7/26.
  */
 public class MyGodActivity extends SlideBaseActivity {
 
     private View mChongZhi;
     private View mTiXian;
+    private View pocketAccount;
     private MyGodAdapter mAdapter;
     private ListView mListView;
     private DialogWidget mDialogWidget;
@@ -56,6 +57,9 @@ public class MyGodActivity extends SlideBaseActivity {
         });
     }
 
+    /**
+     * 资金充值
+     */
     private void getUserPayPwd() {
         showDialog();
         HttpUtils.postDataFromServer(HttpAddress.GET_USER_PAY_PWD, DoctorApplication.mUser.getUserId(), new NetworkResponseHandler() {
@@ -79,8 +83,11 @@ public class MyGodActivity extends SlideBaseActivity {
 
     }
 
+    /**
+     *   检测是否添加支付密码
+     * @return
+     */
     protected View getDecorViewDialog() {
-
         // TODO Auto-generated method stub
         return PayPasswordView.getInstance("", "请先设置支付密码", true, "*支付密码用于打赏，提现等资金安全性操作，请您牢记", this, new PayPasswordView.OnPayListener() {
 
@@ -99,6 +106,10 @@ public class MyGodActivity extends SlideBaseActivity {
         }).getView();
     }
 
+    /**
+     * 添加支付密码联网
+     * @param pwd
+     */
     private void addPayPwd(String pwd) {
         showDialog();
 
@@ -126,6 +137,7 @@ public class MyGodActivity extends SlideBaseActivity {
     private void initView() {
         mChongZhi = findViewById(R.id.chongzhi);
         mTiXian = findViewById(R.id.tixian);
+        pocketAccount = findViewById(R.id.pocket_account);
         mListView = (ListView) findViewById(R.id.my_account_listview);
     }
 
@@ -159,6 +171,7 @@ public class MyGodActivity extends SlideBaseActivity {
     private void initListener() {
         mChongZhi.setOnClickListener(this);
         mTiXian.setOnClickListener(this);
+        pocketAccount.setOnClickListener(this);
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -192,6 +205,8 @@ public class MyGodActivity extends SlideBaseActivity {
             getUserPayPwd();
         } else if (id == R.id.tixian) {
             startActivity(getNewIntent(WithDrawAccountActivity.class));
+        } else if (id == R.id.pocket_account){
+            startActivity(getNewIntent(PocketAccountActivity.class));
         }
     }
 

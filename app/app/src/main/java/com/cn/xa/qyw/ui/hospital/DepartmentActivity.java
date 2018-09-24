@@ -20,6 +20,7 @@ import com.cn.xa.qyw.base.DoctorBaseActivity;
 import com.cn.xa.qyw.datasource.DepartmentAsyncDataSource;
 import com.cn.xa.qyw.entiy.SimpleDoctor;
 import com.cn.xa.qyw.ui.doctor.DoctorDetailActivity;
+import com.cn.xa.qyw.ui.order.CommodityDetailsActivity;
 import com.cn.xa.qyw.utils.InputUtil;
 import com.cn.xa.qyw.utils.Lg;
 import com.shizhefei.mvc.IDataAdapter;
@@ -57,7 +58,7 @@ public class DepartmentActivity extends DoctorBaseActivity {
         mDepartmentId = getIntent().getIntExtra("department_id", 0);
 
         if ("13".equals(mGradeId)){
-            mToolbarTitle.setText("通慧商品");
+            mToolbarTitle.setText(mGrade);
         }else{
             mToolbarTitle.setText(departmentName);
         }
@@ -66,7 +67,7 @@ public class DepartmentActivity extends DoctorBaseActivity {
         initData();
         initListener();
 
-        if("生活服务".equals(mGrade)||"学校".equals(mGrade)||"APP客服".equals(mGrade) || "通慧商城".equals(mGrade)){
+        if("生活服务".equals(mGrade)||"学校".equals(mGrade)||"APP客服".equals(mGrade) || "13".equals(mGradeId)){
             searchImage.setVisibility(View.GONE);
         }else{
             searchImage.setVisibility(View.VISIBLE);
@@ -122,15 +123,24 @@ public class DepartmentActivity extends DoctorBaseActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (!"13".equals(mGradeId) || !"通慧商城".equals("mGrade")){
-                    Intent intent = getNewIntent(DoctorDetailActivity.class);
-                    SimpleDoctor item = mAdapter.getItem(position);
-                    intent.putExtra("doctor", item);
-                    intent.putExtra("grade", mGrade);
-                    intent.putExtra("grade_id",mGradeId);
-                    startActivity(intent);
-                }else{
-                    showToast("此功能暂未开放");
+                try {
+                    if (!"13".equals(mGradeId)){
+                        Intent intent = getNewIntent(DoctorDetailActivity.class);
+                        SimpleDoctor item = mAdapter.getItem(position);
+                        intent.putExtra("doctor", item);
+                        intent.putExtra("grade", mGrade);
+                        intent.putExtra("grade_id",mGradeId);
+                        startActivity(intent);
+                    }else{
+                        Intent intent = getNewIntent(CommodityDetailsActivity.class);
+                        SimpleDoctor item = mAdapter.getItem(position);
+                        intent.putExtra("doctor", item);
+                        intent.putExtra("grade", mGrade);
+                        intent.putExtra("grade_id",mGradeId);
+                        startActivity(intent);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
 
             }

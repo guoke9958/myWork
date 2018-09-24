@@ -1,4 +1,4 @@
-
+﻿
 	
 接口整体返回格式：
 	
@@ -62,6 +62,24 @@ clickNum 点击量
 
 获取商品详情接口 返回商品相关信息，包含商品的基本信息，所在商圈（商圈名称，商圈地址），所在商户信息（商户名称，商户地址，商户联系人）
 
- 
+ /api/productdetail  get
+
+ map.put("productDisc", entity.getProductDisc());//商品描述
+		   map.put("productId", entity.getProductId());//商品Id
+		   
+		   map.put("productName", entity.getProductName());//商品名称
+		   map.put("productNum", entity.getProductNum());//商品数量
+		   map.put("productPic", entity.getProductPic());//商品图片
+		   map.put("productPrice", entity.getProductPrice());//商品价格
+		   map.put("areaName", entity.getSeller().getArea().getAreaName());//商圈名成
+		   map.put("areaId", entity.getSeller().getTradId());//商圈Id
+		   map.put("contacts", entity.getSeller().getContacts());//商户联系人
+		   map.put("sellerAddress", entity.getSeller().getSellerAddress());//商户地址
+		   map.put("sellerId", entity.getSellerId());//商户id
+		   map.put("sellerName", entity.getSeller().getSellerName());//商户名
+		   map.put("sellerPhone", entity.getSeller().getSellerPhone());//商户电话
+		   map.put("typeName", entity.getType().getTypeName());//商品类型
+		   map.put("updateTime", entity.getUpdateTime());//更新时间
+
 
 	  

@@ -19,8 +19,8 @@ public class HttpAddress {
 
     public static final String NET_HOST = HOST_2 + "YHT/api/";
 
-//    public static final String NET_HOST_LUCKDRAW = HOST_2 + "luckdraw/api/";
-    public static final String NET_HOST_LUCKDRAW = HOST_2_text + "luckdraw/api/";
+    public static final String NET_HOST_LUCKDRAW = HOST_2 + "luckdraw/api/";
+//    public static final String NET_HOST_LUCKDRAW = HOST_2_text + "luckdraw/api/";
 
     public static final String PHOTO_URL = HOST_3;
 
@@ -147,5 +147,13 @@ public class HttpAddress {
      * 获取资讯信息列表
      */
     public static String GET_NEW_COLUMN_ARTICLEIST = NET_HOST_LUCKDRAW + "articleist";
+    /**
+     * 获取资讯信息详情  资讯详情 web/article/{articleId}.htm
+     */
+//    public static String GET_NEW_COLUMN = NET_HOST_LUCKDRAW + "articleist";
+    /**
+     * 获取商品详情
+     */
+    public static String GET_NEW_COLUMN_PRODUCTDETAIL = NET_HOST_LUCKDRAW + "/productdetail";
 
 }

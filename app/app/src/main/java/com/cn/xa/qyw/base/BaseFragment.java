@@ -10,10 +10,11 @@ import android.view.View;
  */
 public class BaseFragment extends Fragment implements View.OnClickListener{
 
-    private Activity mActivity;
+    public Activity myActivity;
 
     @Override
     public void onClick(View v) {
-      mActivity = getActivity();
+        myActivity = getActivity();
     }
+
 }

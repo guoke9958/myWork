@@ -5,7 +5,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 
-import com.cn.xa.qyw.base.BaseFragment;
 
 import java.util.ArrayList;
 

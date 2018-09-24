@@ -52,7 +52,6 @@ public class NewsColumnActivity extends DoctorBaseActivity {
         try {
             showDialog();
             String URL =HttpAddress.GET_NEW_COLUMN;
-//            String URL = "http://172.16.99.248:8080/luckdraw/api/categorylist";
             HttpUtils.getDataFromServer(URL, new NetworkResponseHandler() {
                 @Override
                 public void onFail(String messsage) {
@@ -64,6 +63,7 @@ public class NewsColumnActivity extends DoctorBaseActivity {
                 public void onSuccess(String data) {
                     listColumn = JSONObject.parseArray(data, HospitalGrade.class);
                     initView();
+                    dismissDialog();
                 }
             });
         }catch (Exception e){
@@ -86,19 +86,28 @@ public class NewsColumnActivity extends DoctorBaseActivity {
 
     public class MyPagerAdapter extends FragmentPagerAdapter {
 
+        private String[] strings;
+
+
         public MyPagerAdapter(FragmentManager fm) {
             super(fm);
+            strings = new String[listColumn.size()];
+            for(int i=0;i<listColumn.size();i++){
+                strings[i] = listColumn.get(i).getGradeName();
+            }
+
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return listColumn.get(position).getGradeName();
+            return strings[position];
         }
 
         @Override
         public int getCount() {
-            return listColumn.size();
+            return strings.length;
         }
+
 
         @Override
         public Fragment getItem(int position) {

@@ -16,6 +16,15 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/pocket_account"
+            android:layout_width="95dp"
+            android:layout_height="37dp"
+            android:background="@drawable/ellipse_btn_orange_tixian"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/white"
+            android:text="通惠账户" />
+
+        <Button
             android:id="@+id/chongzhi"
             android:layout_width="95dp"
             android:layout_height="37dp"
