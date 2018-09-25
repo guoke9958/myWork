@@ -17,6 +17,7 @@
 package com.cn.xa.qyw.ui.news.fragment;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.DialogFragment;
@@ -38,12 +39,15 @@ import com.cn.xa.qyw.entiy.HospitalGrade;
 import com.cn.xa.qyw.http.HttpAddress;
 import com.cn.xa.qyw.http.HttpUtils;
 import com.cn.xa.qyw.http.NetworkResponseHandler;
+import com.cn.xa.qyw.ui.news.NewsDetailActivity;
 import com.cn.xa.qyw.ui.news.adapter.recyclerview.wrapper.EmptyWrapper;
 import com.cn.xa.qyw.ui.news.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 import com.cn.xa.qyw.ui.news.bean.NewsData;
+import com.cn.xa.qyw.ui.news.wrapRecyclerview.BaseRecyclerAdapter;
 import com.cn.xa.qyw.ui.news.wrapRecyclerview.CommonAdapter;
 import com.cn.xa.qyw.ui.news.wrapRecyclerview.TmallHeaderLayout;
 import com.cn.xa.qyw.ui.news.wrapRecyclerview.base.ViewHolder;
+import com.cn.xa.qyw.utils.DateUtils;
 import com.cn.xa.qyw.utils.DensityUtils;
 import com.cn.xa.qyw.view.NetworkImageHolderView;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -100,9 +104,7 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
 		try {
-			showDialog();
 			view  = LayoutInflater.from(getActivity()).inflate(R.layout.layout_super_awesome_card_fragment,container,false);
 			initView();
 			getNewsData();
@@ -147,7 +149,7 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 				holder.setText(R.id.layout_title,data.getTitle());
 				holder.setText(R.id.layout_message,data.getSummary());
 				holder.setText(R.id.layout_checked,"浏览量：" + data.getClickNum());
-				holder.setText(R.id.layout_time, data.getUpdateTime() + "");
+				holder.setText(R.id.layout_time, DateUtils.convertToTime(data.getUpdateTime())+ "");
 			}
 		};
 
@@ -185,6 +187,19 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 		});
 
 		myRecyclerView.setAdapter(headerAndFooterWrapper);
+		mAdapter.setOnRecyclerViewListener(new BaseRecyclerAdapter.OnRecyclerViewListener() {
+			@Override
+			public void onItemClick(View view, int position) {
+				Intent intent = new Intent(myActivity, NewsDetailActivity.class);
+				intent.putExtra("id", mAdapter.getItemArrayLists().get(position).getArticleId());
+				myActivity.startActivity(intent);
+			}
+
+			@Override
+			public boolean onItemLongClick(int position) {
+				return false;
+			}
+		});
 	}
 
 	/**
@@ -204,7 +219,9 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 				.setOnItemClickListener(new OnItemClickListener() {
 					@Override
 					public void onItemClick(int position) {
-
+//						Intent intent = new Intent(myActivity, NewsDetailActivity.class);
+//						intent.putExtra("id", id);
+//						myActivity.startActivity(intent);
 					}
 				})
 				//设置指示器的方向
@@ -233,7 +250,6 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 		HttpUtils.getDataFromServer(HttpAddress.GET_NEW_COLUMN_ARTICLEIST, params, new NetworkResponseHandler() {
 			@Override
 			public void onFail(String messsage) {
-				dismissDialog();
 				pullToRefreshView.onRefreshComplete();
 				headerAndFooterWrapper.notifyDataSetChanged();
 				Log.e(hospitalGrade.getGradeName() + " messsage = ", messsage);
@@ -241,7 +257,6 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 
 			@Override
 			public void onSuccess(String data) {
-				dismissDialog();
 				pullToRefreshView.onRefreshComplete();
 				List<NewsData> list = JSONObject.parseArray(data, NewsData.class);
 				if (list.size() == 0){
@@ -265,13 +280,5 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 		if (convenientBanner != null){
 			convenientBanner.stopTurning();
 		}
-	}
-
-	public void showDialog(){
-		((DoctorBaseActivity)myActivity).showDialog();
-	}
-
-	public void dismissDialog(){
-		((DoctorBaseActivity)myActivity).dismissDialog();
 	}
 }

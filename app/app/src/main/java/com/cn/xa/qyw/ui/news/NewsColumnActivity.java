@@ -29,11 +29,6 @@ import java.util.List;
  */
 public class NewsColumnActivity extends DoctorBaseActivity {
 
-
-    private PagerSlidingTabStrip tabs;
-    private ViewPager pager;
-    private MyPagerAdapter adapter;
-
     private String mGrade;
     private long mGradeId;
     private List<HospitalGrade> listColumn = new ArrayList<>();
@@ -41,6 +36,7 @@ public class NewsColumnActivity extends DoctorBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         mGrade = getIntent().getStringExtra("grade");
         mGradeId = getIntent().getLongExtra("grade_id",0);
 
@@ -72,22 +68,44 @@ public class NewsColumnActivity extends DoctorBaseActivity {
     }
 
     private void initView() {
-        tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
-        pager = (ViewPager) findViewById(R.id.pager);
-        adapter = new MyPagerAdapter(getSupportFragmentManager());
-        pager.setAdapter(adapter);
+        // 初始化 ViewPager 和 Adapter
+        ViewPager pager = (ViewPager) findViewById(R.id.pager);
+        pager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
 
         final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources()
                 .getDisplayMetrics());
         pager.setPageMargin(pageMargin);
 
+        // 绑定 PagerSlidingTabStrip 到 ViewPager 上
+        PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
         tabs.setViewPager(pager);
+
+        setTabls(tabs);
+    }
+
+    /**
+     * 根据你的需要修改下面的值
+     * pstsIndicatorColor 滑动指示器的颜色
+     * pstsUnderlineColor 整个 view【PagerSlidingTabStrip】下划线的颜色
+     * pstsDividerColor tabs 之间分割线的颜色
+     * pstsIndicatorHeight 滑动指示器的高度
+     * pstsUnderlineHeight 整个 View【PagerSlidingTabStrip】下滑线的高度
+     * pstsDivviderPadding 分割线上部、下部的内间距
+     * pstsTabPaddingLeftRight 每个 tab 左右内间距
+     * pstsScrollOffset 选中 tab 的滑动的距离
+     * pstsTabBackground 每个 tab 的背景图片，使用 StateListDrawable
+     * pstsShouldExpand 如果设置为 true，每个 tab 的宽度拥有相同的权重
+     * pstsTextAllCaps 如果设置为 true，所有的 tab 字体转为大写
+     */
+    private void setTabls(PagerSlidingTabStrip tabs) {
+        tabs.setIndicatorColorResource(R.color.colorPrimaryDark);  //滑动指示器颜色
+        tabs.setUnderlineColorResource(R.color.colorAccent);  //整个 view【PagerSlidingTabStrip】下划线的颜色
+        tabs.setDividerColorResource(R.color.colorAccent);  //tabs 之间分割线的颜色
     }
 
     public class MyPagerAdapter extends FragmentPagerAdapter {
 
         private String[] strings;
-
 
         public MyPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -95,7 +113,6 @@ public class NewsColumnActivity extends DoctorBaseActivity {
             for(int i=0;i<listColumn.size();i++){
                 strings[i] = listColumn.get(i).getGradeName();
             }
-
         }
 
         @Override
@@ -117,7 +134,6 @@ public class NewsColumnActivity extends DoctorBaseActivity {
                 return SuperAwesomeCardFragment.newInstance(listColumn.get(position));
             }
         }
-
     }
 
     @Override

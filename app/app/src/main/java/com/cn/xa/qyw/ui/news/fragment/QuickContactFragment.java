@@ -115,7 +115,7 @@ public class  QuickContactFragment extends DialogFragment {
 		public Object instantiateItem(ViewGroup container, int position) {
 			// looks a little bit messy here
 			TextView v = new TextView(getActivity());
-			v.setBackgroundResource(R.color.background_window);
+			v.setBackgroundResource(R.color.white);
 			switch (position){
 				case 0:
 					v.setText("富迪肽" +"\n"+
