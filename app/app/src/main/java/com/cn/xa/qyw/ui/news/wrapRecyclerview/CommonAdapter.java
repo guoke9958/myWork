@@ -34,8 +34,25 @@ public abstract class CommonAdapter<T> extends BaseRecyclerAdapter<T, ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         convert(holder, mDatas.get(position),position);
+        holder.setOnClickListener(holder.getConvertView(), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onRecyclerViewListener != null){
+                    onRecyclerViewListener.onItemClick(holder.getConvertView(),position);
+                }
+            }
+        });
+        holder.setOnLongClickListener(holder.getConvertView(), new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (onRecyclerViewListener != null){
+                    onRecyclerViewListener.onItemLongClick(position);
+                }
+                return false;
+            }
+        });
     }
 
     protected abstract void convert(ViewHolder holder, T t, int position);

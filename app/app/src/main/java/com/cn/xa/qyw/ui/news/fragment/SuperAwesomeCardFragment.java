@@ -39,6 +39,7 @@ import com.cn.xa.qyw.entiy.HospitalGrade;
 import com.cn.xa.qyw.http.HttpAddress;
 import com.cn.xa.qyw.http.HttpUtils;
 import com.cn.xa.qyw.http.NetworkResponseHandler;
+import com.cn.xa.qyw.ui.news.NewsColumnDrtailActivity;
 import com.cn.xa.qyw.ui.news.NewsDetailActivity;
 import com.cn.xa.qyw.ui.news.adapter.recyclerview.wrapper.EmptyWrapper;
 import com.cn.xa.qyw.ui.news.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
@@ -187,10 +188,11 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 		});
 
 		myRecyclerView.setAdapter(headerAndFooterWrapper);
+
 		mAdapter.setOnRecyclerViewListener(new BaseRecyclerAdapter.OnRecyclerViewListener() {
 			@Override
 			public void onItemClick(View view, int position) {
-				Intent intent = new Intent(myActivity, NewsDetailActivity.class);
+				Intent intent = new Intent(myActivity, NewsColumnDrtailActivity.class);
 				intent.putExtra("id", mAdapter.getItemArrayLists().get(position).getArticleId());
 				myActivity.startActivity(intent);
 			}

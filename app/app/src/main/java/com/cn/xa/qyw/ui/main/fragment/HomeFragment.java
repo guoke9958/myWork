@@ -121,8 +121,6 @@ public class HomeFragment extends BaseFragment implements OnItemClickListener {
                     Intent intent = new Intent(getActivity(), DepartmentActivity.class);
                     intent.putExtra("department_id", department.getId());
                     intent.putExtra("department_name", department.getDepartmentsName());
-                    intent.putExtra("grade",department.getDepartmentsName());
-                    intent.putExtra("grade_id",department.getId());
                     getActivity().startActivity(intent);
                 }
 

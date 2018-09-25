@@ -22,7 +22,7 @@ public class NewsColumnDrtailActivity extends DoctorBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mToolbarTitle.setText("新闻详情");
+        mToolbarTitle.setText("详情");
         int newsId = getIntent().getIntExtra("id", 0);
 
         initView();
@@ -71,6 +71,6 @@ public class NewsColumnDrtailActivity extends DoctorBaseActivity {
 
     @Override
     public int getChildLayoutId() {
-        return R.layout.activity_news_column;
+        return R.layout.activity_news_column_drtail;
     }
 }

@@ -270,6 +270,10 @@
             android:name=".ui.chat.OpenHongBaoActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".ui.news.NewsColumnDrtailActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".ui.slide.PocketAccountActivity"
             android:screenOrientation="portrait" />
         <activity
