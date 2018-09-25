@@ -16,6 +16,7 @@ import com.cn.xa.qyw.http.NetworkResponseHandler;
 import com.cn.xa.qyw.ui.news.wrapRecyclerview.base.ViewHolder;
 import com.cn.xa.qyw.utils.DateUtils;
 import com.cn.xa.qyw.utils.ToastUtils;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.loopj.android.http.RequestParams;
 
 public class CommodityDetailsActivity extends DoctorBaseActivity {
@@ -32,6 +33,7 @@ public class CommodityDetailsActivity extends DoctorBaseActivity {
     private TextView productAddress;
     private TextView productUpdateTime;
     private TextView productDisc;
+    private SimpleDraweeView doctorPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,9 +71,11 @@ public class CommodityDetailsActivity extends DoctorBaseActivity {
     }
 
     private void initViewData(CommodityOrderData commodityOrderData) {
+        doctorPhoto.setImageURI(commodityOrderData.getProductPic());
+
         productName.setText("商品名称：" + commodityOrderData.getProductName());
         productPrice.setText("商品价格：" + commodityOrderData.getProductPrice() + "元");
-        productNum.setText("商品数量：" + commodityOrderData.getProductNum());
+        productNum.setText("商品数量：" + commodityOrderData.getProductNum() +" "+ commodityOrderData.getSpecifications());
         productTypeName.setText("商品分类：" + commodityOrderData.getTypeName());
 
         productOrigin.setText("来源：" + commodityOrderData.getAreaName() + "--" + commodityOrderData.getSellerName());
@@ -84,6 +88,7 @@ public class CommodityDetailsActivity extends DoctorBaseActivity {
     private void initView() {
         mParent = findViewById(R.id.parent);
         mParent.setVisibility(View.GONE);
+        doctorPhoto = (SimpleDraweeView)findViewById(R.id.doctor_photo);
         productName = (TextView)findViewById(R.id.product_name);
         productPrice = (TextView)findViewById(R.id.product_price);
         productNum = (TextView)findViewById(R.id.product_num);

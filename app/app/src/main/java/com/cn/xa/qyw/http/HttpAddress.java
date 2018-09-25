@@ -150,7 +150,7 @@ public class HttpAddress {
     /**
      * 获取资讯信息详情  资讯详情 web/article/{articleId}.htm
      */
-//    public static String GET_NEW_COLUMN = NET_HOST_LUCKDRAW + "articleist";
+    public static String GET_NEW_WEB_ARTICLE = NET_HOST_LUCKDRAW + "web/article/";
     /**
      * 获取商品详情
      */
