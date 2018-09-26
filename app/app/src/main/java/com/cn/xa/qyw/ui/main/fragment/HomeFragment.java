@@ -116,11 +116,14 @@ public class HomeFragment extends BaseFragment implements OnItemClickListener {
                     Intent intent = new Intent(getActivity(), DepartmentAllActivity.class);
                     intent.putExtra("department_all", JSONObject.toJSONString(mData));
                     intent.putExtra("grade","");
+                    intent.putExtra("grade_id","1");
                     startActivity(intent);
                 } else {
                     Intent intent = new Intent(getActivity(), DepartmentActivity.class);
                     intent.putExtra("department_id", department.getId());
                     intent.putExtra("department_name", department.getDepartmentsName());
+                    intent.putExtra("grade","三级医院");
+                    intent.putExtra("grade_id","1");
                     getActivity().startActivity(intent);
                 }
 

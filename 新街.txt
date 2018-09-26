@@ -34,3 +34,6 @@
 不要的  deleteFlag  publishState  areaState 
 productType  将分类id改为 分类名称，这里的分类只要总分类
 商户的联系人电话
+
+新增接口：
+    

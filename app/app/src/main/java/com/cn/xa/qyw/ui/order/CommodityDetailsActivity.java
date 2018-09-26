@@ -19,6 +19,10 @@ import com.cn.xa.qyw.utils.ToastUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.loopj.android.http.RequestParams;
 
+
+/**
+ * 商品详情
+ */
 public class CommodityDetailsActivity extends DoctorBaseActivity {
 
     private SimpleDoctor mDoctor;

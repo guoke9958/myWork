@@ -148,9 +148,9 @@ public class HttpAddress {
      */
     public static String GET_NEW_COLUMN_ARTICLEIST = NET_HOST_LUCKDRAW + "articleist";
     /**
-     * 获取资讯信息详情  资讯详情 web/article/{articleId}.htm
+     * 获取资讯信息详情  资讯详情 http://115.230.124.94:8081/luckdraw/web/article/{articleId}.htm
      */
-    public static String GET_NEW_WEB_ARTICLE = NET_HOST_LUCKDRAW + "web/article/";
+    public static String GET_NEW_WEB_ARTICLE = HOST_2_text + "luckdraw/web/article/{articleId}.htm";
     /**
      * 获取商品详情
      */

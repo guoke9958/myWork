@@ -28,7 +28,7 @@ public class CommodityOrderData {
     private int productNum;  //商品数量
     private String productPic; //商品图片
     private int productPrice; //商品价格
-    private int specifications; //商品规格
+    private String specifications; //商品规格
     private String sellerAddress; //商户地址
     private int sellerId;   //商户id
     private String sellerName; //商户名
@@ -36,11 +36,11 @@ public class CommodityOrderData {
     private String typeName;  //商品类型
     private long updateTime; //更新时间
 
-    public int getSpecifications() {
+    public String getSpecifications() {
         return specifications;
     }
 
-    public void setSpecifications(int specifications) {
+    public void setSpecifications(String specifications) {
         this.specifications = specifications;
     }
 

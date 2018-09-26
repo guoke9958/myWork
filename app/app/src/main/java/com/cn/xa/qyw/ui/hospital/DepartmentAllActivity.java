@@ -33,8 +33,8 @@ public class DepartmentAllActivity extends DoctorBaseActivity {
     private DepartmentAdapter mAdapter;
     private ScrollView mScrollView;
     private List<AddDepartments> mData = new ArrayList<>();
-    private String mGrade;
-    private String mGradeId;
+    private String mGrade;     //栏目名称
+    private String mGradeId;  //栏目id
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +60,8 @@ public class DepartmentAllActivity extends DoctorBaseActivity {
                 Intent intent = getNewIntent(DepartmentActivity.class);
                 intent.putExtra("department_id",department.getId());
                 intent.putExtra("department_name",department.getDepartmentsName());
-                intent.putExtra("grade",department.getDepartmentsName());
-                intent.putExtra("grade_id",department.getId());
+                intent.putExtra("grade",(StringUtils.isEmpty(mGrade)?"三级医院":mGrade));  //app栏目名称
+                intent.putExtra("grade_id",mGradeId); //app栏目id
                 startActivity(intent);
             }
         });

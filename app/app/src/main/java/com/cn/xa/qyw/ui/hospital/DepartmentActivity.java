@@ -46,26 +46,24 @@ public class DepartmentActivity extends DoctorBaseActivity {
     private ListView mSearchResultList;
     private TextView mTvNoResult;
     private HospitalDoctorAdapter mSerchResultAdapter;
-    private String mGrade;
+    private String mGrade;  //app栏目
+    private String mGradeId; //app栏目id
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String departmentName = getIntent().getStringExtra("department_name");
-        mGrade = departmentName;
         mDepartmentId = getIntent().getIntExtra("department_id", 0);
+        mGrade = getIntent().getStringExtra("grade");
+        mGradeId = getIntent().getStringExtra("grade_id");
 
-        if ("13".equals(mDepartmentId + "")){
-            mToolbarTitle.setText(mGrade);
-        }else{
-            mToolbarTitle.setText(departmentName);
-        }
+        mToolbarTitle.setText(departmentName);
 
         initView();
         initData();
         initListener();
 
-        if("生活服务".equals(mGrade)||"学校".equals(mGrade)||"APP客服".equals(mGrade) || "13".equals(mDepartmentId + "")){
+        if("生活服务".equals(mGrade)||"教育培训".equals(mGrade)||"APP客服".equals(mGrade) || "13".equals(mGradeId)){
             searchImage.setVisibility(View.GONE);
         }else{
             searchImage.setVisibility(View.VISIBLE);
@@ -122,19 +120,19 @@ public class DepartmentActivity extends DoctorBaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 try {
-                    if (!"13".equals(mDepartmentId + "")){
+                    if (!"13".equals(mGradeId + "")){
                         Intent intent = getNewIntent(DoctorDetailActivity.class);
                         SimpleDoctor item = mAdapter.getItem(position);
                         intent.putExtra("doctor", item);
                         intent.putExtra("grade", mGrade);
-                        intent.putExtra("grade_id",mDepartmentId + "");
+                        intent.putExtra("grade_id",mGradeId + "");
                         startActivity(intent);
                     }else{
                         Intent intent = getNewIntent(CommodityDetailsActivity.class);
                         SimpleDoctor item = mAdapter.getItem(position);
                         intent.putExtra("doctor", item);
                         intent.putExtra("grade", mGrade);
-                        intent.putExtra("grade_id",mDepartmentId + "");
+                        intent.putExtra("grade_id",mGradeId + "");
                         startActivity(intent);
                     }
                 } catch (Exception e) {
@@ -182,7 +180,7 @@ public class DepartmentActivity extends DoctorBaseActivity {
 
     private void initData() {
         mvcHelper = new MVCNormalHelper<List<SimpleDoctor>>(mScrollView);
-        mvcHelper.setDataSource(new DepartmentAsyncDataSource(mDepartmentId, "西安", mGrade,mDepartmentId + ""));
+        mvcHelper.setDataSource(new DepartmentAsyncDataSource(mDepartmentId, "西安", mGrade,mGradeId));
         mvcHelper.setAdapter(new DepartAdapter());
         mvcHelper.refresh();
     }
