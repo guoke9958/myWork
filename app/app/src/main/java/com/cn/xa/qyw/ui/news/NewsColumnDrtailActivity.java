@@ -111,7 +111,12 @@ public class NewsColumnDrtailActivity extends DoctorBaseActivity {
      * webView 刷新
      */
     private void onRefreshWEBView() {
+<<<<<<< HEAD
         String URL = HttpAddress.GET_NEW_WEB_ARTICLE.replace("{articleId}",newsId + "");
+=======
+        showDialog();
+        Log.e("资讯详情链接", "getNewsDetail: URL = " + HttpAddress.GET_NEW_WEB_ARTICLE.replace("{articleId}",newsId + ""));
+>>>>>>> 2e2ebd1bc22f7206f21c9254ccf259d9981b581e
         if (DoctorApplication.mUser != null) {
             URL = URL + "?userId=" + DoctorApplication.mUser.getUserId();
         }else{
