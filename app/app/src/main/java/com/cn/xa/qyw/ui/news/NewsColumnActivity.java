@@ -47,8 +47,7 @@ public class NewsColumnActivity extends DoctorBaseActivity {
     private void getNewsData() {
         try {
             showDialog();
-            String URL =HttpAddress.GET_NEW_COLUMN;
-            HttpUtils.getDataFromServer(URL, new NetworkResponseHandler() {
+            HttpUtils.getDataFromServer(HttpAddress.GET_NEW_COLUMN, new NetworkResponseHandler() {
                 @Override
                 public void onFail(String messsage) {
                     dismissDialog();

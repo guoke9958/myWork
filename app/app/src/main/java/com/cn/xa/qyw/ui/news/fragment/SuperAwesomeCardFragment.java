@@ -46,10 +46,6 @@ import com.cn.xa.qyw.http.HttpUtils;
 import com.cn.xa.qyw.http.NetworkResponseHandler;
 import com.cn.xa.qyw.preference.PreferenceKeys;
 import com.cn.xa.qyw.preference.PreferenceUtils;
-<<<<<<< HEAD
-import com.cn.xa.qyw.ui.main.fragment.HomeFragment;
-=======
->>>>>>> 2e2ebd1bc22f7206f21c9254ccf259d9981b581e
 import com.cn.xa.qyw.ui.news.NewsColumnDrtailActivity;
 import com.cn.xa.qyw.ui.news.NewsDetailActivity;
 import com.cn.xa.qyw.ui.news.adapter.recyclerview.wrapper.EmptyWrapper;
@@ -68,11 +64,6 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.extras.recyclerview.PullToRefreshRecyclerView;
 import com.loopj.android.http.RequestParams;
 import com.shizhefei.mvc.IAsyncDataSource;
-<<<<<<< HEAD
-import com.shizhefei.mvc.IDataAdapter;
-import com.shizhefei.mvc.MVCNormalHelper;
-=======
->>>>>>> 2e2ebd1bc22f7206f21c9254ccf259d9981b581e
 import com.shizhefei.mvc.RequestHandle;
 import com.shizhefei.mvc.ResponseSender;
 
@@ -261,10 +252,10 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 	}
 
 	private void initEmptyView(){
-//		if (mEmptyWrapper == null){
-//			mEmptyWrapper = new EmptyWrapper(mAdapter);
-//			mEmptyWrapper.setEmptyView(LayoutInflater.from(myActivity).inflate(R.layout.layout_no_data, myRecyclerView, false));
-//		}
+		if (mEmptyWrapper == null){
+			mEmptyWrapper = new EmptyWrapper(headerAndFooterWrapper);
+			mEmptyWrapper.setEmptyView(LayoutInflater.from(myActivity).inflate(R.layout.base_load_empty, pullToRefreshView, false));
+		}
 	}
 
 	/**
@@ -279,6 +270,9 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 			@Override
 			public void onFail(String messsage) {
 				pullToRefreshView.onRefreshComplete();
+
+//				View layout = LayoutInflater.from(myActivity).inflate(R.layout.base_load_error,null,false);
+
 				headerAndFooterWrapper.notifyDataSetChanged();
 				Log.e(hospitalGrade.getGradeName() + " messsage = ", messsage);
 			}
@@ -302,65 +296,6 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 		});
 	}
 
-
-<<<<<<< HEAD
-=======
-	public class DepartmentAsyncDataSource implements IAsyncDataSource<List<NewsData>> {
-
-		@Override
-		public RequestHandle refresh(ResponseSender<List<NewsData>> sender) throws Exception {
-			return getNewsData(sender);
-		}
-
-		@Override
-		public RequestHandle loadMore(ResponseSender<List<NewsData>> sender) throws Exception {
-			return null;
-		}
-
-		@Override
-		public boolean hasMore() {
-			return false;
-		}
-	}
-
-	/**
-	 *  联网更新数据
-	 */
-	private RequestHandle getNewsData(final ResponseSender<List<NewsData>> sender) {
-		RequestParams params = new RequestParams();
-		params.put("id",hospitalGrade.getId());
-		params.put("pageSize",pageSize);
-		params.put("pageCount",10);
-		return new AsyncRequestHandle(HttpUtils.getDataFromServer(HttpAddress.GET_NEW_COLUMN_ARTICLEIST, params, new NetworkResponseHandler() {
-			@Override
-			public void onFail(String messsage) {
-				pullToRefreshView.onRefreshComplete();
-				sender.sendError(new Exception("请求错误"));
-				headerAndFooterWrapper.notifyDataSetChanged();
-				Log.e(hospitalGrade.getGradeName() + " messsage = ", messsage);
-			}
-
-			@Override
-			public void onSuccess(String data) {
-				pullToRefreshView.onRefreshComplete();
-				List<NewsData> list = JSONObject.parseArray(data, NewsData.class);
-				if (list.size() == 0){
-					return;
-				}
-				if (pageSize == 1){
-					myListData.clear();
-					headerAndFooterWrapper.notifyDataSetChanged();
-					myListData.addAll(list);
-				}else{
-					myListData.addAll(list);
-				}
-				sender.sendData(myListData);
-				headerAndFooterWrapper.notifyDataSetChanged();
-			}
-		}));
-	}
-
->>>>>>> 2e2ebd1bc22f7206f21c9254ccf259d9981b581e
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
