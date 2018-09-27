@@ -8,13 +8,15 @@ import android.view.ViewGroup;
 
 import com.cn.xa.qyw.ui.news.adapter.recyclerview.utils.WrapperUtils;
 import com.cn.xa.qyw.ui.news.wrapRecyclerview.base.ViewHolder;
+import com.shizhefei.mvc.IDataAdapter;
+
+import java.util.List;
 
 
 /**
  * Created by zhy on 16/6/23.
  */
-public class HeaderAndFooterWrapper<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder>
-{
+public class HeaderAndFooterWrapper<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private static final int BASE_ITEM_TYPE_HEADER = 100000;
     private static final int BASE_ITEM_TYPE_FOOTER = 200000;
 
@@ -129,6 +131,5 @@ public class HeaderAndFooterWrapper<T> extends RecyclerView.Adapter<RecyclerView
     {
         return mFootViews.size();
     }
-
 
 }

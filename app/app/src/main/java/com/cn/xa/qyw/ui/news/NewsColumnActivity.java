@@ -57,9 +57,13 @@ public class NewsColumnActivity extends DoctorBaseActivity {
 
                 @Override
                 public void onSuccess(String data) {
-                    listColumn = JSONObject.parseArray(data, HospitalGrade.class);
-                    initView();
                     dismissDialog();
+                    listColumn = JSONObject.parseArray(data, HospitalGrade.class);
+                    if (listColumn.size() != 0){
+                        initView();
+                    }else{
+
+                    }
                 }
             });
         }catch (Exception e){
@@ -128,11 +132,11 @@ public class NewsColumnActivity extends DoctorBaseActivity {
 
         @Override
         public Fragment getItem(int position) {
-            if(position == 0){
-                return QuickContactFragment.newInstance();
-            }else{
+//            if(position == 0){
+//                return QuickContactFragment.newInstance();
+//            }else{
                 return SuperAwesomeCardFragment.newInstance(listColumn.get(position));
-            }
+//            }
         }
     }
 

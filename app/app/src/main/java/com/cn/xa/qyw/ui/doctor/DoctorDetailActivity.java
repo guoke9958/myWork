@@ -145,6 +145,9 @@ public class DoctorDetailActivity extends DoctorBaseActivity {
             findViewById(R.id.yinanfenxi_parent).setVisibility(View.GONE);
             findViewById(R.id.jiating_parent).setVisibility(View.GONE);
 
+            findViewById(R.id.btn_zixun).setVisibility(View.GONE);
+            findViewById(R.id.btn_zixun_tel).setVisibility(View.GONE);
+
         } else {
             mDoctorName.setText("姓名：" + info.getTrueName());
         }

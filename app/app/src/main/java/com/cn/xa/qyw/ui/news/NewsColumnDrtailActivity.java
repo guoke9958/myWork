@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
@@ -19,9 +20,12 @@ import com.cn.xa.qyw.base.DoctorBaseActivity;
 import com.cn.xa.qyw.http.HttpAddress;
 import com.cn.xa.qyw.ui.discover.DiscoverLotteryDrawActivity;
 import com.cn.xa.qyw.ui.login.LoginActivity;
+import com.tencent.android.tpush.horse.Tools;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * app 栏目资讯详情
@@ -41,7 +45,6 @@ public class NewsColumnDrtailActivity extends DoctorBaseActivity {
 
         initView();
         initWebView();
-        showDialog();
     }
 
     private void initView() {
@@ -103,17 +106,19 @@ public class NewsColumnDrtailActivity extends DoctorBaseActivity {
         onRefreshWEBView();
     }
 
+
     /**
      * webView 刷新
      */
     private void onRefreshWEBView() {
-        Log.e("资讯详情链接", "getNewsDetail: URL = " + HttpAddress.GET_NEW_WEB_ARTICLE.replace("{articleId}",newsId + ""));
+        String URL = HttpAddress.GET_NEW_WEB_ARTICLE.replace("{articleId}",newsId + "");
         if (DoctorApplication.mUser != null) {
-            wbView.loadUrl(HttpAddress.GET_NEW_WEB_ARTICLE.replace("{articleId}",newsId + "")+ "?userId=" + DoctorApplication.mUser.getUserId());
+            URL = URL + "?userId=" + DoctorApplication.mUser.getUserId();
         }else{
             wbView.addJavascriptInterface(new AndroidtoJs(), "js2Android");//AndroidtoJS类对象映射到js的test对象
-            wbView.loadUrl(HttpAddress.GET_NEW_WEB_ARTICLE.replace("{articleId}",newsId + ""));
         }
+        Log.e("资讯详情链接", "getNewsDetail: URL = " + URL);
+        wbView.loadUrl(URL);
     }
 
     // 继承自Object类
@@ -141,6 +146,15 @@ public class NewsColumnDrtailActivity extends DoctorBaseActivity {
 
     }
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        wbView.reload ();
+        wbView.removeAllViews();
+        wbView.destroy();
+        finish();
+    }
 
     @Override
     public int getChildLayoutId() {

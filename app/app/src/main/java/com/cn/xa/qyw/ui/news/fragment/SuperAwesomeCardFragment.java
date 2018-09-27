@@ -35,10 +35,18 @@ import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.cn.xa.qyw.R;
 import com.cn.xa.qyw.base.DoctorBaseActivity;
+import com.cn.xa.qyw.datasource.HospitalAsyncDataSource;
+import com.cn.xa.qyw.entiy.AddDepartments;
 import com.cn.xa.qyw.entiy.HospitalGrade;
+import com.cn.xa.qyw.entiy.SearchDoctorByDepartmentAndCity;
+import com.cn.xa.qyw.entiy.SimpleDoctor;
+import com.cn.xa.qyw.http.AsyncRequestHandle;
 import com.cn.xa.qyw.http.HttpAddress;
 import com.cn.xa.qyw.http.HttpUtils;
 import com.cn.xa.qyw.http.NetworkResponseHandler;
+import com.cn.xa.qyw.preference.PreferenceKeys;
+import com.cn.xa.qyw.preference.PreferenceUtils;
+import com.cn.xa.qyw.ui.main.fragment.HomeFragment;
 import com.cn.xa.qyw.ui.news.NewsColumnDrtailActivity;
 import com.cn.xa.qyw.ui.news.NewsDetailActivity;
 import com.cn.xa.qyw.ui.news.adapter.recyclerview.wrapper.EmptyWrapper;
@@ -50,11 +58,17 @@ import com.cn.xa.qyw.ui.news.wrapRecyclerview.TmallHeaderLayout;
 import com.cn.xa.qyw.ui.news.wrapRecyclerview.base.ViewHolder;
 import com.cn.xa.qyw.utils.DateUtils;
 import com.cn.xa.qyw.utils.DensityUtils;
+import com.cn.xa.qyw.utils.StringUtils;
 import com.cn.xa.qyw.view.NetworkImageHolderView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.extras.recyclerview.PullToRefreshRecyclerView;
 import com.loopj.android.http.RequestParams;
+import com.shizhefei.mvc.IAsyncDataSource;
+import com.shizhefei.mvc.IDataAdapter;
+import com.shizhefei.mvc.MVCNormalHelper;
+import com.shizhefei.mvc.RequestHandle;
+import com.shizhefei.mvc.ResponseSender;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -86,7 +100,6 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 	};
 	private ConvenientBanner convenientBanner;
 	private Activity myActivity;
-
 
 	public static SuperAwesomeCardFragment newInstance(HospitalGrade hospitalGrade) {
 		SuperAwesomeCardFragment f = new SuperAwesomeCardFragment();
@@ -145,6 +158,11 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 		mAdapter = new CommonAdapter<NewsData>(myActivity, R.layout.fragment_super_awesome_card_item, myListData){
 			@Override
 			protected void convert(ViewHolder holder, NewsData data, int position) {
+				if (data.getVideoState() == 0){
+					holder.getView(R.id.image_news_veio).setVisibility(View.GONE);
+				}else if (data.getVideoState() == 1){
+					holder.getView(R.id.image_news_veio).setVisibility(View.VISIBLE);
+				}
 				SimpleDraweeView simpleDraweeView = (SimpleDraweeView)holder.getView(R.id.image_layout);
 				simpleDraweeView.setImageURI(data.getTumb());
 				holder.setText(R.id.layout_title,data.getTitle());
@@ -157,7 +175,7 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 		//可以设置一个EmptyView
 		initEmptyView();
 
-		headerAndFooterWrapper = new HeaderAndFooterWrapper(mAdapter);
+		headerAndFooterWrapper = new HeaderAndFooterWrapper<List<NewsData>>(mAdapter);
 		//初始化RecyclerView的头部 ,可以添加一个或多个头部
 		initRecyclerViewHead();
 		pullToRefreshView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<RecyclerView>() {
@@ -204,6 +222,8 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 		});
 	}
 
+
+
 	/**
 	 * 轮播图布局
 	 */
@@ -240,11 +260,10 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 //		}
 	}
 
-
 	/**
-	 * 数据初始化
+	 *  联网更新数据
 	 */
-	public void getNewsData() {
+	private void getNewsData() {
 		RequestParams params = new RequestParams();
 		params.put("id",hospitalGrade.getId());
 		params.put("pageSize",pageSize);
@@ -275,6 +294,7 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 			}
 		});
 	}
+
 
 	@Override
 	public void onDestroy() {
