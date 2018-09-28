@@ -40,12 +40,14 @@ import com.cn.xa.qyw.entiy.AddDepartments;
 import com.cn.xa.qyw.entiy.HospitalGrade;
 import com.cn.xa.qyw.entiy.SearchDoctorByDepartmentAndCity;
 import com.cn.xa.qyw.entiy.SimpleDoctor;
+import com.cn.xa.qyw.factory.EmptyNoticeLayout;
 import com.cn.xa.qyw.http.AsyncRequestHandle;
 import com.cn.xa.qyw.http.HttpAddress;
 import com.cn.xa.qyw.http.HttpUtils;
 import com.cn.xa.qyw.http.NetworkResponseHandler;
 import com.cn.xa.qyw.preference.PreferenceKeys;
 import com.cn.xa.qyw.preference.PreferenceUtils;
+import com.cn.xa.qyw.ui.news.NewsColumnActivity;
 import com.cn.xa.qyw.ui.news.NewsColumnDrtailActivity;
 import com.cn.xa.qyw.ui.news.NewsDetailActivity;
 import com.cn.xa.qyw.ui.news.adapter.recyclerview.wrapper.EmptyWrapper;
@@ -97,6 +99,7 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 	};
 	private ConvenientBanner convenientBanner;
 	private Activity myActivity;
+	private EmptyNoticeLayout emptyNoticeLayout;
 
 	public static SuperAwesomeCardFragment newInstance(HospitalGrade hospitalGrade) {
 		SuperAwesomeCardFragment f = new SuperAwesomeCardFragment();
@@ -118,7 +121,6 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 		try {
 			view  = LayoutInflater.from(getActivity()).inflate(R.layout.layout_super_awesome_card_fragment,container,false);
 			initView();
-
 			getNewsData();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -145,6 +147,15 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 	}
 
 	private void initView() {
+		emptyNoticeLayout = (EmptyNoticeLayout)view.findViewById(R.id.data_empty_layout);
+		emptyNoticeLayout.setBaseLoadEmpty(new EmptyNoticeLayout.ClickEmpty() {
+			@Override
+			public void onClickListener(View v) {
+				((NewsColumnActivity)getActivity()).showDialog();
+				getNewsData();
+			}
+		});
+
 		pullToRefreshView = (PullToRefreshRecyclerView)view.findViewById(R.id.pull_to_refresh_recycler_view);
 		myRecyclerView = pullToRefreshView.getRefreshableView();
 
@@ -169,9 +180,6 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 				holder.setText(R.id.layout_time, DateUtils.convertToTime(data.getUpdateTime())+ "");
 			}
 		};
-
-		//可以设置一个EmptyView
-		initEmptyView();
 
 		headerAndFooterWrapper = new HeaderAndFooterWrapper<List<NewsData>>(mAdapter);
 		//初始化RecyclerView的头部 ,可以添加一个或多个头部
@@ -251,13 +259,6 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 		headerAndFooterWrapper.addHeaderView(convenientBanner);
 	}
 
-	private void initEmptyView(){
-		if (mEmptyWrapper == null){
-			mEmptyWrapper = new EmptyWrapper(headerAndFooterWrapper);
-			mEmptyWrapper.setEmptyView(LayoutInflater.from(myActivity).inflate(R.layout.base_load_empty, pullToRefreshView, false));
-		}
-	}
-
 	/**
 	 *  联网更新数据
 	 */
@@ -269,21 +270,24 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 		HttpUtils.getDataFromServer(HttpAddress.GET_NEW_COLUMN_ARTICLEIST, params, new NetworkResponseHandler() {
 			@Override
 			public void onFail(String messsage) {
+				((NewsColumnActivity)getActivity()).dismissDialog();
 				pullToRefreshView.onRefreshComplete();
-
-//				View layout = LayoutInflater.from(myActivity).inflate(R.layout.base_load_error,null,false);
-
 				headerAndFooterWrapper.notifyDataSetChanged();
 				Log.e(hospitalGrade.getGradeName() + " messsage = ", messsage);
+				emptyNoticeLayout.showErrorView(pullToRefreshView);
 			}
 
 			@Override
 			public void onSuccess(String data) {
+				((NewsColumnActivity)getActivity()).dismissDialog();
 				pullToRefreshView.onRefreshComplete();
 				List<NewsData> list = JSONObject.parseArray(data, NewsData.class);
 				if (list.size() == 0){
+					emptyNoticeLayout.showEmptyView(pullToRefreshView);
 					return;
 				}
+				emptyNoticeLayout.setVisibility(View.GONE);
+				pullToRefreshView.setVisibility(View.VISIBLE);
 				if (pageSize == 1){
 					myListData.clear();
 					headerAndFooterWrapper.notifyDataSetChanged();
