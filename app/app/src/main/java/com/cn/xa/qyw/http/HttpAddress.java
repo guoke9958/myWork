@@ -10,7 +10,7 @@ public class HttpAddress {
 
     public static final String HOST_2 = "http://www.qiuyiwang.com:8081/";
 
-    public static final String HOST_2_text = "http://172.16.99.248:8080/";
+//    public static final String HOST_2_text = "http://172.16.99.248:8080/";
 
 //    public static final String HOST_3 = "http://www.qiuyiwang.com:8081/download/";
     public static final String HOST_3 =  HOST_2 + "download/";
