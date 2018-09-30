@@ -7,12 +7,14 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.View;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cn.xa.qyw.R;
 import com.cn.xa.qyw.base.DoctorBaseActivity;
 import com.cn.xa.qyw.entiy.HospitalGrade;
 import com.cn.xa.qyw.entiy.NewsDetail;
+import com.cn.xa.qyw.factory.EmptyNoticeLayout;
 import com.cn.xa.qyw.http.HttpAddress;
 import com.cn.xa.qyw.http.HttpUtils;
 import com.cn.xa.qyw.http.NetworkResponseHandler;
@@ -29,6 +31,7 @@ import java.util.List;
  */
 public class NewsColumnActivity extends DoctorBaseActivity {
 
+    private EmptyNoticeLayout emptyNoticeLayout;
     private String mGrade;
     private long mGradeId;
     private List<HospitalGrade> listColumn = new ArrayList<>();
@@ -36,11 +39,18 @@ public class NewsColumnActivity extends DoctorBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         mGrade = getIntent().getStringExtra("grade");
         mGradeId = getIntent().getLongExtra("grade_id",0);
 
         mToolbarTitle.setText(mGrade);
+
+        emptyNoticeLayout = (EmptyNoticeLayout)findViewById(R.id.data_empty_layout);
+        emptyNoticeLayout.setBaseLoadEmpty(new EmptyNoticeLayout.ClickEmpty() {
+            @Override
+            public void onClickListener(View v) {
+                getNewsData();
+            }
+        });
         getNewsData();
     }
 
@@ -54,6 +64,7 @@ public class NewsColumnActivity extends DoctorBaseActivity {
                 public void onFail(String messsage) {
                     dismissDialog();
                     Log.e(mGrade + " messsage = ", messsage);
+                    emptyNoticeLayout.showErrorView(findViewById(R.id.main_layout));
                 }
 
                 @Override
@@ -61,9 +72,11 @@ public class NewsColumnActivity extends DoctorBaseActivity {
                     dismissDialog();
                     listColumn = JSONObject.parseArray(data, HospitalGrade.class);
                     if (listColumn.size() != 0){
+                        emptyNoticeLayout.setVisibility(View.GONE);
+                        findViewById(R.id.main_layout).setVisibility(View.VISIBLE);
                         initView();
                     }else{
-
+                        emptyNoticeLayout.showEmptyView(findViewById(R.id.main_layout));
                     }
                 }
             });

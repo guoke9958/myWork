@@ -62,7 +62,6 @@ public class NewsColumnDrtailActivity extends DoctorBaseActivity {
         wbView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                showDialog();
             }
 
             @Override
@@ -85,7 +84,7 @@ public class NewsColumnDrtailActivity extends DoctorBaseActivity {
              */
             @Override
             public void onReceivedTitle(WebView view, String title) {
-
+                dismissDialog();
             }
 
             @Override
@@ -111,6 +110,7 @@ public class NewsColumnDrtailActivity extends DoctorBaseActivity {
      * webView 刷新
      */
     private void onRefreshWEBView() {
+        showDialog();
         String URL = HttpAddress.GET_NEW_WEB_ARTICLE.replace("{articleId}",newsId + "");
         if (DoctorApplication.mUser != null) {
             URL = URL + "?userId=" + DoctorApplication.mUser.getUserId();
