@@ -18,6 +18,7 @@ package com.cn.xa.qyw.ui.news.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.DialogFragment;
@@ -40,12 +41,14 @@ import com.cn.xa.qyw.http.HttpUtils;
 import com.cn.xa.qyw.http.NetworkResponseHandler;
 import com.cn.xa.qyw.ui.news.NewsColumnActivity;
 import com.cn.xa.qyw.ui.news.NewsColumnDrtailActivity;
-import com.cn.xa.qyw.ui.news.adapter.recyclerview.wrapper.EmptyWrapper;
-import com.cn.xa.qyw.ui.news.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 import com.cn.xa.qyw.ui.news.bean.NewsData;
 import com.cn.xa.qyw.ui.news.wrapRecyclerview.BaseRecyclerAdapter;
 import com.cn.xa.qyw.ui.news.wrapRecyclerview.CommonAdapter;
+import com.cn.xa.qyw.ui.news.wrapRecyclerview.HeadPullRecyclerView;
+import com.cn.xa.qyw.ui.news.wrapRecyclerview.TmallFooterLayout;
 import com.cn.xa.qyw.ui.news.wrapRecyclerview.TmallHeaderLayout;
+import com.cn.xa.qyw.ui.news.wrapRecyclerview.WrapAdapter;
+import com.cn.xa.qyw.ui.news.wrapRecyclerview.WrapRecyclerView;
 import com.cn.xa.qyw.ui.news.wrapRecyclerview.base.ViewHolder;
 import com.cn.xa.qyw.utils.DateUtils;
 import com.cn.xa.qyw.utils.DensityUtils;
@@ -54,6 +57,8 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.extras.recyclerview.PullToRefreshRecyclerView;
 import com.loopj.android.http.RequestParams;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -64,23 +69,25 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 	private static final String ARG_POSITION = "position";
 
 	private View view;
+	//	private HeadPullRecyclerView pullToRefreshView;
+//    private WrapRecyclerView myRecyclerView;
 	private PullToRefreshRecyclerView pullToRefreshView;
 	private RecyclerView myRecyclerView;
+
 	private HospitalGrade hospitalGrade;  //栏目实体
 	private CommonAdapter<NewsData> mAdapter;
 	private LinkedList<NewsData> myListData = new LinkedList<>();
-	private EmptyWrapper mEmptyWrapper;  //无数据空布局
-	private HeaderAndFooterWrapper headerAndFooterWrapper;  //添加头部和尾部布局
 
 	private int pageSize = 1;
-
-	private String[] images = {
-			"http://www.qiuyiwang.com:8081/download/img/yd.jpg",
-			"http://www.qiuyiwang.com:8081/download/img/timg.jpg"
-	};
+	List<String> networkImages = new ArrayList<>();
+	//	private String[] images = {
+//			"http://www.qiuyiwang.com:8081/download/img/yd.jpg",
+//			"http://www.qiuyiwang.com:8081/download/img/timg.jpg"
+//	};
 	private ConvenientBanner convenientBanner;
 	private Activity myActivity;
 	private EmptyNoticeLayout emptyNoticeLayout;
+	private WrapAdapter<CommonAdapter<NewsData>> mWrapAdapter;
 
 	public static SuperAwesomeCardFragment newInstance(HospitalGrade hospitalGrade) {
 		SuperAwesomeCardFragment f = new SuperAwesomeCardFragment();
@@ -102,6 +109,7 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 		try {
 			view  = LayoutInflater.from(getActivity()).inflate(R.layout.layout_super_awesome_card_fragment,container,false);
 			initView();
+			initRefreshView();
 			getNewsData();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -117,6 +125,7 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 				if (convenientBanner != null){
 					convenientBanner.startTurning(2000);
 				}
+				convenientBanner.notifyDataSetChanged();
 			}else{
 				if (convenientBanner != null){
 					convenientBanner.stopTurning();
@@ -141,12 +150,8 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 		});
 
 		pullToRefreshView = (PullToRefreshRecyclerView)view.findViewById(R.id.pull_to_refresh_recycler_view);
-		myRecyclerView = pullToRefreshView.getRefreshableView();
-
 		pullToRefreshView.setHeaderLayout(new TmallHeaderLayout(myActivity));
-
-		RecyclerView.LayoutManager manager = new GridLayoutManager(myActivity, 1);
-		myRecyclerView.setLayoutManager(manager);
+		pullToRefreshView.setFooterLayout(new TmallFooterLayout(myActivity));
 
 		mAdapter = new CommonAdapter<NewsData>(myActivity, R.layout.fragment_super_awesome_card_item, myListData){
 			@Override
@@ -164,36 +169,6 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 				holder.setText(R.id.layout_time, DateUtils.convertToTime(data.getUpdateTime())+ "");
 			}
 		};
-		headerAndFooterWrapper = new HeaderAndFooterWrapper<List<NewsData>>(mAdapter);
-		initRecyclerViewHead();
-		pullToRefreshView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<RecyclerView>() {
-			@Override
-			public void onPullDownToRefresh(PullToRefreshBase<RecyclerView> refreshView) {
-				new Handler().postDelayed(new Runnable(){
-					@Override
-					public void run(){
-						// Call onRefreshComplete when the list has been refreshed.
-						pageSize = 1;
-						getNewsData();
-					}
-				}, 1500);
-			}
-
-			@Override
-			public void onPullUpToRefresh(PullToRefreshBase<RecyclerView> refreshView) {
-				new Handler().postDelayed(new Runnable(){
-					@Override
-					public void run(){
-						// Call onRefreshComplete when the list has been refreshed.
-						pageSize ++ ;
-						getNewsData();
-					}
-				}, 1500);
-			}
-
-		});
-
-		myRecyclerView.setAdapter(headerAndFooterWrapper);
 
 		mAdapter.setOnRecyclerViewListener(new BaseRecyclerAdapter.OnRecyclerViewListener() {
 			@Override
@@ -208,43 +183,79 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 				return false;
 			}
 		});
+
+
 	}
 
-
 	/**
-	 *  初始化RecyclerView的头部 ,可以添加一个或多个头部
-	 *
-	 *  轮播图布局初始化
+	 * 初始化 RefreshView
 	 */
-	private void initRecyclerViewHead() {
-		try {
-			convenientBanner = new ConvenientBanner(myActivity);
-			convenientBanner.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DensityUtils.dip2px(myActivity,160f)));
-			List<String> networkImages = Arrays.asList(images);
-//			networkImages.add("http://www.qiuyiwang.com:8081/download/img/yd.jpg");
-//			networkImages.add("http://www.qiuyiwang.com:8081/download/img/timg.jpg");
-			convenientBanner.setPages(new CBViewHolderCreator<NetworkImageHolderView>() {
-				@Override
-				public NetworkImageHolderView createHolder() {
-					return new NetworkImageHolderView();
-				}
-			},networkImages)
-					.setPageIndicator(new int[]{R.mipmap.ic_page_indicator, R.mipmap.ic_page_indicator_focused})
-					.setOnItemClickListener(new OnItemClickListener() {
-						@Override
-						public void onItemClick(int position) {
-							//						Intent intent = new Intent(myActivity, NewsDetailActivity.class);
-							//						intent.putExtra("id", id);
-							//						myActivity.startActivity(intent);
-						}
-					})
-					//设置指示器的方向
-					.setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.ALIGN_PARENT_RIGHT);
-			convenientBanner.startTurning(2000);
-			convenientBanner.setCanLoop(true);
-			headerAndFooterWrapper.addHeaderView(convenientBanner);
-		} catch (Exception e) {
-			Log.e(SuperAwesomeCardFragment.class.getName() + " initRecyclerViewHead()",e.toString());
+	private void initRefreshView() {
+		myRecyclerView = pullToRefreshView.getRefreshableView();
+		RecyclerView.LayoutManager manager = new GridLayoutManager(myActivity, 1);
+		myRecyclerView.setLayoutManager(manager);
+
+		pullToRefreshView.setScrollingWhileRefreshingEnabled(false);
+
+		mWrapAdapter = new WrapAdapter<>(mAdapter);
+		mWrapAdapter.adjustSpanSize(myRecyclerView);
+		myRecyclerView.setAdapter(mWrapAdapter);
+
+		initRecyclerViewHead();
+
+		pullToRefreshView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<RecyclerView>() {
+			@Override
+			public void onPullDownToRefresh(PullToRefreshBase<RecyclerView> refreshView) {
+				new GetDataTask().execute("下拉刷新");
+
+//				new Handler().postDelayed(new Runnable(){
+//					@Override
+//					public void run(){
+//						// Call onRefreshComplete when the list has been refreshed.
+//						pageSize = 1;
+//						getNewsData();
+//					}
+//				}, 1500);
+			}
+
+			@Override
+			public void onPullUpToRefresh(PullToRefreshBase<RecyclerView> refreshView) {
+				new GetDataTask().execute("上拉加载");
+
+//				new Handler().postDelayed(new Runnable(){
+//					@Override
+//					public void run(){
+//						// Call onRefreshComplete when the list has been refreshed.
+//						pageSize ++ ;
+//						getNewsData();
+//					}
+//				}, 1500);
+			}
+
+		});
+	}
+
+	private class GetDataTask extends AsyncTask<String, Void, Integer> {
+
+		@Override
+		protected Integer doInBackground(String... params) {
+			try {
+				Thread.sleep(1500);
+			} catch (InterruptedException e) {
+			}
+
+			if(params[0].equals("下拉刷新")) {
+				pageSize = 1;
+			} else {
+				pageSize ++ ;
+			}
+			return pageSize;
+		}
+
+		@Override
+		protected void onPostExecute(Integer result) {
+			getNewsData();
+			super.onPostExecute(result);
 		}
 	}
 
@@ -261,7 +272,7 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 			public void onFail(String messsage) {
 				((NewsColumnActivity)getActivity()).dismissDialog();
 				pullToRefreshView.onRefreshComplete();
-				headerAndFooterWrapper.notifyDataSetChanged();
+				mAdapter.notifyDataSetChanged();
 				Log.e(hospitalGrade.getGradeName() + " messsage = ", messsage);
 				emptyNoticeLayout.showErrorView(pullToRefreshView);
 			}
@@ -269,7 +280,6 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 			@Override
 			public void onSuccess(String data) {
 				((NewsColumnActivity)getActivity()).dismissDialog();
-				pullToRefreshView.onRefreshComplete();
 				List<NewsData> list = JSONObject.parseArray(data, NewsData.class);
 				if (list.size() == 0){
 					emptyNoticeLayout.showEmptyView(pullToRefreshView);
@@ -279,15 +289,69 @@ public class SuperAwesomeCardFragment extends DialogFragment {
 				pullToRefreshView.setVisibility(View.VISIBLE);
 				if (pageSize == 1){
 					myListData.clear();
-					headerAndFooterWrapper.notifyDataSetChanged();
+					mWrapAdapter.notifyDataSetChanged();
 					myListData.addAll(list);
 				}else{
 					myListData.addAll(list);
 				}
-				headerAndFooterWrapper.notifyDataSetChanged();
+				mWrapAdapter.notifyDataSetChanged();
+				// Call onRefreshComplete when the list has been refreshed.
+				pullToRefreshView.onRefreshComplete();
 			}
 		});
 	}
+
+	/**
+	 *  初始化RecyclerView的头部 ,可以添加一个或多个头部
+	 *
+	 *  轮播图布局初始化
+	 */
+	private void initRecyclerViewHead() {
+		try {
+			if (networkImages.size() == 0){
+				networkImages.add("http://www.qiuyiwang.com:8081/download/img/yd.jpg");
+				networkImages.add("http://www.qiuyiwang.com:8081/download/img/timg.jpg");
+			}
+			if (networkImages.size() != 0 &&  convenientBanner == null){
+				setHeadView();
+			}else{
+				convenientBanner.notifyDataSetChanged();
+			}
+			mWrapAdapter.notifyDataSetChanged();
+		} catch (Exception e) {
+			Log.e(SuperAwesomeCardFragment.class.getName() + " initRecyclerViewHead()",e.toString());
+		}
+	}
+
+	private void setHeadView() {
+		try {
+			convenientBanner = new ConvenientBanner(myActivity);
+			convenientBanner.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DensityUtils.dip2px(myActivity,160f)));
+			convenientBanner.setPages(new CBViewHolderCreator<NetworkImageHolderView>() {
+                @Override
+                public NetworkImageHolderView createHolder() {
+                    return new NetworkImageHolderView();
+                }
+            },networkImages)
+                    .setPageIndicator(new int[]{R.mipmap.ic_page_indicator, R.mipmap.ic_page_indicator_focused})
+                    .setOnItemClickListener(new OnItemClickListener() {
+                        @Override
+                        public void onItemClick(int position) {
+                            //						Intent intent = new Intent(myActivity, NewsDetailActivity.class);
+                            //						intent.putExtra("id", id);
+                            //						myActivity.startActivity(intent);
+                        }
+                    })
+                    //设置指示器的方向
+                    .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.ALIGN_PARENT_RIGHT);
+			convenientBanner.startTurning(2000);
+			convenientBanner.setCanLoop(true);
+			mWrapAdapter.addHeaderView(convenientBanner);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 
 	@Override
 	public void onDestroy() {

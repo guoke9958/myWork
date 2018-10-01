@@ -11,14 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 版权所有：XXX有限公司
- *
+ *    mAdapter = new RecyclerViewAdapter();
+ *    mWrapAdapter = new WrapAdapter<>(mAdapter);
+ *    mWrapAdapter.adjustSpanSize(mRecyclerView);
+ *    mRecyclerView.setAdapter(mWrapAdapter);
  * WrapAdapter
  *
- * @author zhou.wenkai ,Created on 2015-11-24 10:48:29
  * Major Function：A RecyclerView.Adapter that allows for headers and footers as well.
  *
- * 注:如果您修改了本类请填写以下内容作为记录，如非本人操作劳烦通知，谢谢！！！
  * @author mender，Modified Date Modify Content:
  */
 @SuppressWarnings("rawtypes")

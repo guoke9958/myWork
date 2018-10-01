@@ -50,7 +50,7 @@ public class TmallHeaderLayout extends LoadingLayoutBase {
     @Override
     public int getContentSize() {
         // 设置未完全显示的时候就促发刷新动作
-        return mInnerLayout.getHeight() * 7 / 10;
+        return mInnerLayout.getHeight() * 9 / 10;
     }
 
     // 开始下拉时的回调

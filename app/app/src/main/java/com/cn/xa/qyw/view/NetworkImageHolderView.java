@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bigkoo.convenientbanner.holder.Holder;
+import com.cn.xa.qyw.utils.StringUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 /**
@@ -22,6 +23,10 @@ public class NetworkImageHolderView implements Holder<String> {
 
     @Override
     public void UpdateUI(Context context, int position, String data) {
-        imageView.setImageURI(data);
+        if (StringUtils.isEmpty(data)){
+
+        }else{
+            imageView.setImageURI(data);
+        }
     }
 }
