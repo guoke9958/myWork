@@ -1,6 +1,7 @@
 package com.cn.xa.qyw.ui.news.wrapRecyclerview;
 
 import android.content.Context;
+import android.os.Parcelable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -224,6 +225,7 @@ public class WrapRecyclerView extends RecyclerView {
         }
         return mWrapAdapter.getFootersCount();
     }
+
 
     private final AdapterDataObserver mDataObserver = new AdapterDataObserver() {
 

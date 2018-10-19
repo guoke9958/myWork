@@ -1,44 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/image"
+    <!--<com.cn.xa.qyw.ui.news.wrapRecyclerview.HeadPullRecyclerView-->
+    <!--xmlns:ptr="http://schemas.android.com/apk/res-auto"-->
+    <!--android:id="@+id/pull_to_refresh_list_view"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--ptr:ptrAnimationStyle="rotate"-->
+    <!--ptr:ptrHeaderBackground="#00000000"-->
+    <!--ptr:ptrHeaderTextColor="#ffffff"-->
+    <!--ptr:ptrMode="both"-->
+    <!--ptr:ptrOverScroll="false"-->
+    <!--ptr:ptrShowIndicator="false">-->
+    <!--</com.cn.xa.qyw.ui.news.wrapRecyclerview.HeadPullRecyclerView>-->
+
+    <!--<com.handmark.pulltorefresh.library.extras.recyclerview.PullToRefreshRecyclerView-->
+    <!--android:id="@+id/pull_to_refresh_list_view"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+    <!--</com.handmark.pulltorefresh.library.extras.recyclerview.PullToRefreshRecyclerView>-->
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/pull_to_refresh_list_view"
         android:layout_width="match_parent"
-        android:layout_height="160dip"
-        android:scaleType="centerCrop"
-        android:src="@drawable/contact" />
+        android:layout_height="match_parent">
+    </com.handmark.pulltorefresh.library.PullToRefreshListView>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/image"
-        android:background="#77000000"
-        android:paddingBottom="14dip"
-        android:paddingLeft="8dip"
-        android:paddingTop="14dip"
-        android:text="Quick Contact"
-        android:textColor="#FFFFFFFF"
-        android:textSize="18sp" />
-
-    <com.cn.xa.qyw.view.PagerSlidingTabStrip
-        android:id="@+id/tabs"
-        android:layout_width="match_parent"
-        android:layout_height="62dip"
-        android:layout_below="@+id/image"
-        android:background="@drawable/background_tabs_diagonal"
-        app:pstsDividerColor="#00000000"
-        app:pstsIndicatorColor="@color/colorPrimary"
-        app:pstsTabPaddingLeftRight="14dip"
-        app:pstsUnderlineColor="@color/colorAccent" />
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/pager"
+    <com.cn.xa.qyw.factory.EmptyNoticeLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tabs" />
+        android:id="@+id/data_empty_layout"/>
 
-</RelativeLayout>
+</LinearLayout>

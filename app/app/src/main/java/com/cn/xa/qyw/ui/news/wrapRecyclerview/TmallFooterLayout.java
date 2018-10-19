@@ -2,6 +2,7 @@ package com.cn.xa.qyw.ui.news.wrapRecyclerview;
 
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
@@ -42,6 +43,7 @@ public class TmallFooterLayout extends LoadingLayoutBase {
     // 开始下拉时的回调
     @Override
     public void pullToRefresh() {
+        Log.e("pullToRefresh", "pullToRefresh: 开始下啦");
     }
 
     // "加载头部"完全显示时的回调

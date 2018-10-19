@@ -57,7 +57,7 @@ public class DoctorApplication extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
         instance = this;
-        CrashHandler.getInstance().init(getApplicationContext());
+//        CrashHandler.getInstance().init(getApplicationContext());
         CityTotal.initData(getApplicationContext());
         FileUtils.initAppFolder(getApplicationContext(),"com.cn.xa.qyw");
         MVCHelper.setLoadViewFractory(new ListViewLoadViewFactory());
