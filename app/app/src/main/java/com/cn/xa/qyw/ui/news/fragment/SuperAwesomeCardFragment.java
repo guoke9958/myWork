@@ -28,6 +28,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
+
 import com.alibaba.fastjson.JSONObject;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
@@ -52,7 +54,7 @@ import com.cn.xa.qyw.utils.DateUtils;
 import com.cn.xa.qyw.utils.DensityUtils;
 import com.cn.xa.qyw.view.NetworkImageHolderView;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.example.library.PullToRefreshBase;
 import com.loopj.android.http.RequestParams;
 
 import java.util.ArrayList;
@@ -103,7 +105,7 @@ public class SuperAwesomeCardFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		try {
-			view  = LayoutInflater.from(getActivity()).inflate(R.layout.layout_super_awesome_card_fragment,container,false);
+			view  = inflater.inflate(R.layout.layout_super_awesome_card_fragment,container,false);
 			initView();
 			getNewsData();
 		} catch (Exception e) {
@@ -296,7 +298,7 @@ public class SuperAwesomeCardFragment extends Fragment {
 	private void setHeadView() {
 		try {
 			convenientBanner = new ConvenientBanner(myActivity);
-			convenientBanner.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DensityUtils.dip2px(myActivity,160f)));
+			convenientBanner.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, DensityUtils.dip2px(myActivity,160f)));
 			convenientBanner.setPages(new CBViewHolderCreator<NetworkImageHolderView>() {
 				@Override
 				public NetworkImageHolderView createHolder() {

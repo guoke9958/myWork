@@ -1452,8 +1452,12 @@ public class MessageFragment extends UriFragment implements AdapterView.OnItemCl
                     public void onSuccess(Integer integer) {
                         int curPos = MessageFragment.this.mAdapter.findPosition(type, targetId);
                         if(curPos >= 0) {
-                            ((UIConversation)MessageFragment.this.mAdapter.getItem(curPos)).setUnReadMessageCount(integer.intValue());
-                            MessageFragment.this.mAdapter.getView(curPos, MessageFragment.this.mList.getChildAt(curPos - MessageFragment.this.mList.getFirstVisiblePosition()), MessageFragment.this.mList);
+                            try {
+                                ((UIConversation)MessageFragment.this.mAdapter.getItem(curPos)).setUnReadMessageCount(integer.intValue());
+                                MessageFragment.this.mAdapter.getView(curPos, MessageFragment.this.mList.getChildAt(curPos - MessageFragment.this.mList.getFirstVisiblePosition()), MessageFragment.this.mList);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
 
                     }
@@ -1468,6 +1472,8 @@ public class MessageFragment extends UriFragment implements AdapterView.OnItemCl
 
     public void logout() {
         mAdapter = new MessageAdapter(RongContext.getInstance());
-        mList.setAdapter(mAdapter);
+        if (mList != null){
+            mList.setAdapter(mAdapter);
+        }
     }
 }

@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -34,8 +35,8 @@ import com.cn.xa.qyw.utils.DateUtils;
 import com.cn.xa.qyw.utils.DensityUtils;
 import com.cn.xa.qyw.view.NetworkImageHolderView;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.example.library.PullToRefreshBase;
+import com.example.library.PullToRefreshListView;
 import com.loopj.android.http.RequestParams;
 
 import java.util.ArrayList;
@@ -52,7 +53,6 @@ public class  QuickContactFragment extends Fragment {
 	private PullToRefreshListView pullToListView;
 	private int pageSize = 1;
 	List<String> networkImages = new ArrayList<>();
-	private ListView myListView;
 	private QuickAdapter<NewsData> mAdapter;
 	private LinkedList<NewsData> myListData = new LinkedList<>();
 
@@ -111,7 +111,17 @@ public class  QuickContactFragment extends Fragment {
 			}
 		});
 		pullToListView = (PullToRefreshListView)root.findViewById(R.id.pull_to_refresh_list_view);
-		//设置刷新模式 ，both代表支持上拉和下拉，pull_from_end代表上拉，pull_from_start代表下拉
+
+
+        /**
+         * Mode.BOTH：同时支持上拉下拉
+         * Mode.PULL_FROM_START：只支持下拉Pulling Down
+         * Mode.PULL_FROM_END：只支持上拉Pulling Up
+         * 如果Mode设置成Mode.BOTH，需要设置刷新Listener为OnRefreshListener2，并实现onPullDownToRefresh()、onPullUpToRefresh()两个方法。
+         * 如果Mode设置成Mode.PULL_FROM_START或Mode.PULL_FROM_END，需要设置刷新Listener为OnRefreshListener，同时实现onRefresh()方法。
+         * 当然也可以设置为OnRefreshListener2，但是Mode.PULL_FROM_START的时候只调用onPullDownToRefresh()方法，
+         * Mode.PULL_FROM的时候只调用onPullUpToRefresh()方法.
+         */
 		pullToListView.setMode(PullToRefreshBase.Mode.BOTH);
 		pullToListView.setHeaderLayout(new TmallHeaderLayout(getContext()));
 		pullToListView.setFooterLayout(new TmallFooterLayout(getContext()));
@@ -149,33 +159,38 @@ public class  QuickContactFragment extends Fragment {
 	 * 初始化 RefreshView
 	 */
 	private void initRefreshView() {
-		myListView = pullToListView.getRefreshableView();
-
 		mAdapter = new QuickAdapter<NewsData>(myActivity, R.layout.fragment_super_awesome_card_item, myListData){
 			@Override
 			protected void convert(BaseAdapterHelper helper, NewsData item, int position) {
+				SimpleDraweeView simpleDraweeView = (SimpleDraweeView)helper.getView(R.id.image_layout);
 				if (item.getVideoState() == 0){
+					simpleDraweeView.setImageURI(item.getTumb());
 					helper.getView(R.id.image_news_veio).setVisibility(View.GONE);
 				}else if (item.getVideoState() == 1){
-					helper.getView(R.id.image_news_veio).setVisibility(View.VISIBLE);
+//					helper.getView(R.id.image_news_veio).setVisibility(View.VISIBLE);
+					simpleDraweeView.setImageDrawable(getResources().getDrawable(R.drawable.rc_file_icon_video));
 				}
-				SimpleDraweeView simpleDraweeView = (SimpleDraweeView)helper.getView(R.id.image_layout);
-				simpleDraweeView.setImageURI(item.getTumb());
+
+
 				helper.setText(R.id.layout_title,item.getTitle());
 				helper.setText(R.id.layout_message,item.getSummary());
 				helper.setText(R.id.layout_checked,"浏览量：" + item.getClickNum());
 				helper.setText(R.id.layout_time, DateUtils.convertToTime(item.getUpdateTime())+ "");
 			}
 		};
-		initRecyclerViewHead();
 
-		myListView.setAdapter(mAdapter);
+		try {
+			initRecyclerViewHead();
+			pullToListView.setAdapter(mAdapter);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-		myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		pullToListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				Intent intent = new Intent(myActivity, NewsColumnDrtailActivity.class);
-				intent.putExtra("id", mAdapter.getItem(position).getArticleId());
+				intent.putExtra("id", mAdapter.getItem(position - 2).getArticleId());
 				myActivity.startActivity(intent);
 			}
 		});
@@ -238,7 +253,7 @@ public class  QuickContactFragment extends Fragment {
 			}
 			if (networkImages.size() != 0){
 				if (convenientBanner != null){
-					myListView.removeView(convenientBanner);
+					pullToListView.removeView(convenientBanner);
 				}
 				setHeadView();
 			}
@@ -251,7 +266,7 @@ public class  QuickContactFragment extends Fragment {
 	private void setHeadView() {
 		try {
 			convenientBanner = new ConvenientBanner(myActivity);
-			convenientBanner.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DensityUtils.dip2px(myActivity,160f)));
+			convenientBanner.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, DensityUtils.dip2px(myActivity,160f)));
 			convenientBanner.setPages(new CBViewHolderCreator<NetworkImageHolderView>() {
 				@Override
 				public NetworkImageHolderView createHolder() {
@@ -271,7 +286,8 @@ public class  QuickContactFragment extends Fragment {
 					.setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.ALIGN_PARENT_RIGHT);
 			convenientBanner.startTurning(2000);
 			convenientBanner.setCanLoop(true);
-			myListView.addHeaderView(convenientBanner);
+			//将RadioGroup布局添加到listView顶部
+			pullToListView.getRefreshableView().addHeaderView(convenientBanner);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -86,9 +86,9 @@ public class AccountCenterActivity extends DoctorBaseActivity {
     private void initTipView() {
         if (DoctorMainActivity.mUserInfo.getIsPass() == 0 || DoctorMainActivity.mUserInfo.getHospitalPass() == 0) {
 
-            if (DoctorMainActivity.mUserInfo.getType() != 2&&DoctorMainActivity.mUserInfo.getType() != 3
-                    &&DoctorMainActivity.mUserInfo.getType() != 4&&DoctorMainActivity.mUserInfo.getType() != 5
-                    &&DoctorMainActivity.mUserInfo.getType() != 6&&DoctorMainActivity.mUserInfo.getType() != 7) {
+            if (DoctorMainActivity.mUserInfo.getType() != 2 && DoctorMainActivity.mUserInfo.getType() != 3
+                    && DoctorMainActivity.mUserInfo.getType() != 4 && DoctorMainActivity.mUserInfo.getType() != 5
+                    && DoctorMainActivity.mUserInfo.getType() != 6 && DoctorMainActivity.mUserInfo.getType() != 7) {
                 mTvNickName.setVisibility(View.VISIBLE);
             }
         } else {
@@ -200,7 +200,7 @@ public class AccountCenterActivity extends DoctorBaseActivity {
             doShowSetAvatarMenu();
         } else if (id == R.id.rl_modify_pwd) {
             startActivity(getNewIntent(ModifyUserPwdActivity.class));
-        } else if (id == R.id.rl_nickname) {
+        } else if (id == R.id.rl_nickname) {  //基本资料
             Intent intent = getNewIntent(UserInfoUpdateActivity.class);
             intent.putExtra("type", "modif");
             startActivity(intent);

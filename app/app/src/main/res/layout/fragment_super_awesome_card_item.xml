@@ -18,10 +18,15 @@
             android:layout_height="wrap_content">
 
             <com.facebook.drawee.view.SimpleDraweeView
+                xmlns:fresco="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/image_layout"
                 android:layout_width="90dp"
                 android:layout_height="80dp"
-                android:scaleType="centerCrop"/>
+                android:layout_centerVertical="true"
+                android:scaleType="centerCrop"
+                fresco:placeholderImage="@color/color_font_sub_gray"
+                fresco:failureImageScaleType="centerInside"
+                android:src="@drawable/rc_file_icon_video" />
 
             <ImageView
                 android:visibility="gone"

@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ *  完善资料
  * Created by 409160 on 2016/12/7.
  */
 public class AddUserInfoActivity extends DoctorBaseActivity {

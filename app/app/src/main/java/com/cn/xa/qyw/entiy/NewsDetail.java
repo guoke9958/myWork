@@ -14,9 +14,40 @@ public class NewsDetail {
 	private int newsType;
 	private String newsPhoto;
 	private Timestamp createTime;
+
+
+	private String tumb;  //图片 路径
+	private int articleId;  //轮播图id
+	private String publishUrl; //轮播详情
+
+
 	
 	public NewsDetail() {
 		super();
+	}
+
+	public String getTumb() {
+		return tumb;
+	}
+
+	public void setTumb(String tumb) {
+		this.tumb = tumb;
+	}
+
+	public int getArticleId() {
+		return articleId;
+	}
+
+	public void setArticleId(int articleId) {
+		this.articleId = articleId;
+	}
+
+	public String getPublishUrl() {
+		return publishUrl;
+	}
+
+	public void setPublishUrl(String publishUrl) {
+		this.publishUrl = publishUrl;
 	}
 
 	public String getTitle() {

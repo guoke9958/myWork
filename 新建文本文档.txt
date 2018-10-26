@@ -1,0 +1,43 @@
+1、提交  客服审核 
+
+/api/saveKefuExamine   post
+
+参数   传String  data
+typeId 客服类型id
+userId用户id
+content 客服简介
+返回    1成功  2已审核 3已提交审核中
+
+
+2、客服列表
+/api/kefulist post
+
+参数  data  客服团队id
+返回
+ * @return userId  客服id
+ * @return typeId  客服团队Id
+ * @return userName 真实姓名
+ * @return userPhoto 头像
+
+
+3、客服详情
+/api/kefuDetail post
+
+参数   传String  data
+typeId 客服类型id
+userId用户id
+
+返回
+ @return userId  客服id
+ * @return typeId  客服团队Id
+ * @return userName 真实姓名
+ * @return userPhoto 头像
+ * @return userPhone 电话
+ * @return departmentName 客服团队
+ * @return ceontent 简介
+ 
+ //绑卡
+ /api/saveUserCard   post
+ 参数   传String  data
+  cardId 客服类型id
+  userId用户id

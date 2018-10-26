@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cn.xa.qyw.R;
-import com.handmark.pulltorefresh.library.LoadingLayoutBase;
+import com.example.library.LoadingLayoutBase;
 
 
 /**

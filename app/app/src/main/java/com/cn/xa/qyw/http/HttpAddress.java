@@ -6,11 +6,11 @@ package com.cn.xa.qyw.http;
 public class HttpAddress {
 
 
-    public static final String HOST_1 = "http://192.168.0.104:8080/";
+    public static final String HOST_1 = "http://172.16.99.248:8080/";
 
     public static final String HOST_2 = "http://www.qiuyiwang.com:8081/";
 
-//    public static final String HOST_2_text = "http://172.16.99.248:8080/";
+    public static final String HOST_2_text = HOST_1 + "/Doctor/";
 
 //    public static final String HOST_3 = "http://www.qiuyiwang.com:8081/download/";
     public static final String HOST_3 =  HOST_2 + "download/";
@@ -18,8 +18,10 @@ public class HttpAddress {
 //    public static final String NET_HOST = HOST_2 + "Doctor/api/";
 
     public static final String NET_HOST = HOST_2 + "YHT/api/";
+//    public static final String NET_HOST = HOST_2_text + "/api/";
 
     public static final String NET_HOST_LUCKDRAW = HOST_2 + "luckdraw/api/";
+//    public static final String NET_HOST_LUCKDRAW = HOST_1 + "luckdraw/api/";
 //    public static final String NET_HOST_LUCKDRAW = HOST_2_text + "luckdraw/api/";
 
     public static final String PHOTO_URL = HOST_3;
@@ -155,5 +157,9 @@ public class HttpAddress {
      * 获取商品详情
      */
     public static String GET_NEW_COLUMN_PRODUCTDETAIL = NET_HOST_LUCKDRAW + "/productdetail";
+    /**
+     * 绑卡
+     */
+    public static String GET_NEW_SAVE_USER_CARD = NET_HOST_LUCKDRAW + "/saveUserCard";
 
 }

@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/RongYunLibs" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/pinwheel" />
+            <option value="$PROJECT_DIR$/pulltorefreshablelibrary" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

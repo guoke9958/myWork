@@ -31,6 +31,7 @@ public class AboutAdapter extends BaseAdapter {
         mList.add(new MenuItem(MenuItem.TYPE_DISCOVER_NEWS,"功能介绍", R.mipmap.sideslip_icon_feedback));
         mList.add(new MenuItem(MenuItem.TYPE_DISCOVER_DOCTOR_ARTICLE,"系统通知", R.mipmap.sideslip_icon_feedback));
         mList.add(new MenuItem(MenuItem.TYPE_DISCOVER_FIRST_AID,"检查版本", R.mipmap.sideslip_icon_feedback));
+        mList.add(new MenuItem(MenuItem.TYPE_DISCOVER_NTFS,"加入我们", R.mipmap.sideslip_icon_feedback));
     }
 
 

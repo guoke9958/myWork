@@ -5,20 +5,20 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--<com.cn.xa.qyw.ui.news.wrapRecyclerview.HeadPullRecyclerView-->
-    <!--xmlns:ptr="http://schemas.android.com/apk/res-auto"-->
-    <!--android:id="@+id/pull_to_refresh_recycler_view"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--ptr:ptrMode="both">-->
-    <!--</com.cn.xa.qyw.ui.news.wrapRecyclerview.HeadPullRecyclerView>-->
-
-    <com.handmark.pulltorefresh.library.extras.recyclerview.PullToRefreshRecyclerView
+    <com.cn.xa.qyw.ui.news.wrapRecyclerview.HeadPullRecyclerView
         xmlns:ptr="http://schemas.android.com/apk/res-auto"
         android:id="@+id/pull_to_refresh_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        ptr:ptrMode="both"/>
+        ptr:ptrMode="both">
+    </com.cn.xa.qyw.ui.news.wrapRecyclerview.HeadPullRecyclerView>
+
+    <!--<com.handmark.pulltorefresh.library.extras.recyclerview.PullToRefreshRecyclerView-->
+    <!--xmlns:ptr="http://schemas.android.com/apk/res-auto"-->
+    <!--android:id="@+id/pull_to_refresh_recycler_view"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--ptr:ptrMode="both"/>-->
 
     <com.cn.xa.qyw.factory.EmptyNoticeLayout
         android:visibility="gone"

@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 
 import com.cn.xa.qyw.entiy.HospitalGrade;
 import com.cn.xa.qyw.ui.news.fragment.QuickContactFragment;
+import com.cn.xa.qyw.ui.news.fragment.SuperAwesomeCardFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,8 +28,8 @@ public class MyViewPagerAdapter extends FragmentPagerAdapter {
         mFragmentList = new ArrayList<>();
         mTabNameList = categoryList;
         for (HospitalGrade hospitalGrade : categoryList) {
-//            Fragment f = new SuperAwesomeCardFragment().setArguments(hospitalGrade);
-            Fragment f = new QuickContactFragment().setArguments(hospitalGrade);
+            Fragment f = new SuperAwesomeCardFragment().setArguments(hospitalGrade);
+//            Fragment f = new QuickContactFragment().setArguments(hospitalGrade);
             mFragmentList.add(f);
         }
     }

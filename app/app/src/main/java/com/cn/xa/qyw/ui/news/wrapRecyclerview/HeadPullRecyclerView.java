@@ -1,11 +1,13 @@
 package com.cn.xa.qyw.ui.news.wrapRecyclerview;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.example.library.PullToRefreshBase;
+
 
 /**
  * 自定义 结合  PullToRefresh 1.0.7   自定义刷新
@@ -37,7 +39,7 @@ public class HeadPullRecyclerView extends PullToRefreshBase<WrapRecyclerView> {
 
     @Override
     protected WrapRecyclerView createRefreshableView(Context context,
-                                                 AttributeSet attrs) {
+                                                     AttributeSet attrs) {
         WrapRecyclerView recyclerView = new WrapRecyclerView(context, attrs);
         return recyclerView;
     }
@@ -51,7 +53,6 @@ public class HeadPullRecyclerView extends PullToRefreshBase<WrapRecyclerView> {
     protected boolean isReadyForPullEnd() {
         return isLastItemVisible();
     }
-
 
     /**
      *  @Description: 判断第一个条目是否完全可见

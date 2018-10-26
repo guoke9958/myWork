@@ -4,47 +4,64 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 public class UserInfo implements Serializable{
-	private int id;
-	private String userId;
-	private int type;
-	private int userSex;
-	private String nickName;
-	private String trueName;
-	private String photo;
-	private String hospitalName;
-	private String professionalTitle;
-	private String goodAt;
-	private String phone;
-	private String intro;
-	private String departmentName;
-	private String duty;
+	private int id;   //编号
+	private String userId;  // 用户id
+	private int type;       //用户会员类型
+	private int userSex;    //性别 1 男 2 女
+	private String nickName; //昵称
+	private String trueName; //真实姓名
+	private String photo;  //图像
+	private String hospitalName;  //所在医院名称
+	private String professionalTitle; //职称
+	private String goodAt;  //擅长
+	private String phone;  //电话
+	private String intro;  //简介
+	private String departmentName; //所在科室
+	private String duty;   //职务
 	private String province;
-	private String city;
-	private String area;
-	private String detailAddress;
+	private String city;   //城市
+	private String area;   //区
+	private String detailAddress;  //详细地址
 	private String alipayAccount;
-	private String phoneAdvisory;
+	private String phoneAdvisory; //电话咨询费用
 	private String orderAadvisory;
 	private String noteOrderAdvisory;
-	private String state;
-	private String token;
-	private int hospitalId;
-	private int departmentId;
-	private String normalAdvisory;
-	private String bigAdvisory;
-	private String familyDoctor;
-	private String healthManager;
-	private int isPass;
-	private String hospitalGrade;
-	private int hospitalPass;
-	private String brithday;
-	private int hospitalType;
+	private String state; //是否在线
+	private String token;  //支付票据
+	private int hospitalId;  //医院等级id
+	private int departmentId; //科室id
+	private String normalAdvisory; // 普通咨询费用
+	private String bigAdvisory;  //大病会诊费用
+	private String familyDoctor; //家庭医生费用
+	private String healthManager; //健康管理
+	private int isPass;        //审核状态
+	private String hospitalGrade; //医院等级名称
+	private int hospitalPass;  //医院通过
+	private String brithday;   //生日
+	private String cardId;   //卡号
+	private Integer balance;   //零钱余额
+	private int hospitalType; //医院类型id
 	private Timestamp createTime;
 	
 	public UserInfo() {
 		super();
 	}
 
+	public String getCardId() {
+		return cardId;
+	}
+
+	public void setCardId(String cardId) {
+		this.cardId = cardId;
+	}
+
+	public Integer getBalance() {
+		return balance;
+	}
+
+	public void setBalance(Integer balance) {
+		this.balance = balance;
+	}
 
 	public int getId() {
 		return id;

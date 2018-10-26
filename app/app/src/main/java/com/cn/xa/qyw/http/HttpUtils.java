@@ -29,24 +29,31 @@ public class HttpUtils {
     }
 
     public static RequestHandle getDataFromServer(String url, AsyncHttpResponseHandler handler) {
+        Lg.e(url);
         return client.get(url, handler);
     }
 
     public static RequestHandle getDataFromServer(String url, RequestParams params, AsyncHttpResponseHandler handler) {
+        Lg.e(url);
+        Lg.e(params.toString());
         return client.get(url, params, handler);
     }
 
     public static RequestHandle postDataFromServer(String url, AsyncHttpResponseHandler handler){
+        Lg.e(url);
         return client.post(url, handler);
     }
 
     public static RequestHandle postDataFromServer(String url, RequestParams params, AsyncHttpResponseHandler handler){
+        Lg.e(url);
+        Lg.e(params.toString());
         return client.post(url, params, handler);
     }
 
     public static RequestHandle postDataFromServer(String url, String data, AsyncHttpResponseHandler handler){
         RequestParams params = new RequestParams();
         params.put("data",data);
+        Lg.e(url);
         Lg.e(data);
         return client.post(url, params, handler);
     }

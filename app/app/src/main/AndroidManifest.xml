@@ -160,6 +160,10 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".ui.slide.AboutAddUsActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".ui.discover.DiscoverNewsActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />

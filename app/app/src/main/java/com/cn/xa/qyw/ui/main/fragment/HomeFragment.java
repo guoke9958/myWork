@@ -309,9 +309,7 @@ public class HomeFragment extends BaseFragment implements OnItemClickListener {
     @Override
     public void onResume() {
         super.onResume();
-
         mConvenientBanner.startTurning(2000);
-
         if (!mIsCreate) {
             getNewsData();
         }
@@ -321,7 +319,6 @@ public class HomeFragment extends BaseFragment implements OnItemClickListener {
     @Override
     public void onPause() {
         super.onPause();
-
         mConvenientBanner.stopTurning();
     }
 
@@ -342,8 +339,14 @@ public class HomeFragment extends BaseFragment implements OnItemClickListener {
 
             @Override
             public void onSuccess(String data) {
-                List<NewsDetail> list = JSONObject.parseArray(data, NewsDetail.class);
-                mNewsAdapter.setListNews("0", list);
+                try {
+                    JSONObject jsonObj = (JSONObject)(new JSONObject().parse(data));
+                    List<NewsDetail> news = JSONObject.parseArray(jsonObj.get("news").toString(), NewsDetail.class);
+                    List<NewsDetail> lunbos = JSONObject.parseArray(jsonObj.get("lunbos").toString(), NewsDetail.class);
+                    mNewsAdapter.setListNews("0", news);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
