@@ -156,10 +156,21 @@ public class HttpAddress {
     /**
      * 获取商品详情
      */
-    public static String GET_NEW_COLUMN_PRODUCTDETAIL = NET_HOST_LUCKDRAW + "/productdetail";
+    public static String GET_NEW_COLUMN_PRODUCTDETAIL = NET_HOST_LUCKDRAW + "productdetail";
     /**
      * 绑卡
      */
-    public static String GET_NEW_SAVE_USER_CARD = NET_HOST_LUCKDRAW + "/saveUserCard";
-
+    public static String GET_NEW_SAVE_USER_CARD = NET_HOST_LUCKDRAW + "saveUserCard";
+    /**
+     * 提交  客服审核
+     */
+    public static String GET_NEW_SAVE_KEFU_EXAMINE = NET_HOST_LUCKDRAW + "saveKefuExamine";
+    /**
+     * 客服列表
+     */
+    public static String GET_NEW_KEFU_LIST = NET_HOST_LUCKDRAW + "kefulist";
+    /**
+     * 客服详情
+     */
+    public static String GET_NEW_KEFU_DETAIL = NET_HOST_LUCKDRAW + "kefuDetail";
 }

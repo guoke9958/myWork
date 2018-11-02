@@ -9,9 +9,9 @@ public class User implements Serializable{
 	private String userName;
 	private int type;
 	private String token;
-	private String password;
-	private String requestType;
-	private String invitePhone;
+	private String password;      //密码
+	private String requestType;   //注册类型
+	private String invitePhone;   // 邀请人手机号
 	
 	public User() {
 		super();

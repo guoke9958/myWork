@@ -190,7 +190,9 @@ public class DoctorMainActivity extends DoctorBaseActivity {
 
                         if (mUserInfo.getUserSex() == 0) {
                             if(mUserInfo.getType() == 2||mUserInfo.getType() == 1){
-                                showCompleteUserInfoDialog();
+                                if (StringUtils.isEmpty(mUserInfo.getTrueName())){
+                                    showCompleteUserInfoDialog();
+                                }
                                 return;
                             }
                         }
@@ -216,11 +218,8 @@ public class DoctorMainActivity extends DoctorBaseActivity {
                             userPhoto.setImageURI(HttpAddress.PHOTO_URL + mUserInfo.getPhoto());
                             mOpenDraw.setImageURI(HttpAddress.PHOTO_URL + mUserInfo.getPhoto());
                         }
-
                     } else {
-
                         showCompleteUserInfoDialog();
-
                     }
 
                 }

@@ -53,10 +53,10 @@ public class PocketAccountActivity extends SlideBaseActivity{
         addCardNumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.isEmpty(addCardNumber.getText())){
+                if (TextUtils.isEmpty(cardNumber.getText())){
                     showToast("通惠卡号不能为空");
                 }else {
-                    if (addCardNumber.getText().toString().trim().length() < 8){
+                    if (cardNumber.getText().toString().trim().length() < 8){
                         showToast("请输入正确的通惠卡号");
                     }else{
                         setAddCardNumber();
@@ -81,11 +81,11 @@ public class PocketAccountActivity extends SlideBaseActivity{
                 public void onSuccess(String data) {
                     if (!StringUtils.isEmpty(data)) {
                         mUserInfo = JSONObject.parseObject(data, UserInfo.class);
-//                        if (){
-//                            changeView.setVisibility(View.VISIBLE);
-//                        }else{
-//                            addCardView.setVisibility(View.VISIBLE);
-//                        }
+                        if (!StringUtils.isEmpty(mUserInfo.getCardId())){
+                            changeView.setVisibility(View.VISIBLE);
+                        }else{
+                            addCardView.setVisibility(View.VISIBLE);
+                        }
                     } else {
                         addCardView.setVisibility(View.VISIBLE);
                     }
@@ -101,10 +101,11 @@ public class PocketAccountActivity extends SlideBaseActivity{
     public void setAddCardNumber(){
         Map<String,String> mapData = new HashMap<>();
         mapData.put("userId",DoctorApplication.mUser.getUserId());
-        mapData.put("cardId",DoctorApplication.mUser.getUserId());
+        mapData.put("cardId",cardNumber.getText().toString().trim());
         HttpUtils.postDataFromServer(HttpAddress.GET_NEW_SAVE_USER_CARD,JSONObject.toJSONString(mapData), new NetworkResponseHandler() {
             @Override
             public void onFail(String messsage) {
+                showToast("通慧卡绑定失败");
             }
 
             @Override
@@ -113,6 +114,8 @@ public class PocketAccountActivity extends SlideBaseActivity{
                 changeView.setVisibility(View.VISIBLE);
                 changeCardNumber.setText("");
                 changeLines.setText(StringUtils.isEmpty(data)?"0元":"" + "元");
+                showToast("通慧卡绑定成功！");
+                finish();
             }
         });
     }

@@ -18,14 +18,14 @@ public class UserInfo implements Serializable{
 	private String intro;  //简介
 	private String departmentName; //所在科室
 	private String duty;   //职务
-	private String province;
+	private String province; //省
 	private String city;   //城市
 	private String area;   //区
 	private String detailAddress;  //详细地址
-	private String alipayAccount;
+	private String alipayAccount;  //支付宝账户
 	private String phoneAdvisory; //电话咨询费用
-	private String orderAadvisory;
-	private String noteOrderAdvisory;
+	private String orderAadvisory; // 预约就诊费用
+	private String noteOrderAdvisory; // 短信咨询费用
 	private String state; //是否在线
 	private String token;  //支付票据
 	private int hospitalId;  //医院等级id
