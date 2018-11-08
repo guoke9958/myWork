@@ -74,6 +74,7 @@ public class AddUserInfoActivity extends DoctorBaseActivity {
                 mList.add(new AddUserInfoItemView(this, mParent, "healthAdc", false));
                 mList.add(new AddUserInfoItemView(this, mParent, "goodAt", false));
                 mList.add(new AddUserInfoItemView(this, mParent, "intro", false));
+                mList.add(new AddUserInfoItemView(this, mParent, "communityName", false));
 
             } else if (DoctorApplication.mUser.getType() == 2) {
                 mList.add(new AddUserInfoItemView(this, mParent, "name", true));
@@ -90,6 +91,8 @@ public class AddUserInfoActivity extends DoctorBaseActivity {
                 mList.add(mItemViewArea);
                 mList.add(itemViewAddressDetail);
 
+                mList.add(new AddUserInfoItemView(this, mParent, "communityName", false));
+
             }else if (DoctorApplication.mUser.getType() == 3||DoctorApplication.mUser.getType() == 4
                     ||DoctorApplication.mUser.getType() == 5||DoctorApplication.mUser.getType() == 6) {
                 mList.add(new AddUserInfoItemView(this, mParent, "name", true));
@@ -105,6 +108,7 @@ public class AddUserInfoActivity extends DoctorBaseActivity {
                 mList.add(mItemViewCity);
                 mList.add(mItemViewArea);
                 mList.add(itemViewAddressDetail);
+                mList.add(new AddUserInfoItemView(this, mParent, "communityName", false));
                 mList.add(new AddUserInfoItemView(this, mParent, "goodAt", false));
                 mList.add(new AddUserInfoItemView(this, mParent, "intro", false));
             }

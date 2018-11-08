@@ -36,6 +36,7 @@ import com.cn.xa.qyw.utils.ToastUtils;
 import java.util.UUID;
 
 /**
+ * 充值
  * Created by Administrator on 2016/8/21.
  */
 public class SelectPriceActivity extends SlideBaseActivity {

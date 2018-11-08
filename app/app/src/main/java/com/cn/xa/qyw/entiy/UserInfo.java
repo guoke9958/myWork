@@ -21,6 +21,7 @@ public class UserInfo implements Serializable{
 	private String province; //省
 	private String city;   //城市
 	private String area;   //区
+	private String communityName;   //社区名称
 	private String detailAddress;  //详细地址
 	private String alipayAccount;  //支付宝账户
 	private String phoneAdvisory; //电话咨询费用
@@ -45,6 +46,14 @@ public class UserInfo implements Serializable{
 	
 	public UserInfo() {
 		super();
+	}
+
+	public String getCommunityName() {
+		return communityName;
+	}
+
+	public void setCommunityName(String communityName) {
+		this.communityName = communityName;
 	}
 
 	public String getCardId() {

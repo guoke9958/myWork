@@ -101,6 +101,7 @@ public class UserInfoUpdateActivity extends DoctorBaseActivity {
             mList.add(new UserInfoItemView(this, mUserInfo, mParent, "professional"));
             mList.add(new UserInfoItemView(this, mUserInfo, mParent, "duty"));
             mList.add(new UserInfoItemView(this, mUserInfo, mParent, "phone"));
+            mList.add(new UserInfoItemView(this,mUserInfo, mParent, "communityName"));
             mList.add(new UserInfoItemView(this, mUserInfo, mParent, "normalAdc"));
             mList.add(new UserInfoItemView(this, mUserInfo, mParent, "phoneAdv"));
             mList.add(new UserInfoItemView(this, mUserInfo, mParent, "bigAdc"));
@@ -117,6 +118,7 @@ public class UserInfoUpdateActivity extends DoctorBaseActivity {
             UserInfoItemView itemViewProvince = new UserInfoItemView(this, mUserInfo, mParent, "province");
             mItemViewCity = new UserInfoItemView(this, mUserInfo, mParent, "city", itemViewProvince);
             mItemViewArea = new UserInfoItemView(this, mUserInfo, mParent, "area", mItemViewCity);
+            mList.add(new UserInfoItemView(this,mUserInfo, mParent, "communityName"));
             mList.add(new UserInfoItemView(this, mUserInfo, mParent, "addressDetail"));
             mList.add(itemViewProvince);
             mList.add(mItemViewCity);
@@ -131,10 +133,12 @@ public class UserInfoUpdateActivity extends DoctorBaseActivity {
             UserInfoItemView itemViewProvince = new UserInfoItemView(this, mUserInfo, mParent, "province");
             mItemViewCity = new UserInfoItemView(this, mUserInfo, mParent, "city", itemViewProvince);
             mItemViewArea = new UserInfoItemView(this, mUserInfo, mParent, "area", mItemViewCity);
+            mList.add(new UserInfoItemView(this,mUserInfo, mParent, "communityName"));
             mList.add(new UserInfoItemView(this, mUserInfo, mParent, "addressDetail"));
             mList.add(itemViewProvince);
             mList.add(mItemViewCity);
             mList.add(mItemViewArea);
+
             mList.add(new UserInfoItemView(this, mUserInfo, mParent, "goodAt"));
             mList.add(new UserInfoItemView(this, mUserInfo, mParent, "intro"));
         }

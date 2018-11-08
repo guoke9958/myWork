@@ -170,7 +170,9 @@ public class AddUserInfoItemView implements View.OnClickListener {
         } else if ("area".equals(mType)) {
             mContent.setFocusable(false);
             hint = "选择所在区";
-        } else if ("addressDetail".equals(mType)) {
+        } else if ("communityName".equals(mType)) {
+            hint = "请输入社区名称";
+        }else if ("addressDetail".equals(mType)) {
             hint = "请输入详细地址";
         } else if ("normalAdc".equals(mType)) {
             hint = "请选择普通咨询费用";
@@ -257,6 +259,8 @@ public class AddUserInfoItemView implements View.OnClickListener {
             setTitle("请输入详细地址");
         } else if ("province".equals(mType)) {
             setTitle("省份");
+        } else if ("communityName".equals(mType)) {
+            setTitle("请输入社区名称");
         } else if ("normalAdc".equals(mType)) {
             setTitle("普通咨询费用（单位：元）");
         } else if ("bigAdc".equals(mType)) {
@@ -775,6 +779,8 @@ public class AddUserInfoItemView implements View.OnClickListener {
                 info.setArea(content);
             }
 
+        } else if ("communityName".equals(mType)) {
+            info.setCommunityName(content);
         } else if ("addressDetail".equals(mType)) {
             info.setDetailAddress(content);
         } else if ("province".equals(mType)) {

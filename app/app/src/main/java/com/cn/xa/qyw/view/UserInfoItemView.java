@@ -147,7 +147,9 @@ public class UserInfoItemView {
                     UserInfoItemView.this.onClick();
                 } else if ("area".equals(mType)) {
                     UserInfoItemView.this.onClick();
-                } else if ("addressDetail".equals(mType)) {
+                } else if ("communityName".equals(mType)) {
+                    hint = "请输入社区名称";
+                }else if ("addressDetail".equals(mType)) {
                     hint = "请输入详细地址";
                 } else if ("birthday".equals(mType)) {
                     UserInfoItemView.this.onClick();
@@ -402,6 +404,10 @@ public class UserInfoItemView {
         } else if ("area".equals(mType)) {
             setTitle("区域");
             setContent(mInfo.getArea());
+        }else if ("communityName".equals(mType)) {
+            setTitle("请输入社区名称");
+            mInfo.setCommunityName(content);
+            setContent(content);
         } else if ("addressDetail".equals(mType)) {
             setTitle("请输入详细地址");
             mInfo.setDetailAddress(content);
@@ -518,6 +524,9 @@ public class UserInfoItemView {
         } else if ("area".equals(mType)) {
             setTitle("区域");
             setContent(mInfo.getArea());
+        } else if ("communityName".equals(mType)) {
+            setTitle("请输入社区名称");
+            setContent(mInfo.getCommunityName());
         } else if ("addressDetail".equals(mType)) {
             setTitle("请输入详细地址");
             setContent(mInfo.getDetailAddress());
@@ -1023,7 +1032,9 @@ public class UserInfoItemView {
                 info.setArea(content);
             }
 
-        } else if ("addressDetail".equals(mType)) {
+        }  else if ("communityName".equals(mType)) {
+            info.setCommunityName(content);
+        }else if ("addressDetail".equals(mType)) {
             info.setDetailAddress(content);
         } else if ("province".equals(mType)) {
 

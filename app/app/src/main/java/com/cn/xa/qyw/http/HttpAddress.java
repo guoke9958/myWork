@@ -10,15 +10,15 @@ public class HttpAddress {
 
     public static final String HOST_2 = "http://www.qiuyiwang.com:8081/";
 
-    public static final String HOST_2_text = HOST_1 + "/Doctor/";
+    public static final String HOST_2_text = HOST_1 + "Doctor/";
 
 //    public static final String HOST_3 = "http://www.qiuyiwang.com:8081/download/";
     public static final String HOST_3 =  HOST_2 + "download/";
 
 //    public static final String NET_HOST = HOST_2 + "Doctor/api/";
 
-    public static final String NET_HOST = HOST_2 + "YHT/api/";
-//    public static final String NET_HOST = HOST_2_text + "/api/";
+//    public static final String NET_HOST = HOST_2 + "YHT/api/";
+    public static final String NET_HOST = HOST_2_text + "api/";
 
     public static final String NET_HOST_LUCKDRAW = HOST_2 + "luckdraw/api/";
 //    public static final String NET_HOST_LUCKDRAW = HOST_1 + "luckdraw/api/";
