@@ -17,8 +17,8 @@ public class HttpAddress {
 
 //    public static final String NET_HOST = HOST_2 + "Doctor/api/";
 
-//    public static final String NET_HOST = HOST_2 + "YHT/api/";
-    public static final String NET_HOST = HOST_2_text + "api/";
+    public static final String NET_HOST = HOST_2 + "YHT/api/";
+//    public static final String NET_HOST = HOST_2_text + "api/";
 
     public static final String NET_HOST_LUCKDRAW = HOST_2 + "luckdraw/api/";
 //    public static final String NET_HOST_LUCKDRAW = HOST_1 + "luckdraw/api/";
